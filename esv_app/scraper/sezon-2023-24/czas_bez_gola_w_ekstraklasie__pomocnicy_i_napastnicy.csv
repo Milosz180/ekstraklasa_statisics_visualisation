@@ -1,0 +1,288 @@
+ZAWODNIK,KLUB,POZYCJA,MIN BEZ GOLA,MECZE BEZ GOLA,OSTATNI GOL,OSTATNI GOL PRZECIW,MIN BEZ GOLA LUB ASYSTY,MECZE BEZ GOLA LUB ASYSTY,OSTATNI GOL LUB ASYSTA,OSTATNI GOL LUB ASYSTA PRZECIW
+Marek Hanousek,Widzew Łódź,pomocnik,4034,48,16.10.2022,Zagłębie L,1151,15,18.11.2023,Ruch
+Tom Hateley,Piast Gliwice,pomocnik,4030,69,14.06.2020,Jagiellonia,2188,44,23.04.2022,Jagiellonia
+Ben Lederman,Raków Częstochowa,pomocnik,3632,61,04.12.2021,Lechia,566,10,05.11.2023,Zagłębie L
+Michał Kaput,Radomiak Radom,pomocnik,3611,68,-,-,1547,28,24.10.2022,Radomiak
+Patrick Olsen,Śląsk Wrocław,pomocnik,3263,42,29.10.2022,Wisła P,1146,14,28.10.2023,Ruch
+Daniel Łukasik,Śląsk Wrocław,pomocnik,3084,51,16.08.2019,Zagłębie S,474,16,15.05.2022,Wisła K
+Luizao,Radomiak Radom,pomocnik,3076,47,-,-,3076,47,-,-
+Bartosz Szeliga,ŁKS Łódź,pomocnik,3049,46,23.09.2017,Lechia,220,4,27.04.2024,Górnik Z
+Niilo Maenpaa,Warta Poznań,pomocnik,2951,67,-,-,218,2,22.04.2024,Stal
+Filip Starzyński,Ruch Chorzów,pomocnik,2820,47,01.10.2022,Górnik Z,1081,18,01.09.2023,Stal
+Jacek Podgórski,Korona Kielce,pomocnik,2685,45,06.11.2022,Lech,94,1,18.05.2024,Ruch
+Jakub Serafin,Puszcza Niepołomice,pomocnik,2644,37,-,-,480,5,13.04.2024,Lech
+Michał Mokrzycki,ŁKS Łódź,pomocnik,2619,33,-,-,294,3,14.04.2024,Radomiak
+Walerian Gwilia,Piast Gliwice,pomocnik,2541,53,11.07.2020,Cracovia,1752,36,02.11.2020,Warta
+Takuto Oshima,Cracovia,pomocnik,2534,36,02.04.2023,Widzew,1639,24,11.08.2023,Zagłębie L
+Peter Pokorny,Śląsk Wrocław,pomocnik,2354,27,-,-,1537,17,21.10.2023,Legia
+Dalibor Takac,Korona Kielce,pomocnik,2260,49,-,-,2022,44,27.08.2022,Radomiak
+Leandro Rossi,Radomiak Radom,pomocnik,2198,50,14.12.2021,Piast,93,3,28.04.2024,Zagłębie L
+Maciej Domański,Stal Mielec,pomocnik,2139,24,23.09.2023,Lech,212,2,04.05.2024,Jagiellonia
+Jurgen Elitim,Legia Warszawa,pomocnik,2047,25,27.09.2023,Pogoń,678,7,01.04.2024,Górnik Z
+Konrad Stępień,Puszcza Niepołomice,pomocnik,2031,27,-,-,1359,18,06.10.2023,Lech
+Arkadiusz Woźniak,Zagłębie Lubin,pomocnik,1960,57,12.05.2017,Piast,941,40,29.10.2017,Jagiellonia
+Roberto Alves,Radomiak Radom,pomocnik,1903,25,24.10.2022,Piast,923,12,24.04.2023,Lech
+Damian Dąbrowski,Zagłębie Lubin,pomocnik,1879,21,29.10.2023,Radomiak,14,0,25.05.2024,Legia
+Jurgen Celhaka,Legia Warszawa,pomocnik,1757,41,-,-,1757,41,-,-
+Marcel Pięczek,Korona Kielce,pomocnik,1747,25,-,-,698,7,17.03.2024,Pogoń
+Tomasz Pieńko,Zagłębie Lubin,pomocnik,1713,32,27.05.2023,Raków,878,17,24.11.2023,ŁKS
+Patryk Sokołowski,Cracovia,pomocnik,1660,34,06.05.2022,Górnik Z,1660,34,06.05.2022,Górnik Z
+Jean Carlos Silva,Raków Częstochowa,pomocnik,1599,22,29.10.2023,Widzew,1599,22,29.10.2023,Widzew
+Joao Gamboa,Pogoń Szczecin,pomocnik,1555,29,-,-,54,2,26.04.2024,Jagiellonia
+Mateusz Bochnak,Cracovia,pomocnik,1448,31,08.04.2023,Pogoń,1448,31,08.04.2023,Pogoń
+Juljan Shehu,Widzew Łódź,pomocnik,1448,33,-,-,513,8,23.07.2023,Puszcza
+Michał Kopczyński,Warta Poznań,pomocnik,1427,30,15.08.2022,Korona,1427,30,15.08.2022,Korona
+Miguel Luis,Warta Poznań,pomocnik,1410,21,15.08.2023,Stal,482,7,06.04.2024,Śląsk
+Daniel Pik,Radomiak Radom,pomocnik,1405,49,-,-,1405,49,-,-
+Wiktor Długosz,Ruch Chorzów,pomocnik,1391,45,25.07.2021,Piast,410,15,28.04.2023,Lechia
+Miłosz Szczepański,Piast Gliwice,pomocnik,1374,31,14.04.2023,Śląsk,254,3,05.05.2024,Korona
+Afonso Sousa,Lech Poznań,pomocnik,1338,20,16.04.2023,Legia,766,12,17.09.2023,Warta
+Michał Chrapek,Piast Gliwice,pomocnik,1311,22,02.09.2023,Radomiak,1311,22,02.09.2023,Radomiak
+Jesper Karlstrom,Lech Poznań,pomocnik,1307,16,26.11.2023,Widzew,30,0,25.05.2024,Korona
+Tomasz Makowski,Zagłębie Lubin,pomocnik,1217,24,24.09.2023,Warta,299,3,04.05.2024,Raków
+Christos Donis,Radomiak Radom,pomocnik,1176,22,19.08.2023,Warta,583,14,29.10.2023,Zagłębie L
+Kajetan Szmyt,Warta Poznań,pomocnik,1159,14,11.02.2024,Raków,348,3,05.05.2024,Widzew
+Yoav Hofmeister,Korona Kielce,pomocnik,1131,13,12.02.2024,ŁKS,1131,13,12.02.2024,ŁKS
+Hubert Tomalski,Puszcza Niepołomice,pomocnik,1128,21,-,-,1128,21,-,-
+Tomasz Foszmańczyk,Ruch Chorzów,pomocnik,1125,29,20.11.2015,Piast,761,22,02.03.2016,Legia
+Radosław Murawski,Lech Poznań,pomocnik,1111,13,10.02.2024,Zagłębie L,1111,13,10.02.2024,Zagłębie L
+Dawid Drachal,Raków Częstochowa,pomocnik,1105,22,24.09.2023,Ruch,479,7,30.03.2024,Ruch
+Petteri Forsell,Korona Kielce,pomocnik,1097,22,21.11.2020,Zagłębie L,265,6,01.05.2021,Lech
+Piotr Wlazło,Stal Mielec,pomocnik,1070,12,09.02.2024,Puszcza,742,8,10.03.2024,Ruch
+Rafał Wolski,Radomiak Radom,pomocnik,1062,15,02.12.2023,Widzew,152,3,05.05.2024,Legia
+Serhij Bułeca,Zagłębie Lubin,pomocnik,1034,20,02.10.2023,Górnik Z,445,11,15.12.2023,Śląsk
+John Yeboah,Raków Częstochowa,napastnik,1032,20,05.11.2023,Zagłębie L,182,2,11.05.2024,Pogoń
+Dario Vizinger,Warta Poznań,napastnik,1030,24,19.08.2023,Radomiak,358,10,11.02.2024,Raków
+Damian Rasak,Górnik Zabrze,pomocnik,1018,11,02.03.2024,Jagiellonia,563,6,14.04.2024,Śląsk
+Koki Hinokio,Stal Mielec,pomocnik,985,19,29.10.2023,Legia,2,0,25.05.2024,ŁKS
+Tihomir Kostadinov,Piast Gliwice,pomocnik,958,23,-,-,101,2,10.05.2024,ŁKS
+Filip Szymczak,Lech Poznań,napastnik,928,12,17.02.2024,Jagiellonia,69,0,19.05.2024,Widzew
+Juliusz Letniowski,Ruch Chorzów,pomocnik,923,12,08.12.2023,Zagłębie L,923,12,08.12.2023,Zagłębie L
+Piotr Mroziński,Puszcza Niepołomice,pomocnik,878,10,26.11.2023,Górnik Z,878,10,26.11.2023,Górnik Z
+Lukas Podolski,Górnik Zabrze,napastnik,876,11,10.02.2024,Piast,134,1,17.05.2024,Puszcza
+Matthew Guillaumier,Stal Mielec,pomocnik,841,10,10.03.2024,Ruch,841,10,10.03.2024,Ruch
+Morten Eppel,Warta Poznań,pomocnik,830,16,25.11.2023,Legia,830,16,25.11.2023,Legia
+Bruno Jordao,Radomiak Radom,pomocnik,812,13,-,-,276,3,05.05.2024,Legia
+Ryoya Morishita,Legia Warszawa,pomocnik,810,13,-,-,810,13,-,-
+Fredrik Ulvestad,Pogoń Szczecin,pomocnik,809,8,30.03.2024,Cracovia,809,8,30.03.2024,Cracovia
+Tiago Matos,Radomiak Radom,pomocnik,799,22,02.10.2021,Bruk-Bet,799,22,02.10.2021,Bruk-Bet
+Adriel Ba Loua,Lech Poznań,pomocnik,790,16,24.10.2023,Jagiellonia,446,10,10.02.2024,Zagłębie L
+Francisco Ramos,Radomiak Radom,pomocnik,784,9,-,-,784,9,-,-
+Maciej Żurawski,Warta Poznań,pomocnik,779,13,08.12.2023,Pogoń,779,13,08.12.2023,Pogoń
+Krzysztof Wołkowicz,Stal Mielec,pomocnik,769,17,29.10.2023,Legia,769,17,29.10.2023,Legia
+Dawid Tkacz,Widzew Łódź,pomocnik,766,22,-,-,766,22,-,-
+Mathias Hebo Rasmussen,Cracovia,pomocnik,760,10,23.07.2022,Korona,324,4,03.09.2022,Raków
+Lee Jin-hyun,Puszcza Niepołomice,pomocnik,749,13,-,-,101,1,17.05.2024,Górnik Z
+Patryk Klimala,Śląsk Wrocław,napastnik,743,13,24.11.2019,Arka,4,0,27.04.2024,Ruch
+Paweł Wszołek,Legia Warszawa,pomocnik,733,8,02.03.2024,Pogoń,135,1,12.05.2024,Lech
+Karol Knap,Cracovia,pomocnik,728,14,09.12.2023,Stal,126,2,03.05.2024,Górnik Z
+Dino Hotić,Lech Poznań,pomocnik,714,16,-,-,511,11,02.09.2023,Górnik Z
+Patryk Dziczek,Piast Gliwice,pomocnik,713,8,30.03.2024,Śląsk,713,8,30.03.2024,Śląsk
+Dominik Marczuk,Jagiellonia Białystok,pomocnik,710,8,30.03.2024,ŁKS,60,0,25.05.2024,Warta
+Srdan Plavsić,Raków Częstochowa,pomocnik,684,12,24.09.2023,Ruch,11,0,17.02.2024,Ruch
+Aurelien Nguiamba,Jagiellonia Białystok,pomocnik,675,20,-,-,675,20,-,-
+Husein Balić,ŁKS Łódź,pomocnik,647,8,03.03.2024,Puszcza,647,8,03.03.2024,Puszcza
+Alexander Gorgon,Pogoń Szczecin,pomocnik,631,8,17.03.2024,Korona,196,2,11.05.2024,Raków
+Ali Gholizadeh,Lech Poznań,pomocnik,628,10,-,-,628,10,-,-
+Bartosz Nowak,Raków Częstochowa,pomocnik,623,12,03.03.2024,Lech,623,12,03.03.2024,Lech
+Maciej Śliwa,ŁKS Łódź,pomocnik,607,21,17.07.2022,Radomiak,607,21,17.07.2022,Radomiak
+Patryk Kun,Legia Warszawa,pomocnik,605,10,17.12.2023,Cracovia,605,10,17.12.2023,Cracovia
+Jakub Letniowski,ŁKS Łódź,pomocnik,592,14,-,-,592,14,-,-
+Gustav Berggren,Raków Częstochowa,pomocnik,581,8,03.03.2024,Lech,581,8,03.03.2024,Lech
+Tomasz Kupisz,Jagiellonia Białystok,pomocnik,577,33,11.02.2023,Pogoń,17,5,30.03.2024,ŁKS
+Petr Schwarz,Śląsk Wrocław,pomocnik,577,7,30.03.2024,Piast,119,1,18.05.2024,Radomiak
+Robert Dadok,Ruch Chorzów,pomocnik,571,6,01.03.2024,Piast,571,6,01.03.2024,Piast
+Maciej Firlej,Puszcza Niepołomice,napastnik,568,9,-,-,220,5,09.02.2024,Stal
+Jose Naranjo,Jagiellonia Białystok,pomocnik,556,12,10.12.2023,Raków,259,7,02.03.2024,Górnik Z
+Artur Siemaszko,Puszcza Niepołomice,napastnik,551,11,16.12.2023,Jagiellonia,28,0,25.05.2024,Piast
+Ernest Terpiłowski,Widzew Łódź,napastnik,551,14,04.08.2023,Jagiellonia,551,14,04.08.2023,Jagiellonia
+Bartosz Kwiecień,Korona Kielce,pomocnik,550,6,06.04.2024,Stal,550,6,06.04.2024,Stal
+Mateusz Stępień,Stal Mielec,pomocnik,538,24,-,-,538,24,-,-
+Efthymis Koulouris,Pogoń Szczecin,napastnik,535,6,12.04.2024,Ruch,14,0,25.05.2024,Górnik Z
+Igor Strzałek,Stal Mielec,pomocnik,523,16,24.09.2023,Górnik Z,60,1,11.05.2024,Górnik Z
+Luka Zahović,Pogoń Szczecin,napastnik,508,17,30.07.2023,Widzew,68,4,08.12.2023,Warta
+Tomas Prikryl,Warta Poznań,pomocnik,508,9,01.03.2024,Cracovia,194,3,22.04.2024,Stal
+Fredrik Krogstad,Korona Kielce,pomocnik,507,7,-,-,507,7,-,-
+Rafał Adamski,Zagłębie Lubin,napastnik,507,10,09.10.2022,Korona,507,10,09.10.2022,Korona
+Serhij Krykun,Piast Gliwice,pomocnik,501,15,29.09.2023,Widzew,51,2,10.05.2024,ŁKS
+Thiago,Puszcza Niepołomice,pomocnik,491,14,09.04.2021,Jagiellonia,491,14,09.04.2021,Jagiellonia
+Nika Kwekweskiri,Lech Poznań,pomocnik,483,13,16.12.2023,Radomiak,50,2,12.05.2024,Legia
+Piotr Janczukowicz,ŁKS Łódź,napastnik,481,9,11.03.2024,Warta,224,5,14.04.2024,Radomiak
+Mikkel Maigaard,Cracovia,pomocnik,474,14,-,-,346,10,09.03.2024,Korona
+Dawid Błanik,Korona Kielce,pomocnik,474,8,17.03.2024,Pogoń,237,4,19.04.2024,Radomiak
+Gil Dias,Legia Warszawa,pomocnik,474,17,-,-,474,17,-,-
+Patryk Sikora,Ruch Chorzów,pomocnik,469,5,01.03.2024,Piast,469,5,01.03.2024,Piast
+Rafał Kurzawa,Pogoń Szczecin,pomocnik,466,5,23.02.2024,ŁKS,466,5,23.02.2024,ŁKS
+Mariusz Fornalczyk,Korona Kielce,pomocnik,452,12,08.12.2023,Warta,452,12,08.12.2023,Warta
+Mateusz Czyżycki,Korona Kielce,pomocnik,446,8,22.09.2023,Widzew,345,7,29.09.2023,Stal
+Antoni Młynarczyk,ŁKS Łódź,pomocnik,441,13,23.02.2024,Pogoń,28,0,25.05.2024,Stal
+Jakub Konstantyn,Korona Kielce,pomocnik,438,16,29.09.2023,Stal,135,3,01.04.2024,Widzew
+Wahan Biczachczjan,Pogoń Szczecin,pomocnik,438,8,30.03.2024,Cracovia,244,4,26.04.2024,Jagiellonia
+Adrian Przyborek,Pogoń Szczecin,pomocnik,436,6,12.04.2024,Ruch,252,3,06.05.2024,Puszcza
+Antoni Klimek,Widzew Łódź,pomocnik,431,8,01.04.2024,Korona,17,0,25.05.2024,Radomiak
+Wojciech Hajda,Puszcza Niepołomice,pomocnik,425,5,21.04.2024,Cracovia,425,5,21.04.2024,Cracovia
+Josue,Legia Warszawa,pomocnik,420,4,28.04.2024,Stal,50,0,25.05.2024,Zagłębie L
+Bartłomiej Poczobut,Puszcza Niepołomice,pomocnik,420,12,27.10.2023,Korona,420,12,27.10.2023,Korona
+Filip Wilak,Ruch Chorzów,napastnik,394,18,-,-,121,2,13.05.2024,Radomiak
+Jakub Myszor,Raków Częstochowa,pomocnik,393,20,16.10.2022,Miedź,393,20,16.10.2022,Miedź
+Jakub Łukowski,Korona Kielce,pomocnik,370,9,27.05.2023,Widzew,370,9,27.05.2023,Widzew
+Damian Kądzior,Piast Gliwice,pomocnik,370,7,18.12.2023,Stal,370,7,18.12.2023,Stal
+Martin Remacle,Korona Kielce,pomocnik,351,4,29.04.2024,Puszcza,351,4,29.04.2024,Puszcza
+Mateusz Kupczak,Warta Poznań,pomocnik,348,3,05.05.2024,Widzew,348,3,05.05.2024,Widzew
+Danny Trejo,Korona Kielce,pomocnik,342,5,19.04.2024,Radomiak,342,5,19.04.2024,Radomiak
+Noah Diliberto,Widzew Łódź,pomocnik,341,8,25.02.2024,Górnik Z,341,8,25.02.2024,Górnik Z
+Sebastian Musiolik,Górnik Zabrze,napastnik,331,5,19.04.2024,Raków,301,4,27.04.2024,ŁKS
+Kacper Śmiglewski,Cracovia,napastnik,319,15,-,-,260,8,30.09.2023,ŁKS
+Miłosz Kozak,Ruch Chorzów,pomocnik,317,5,20.04.2024,Widzew,32,0,25.05.2024,Cracovia
+Mateusz Matras,Stal Mielec,pomocnik,312,3,04.05.2024,Jagiellonia,312,3,04.05.2024,Jagiellonia
+Alen Mustafić,Śląsk Wrocław,pomocnik,311,6,-,-,311,6,-,-
+Kamil Cybulski,Widzew Łódź,pomocnik,306,8,-,-,306,8,-,-
+Rafa Santos,Stal Mielec,pomocnik,301,13,-,-,301,13,-,-
+Burak Ince,Śląsk Wrocław,pomocnik,301,12,30.09.2023,Warta,301,12,30.09.2023,Warta
+Patryk Makuch,Cracovia,napastnik,287,3,03.05.2024,Górnik Z,91,1,19.05.2024,Raków
+Lawrence Ennali,Górnik Zabrze,pomocnik,285,3,27.04.2024,ŁKS,285,3,27.04.2024,ŁKS
+Kamil Ogorzały,Cracovia,pomocnik,284,11,-,-,284,11,-,-
+Filip Rózga,Cracovia,pomocnik,273,13,-,-,98,2,03.05.2024,Górnik Z
+Thiago Ceijas,ŁKS Łódź,pomocnik,273,8,-,-,273,8,-,-
+Stefan Savić,Warta Poznań,pomocnik,266,10,11.02.2024,Raków,266,10,11.02.2024,Raków
+Krystian Okoniewski,Radomiak Radom,pomocnik,261,16,-,-,261,16,-,-
+Damjan Bohar,Zagłębie Lubin,pomocnik,259,9,29.07.2023,Śląsk,259,9,29.07.2023,Śląsk
+Władysław Koczerhin,Raków Częstochowa,pomocnik,253,3,27.04.2024,Widzew,253,3,27.04.2024,Widzew
+Adam Zrelak,Warta Poznań,napastnik,252,4,22.04.2024,Stal,252,4,22.04.2024,Stal
+Grzegorz Tomasiewicz,Piast Gliwice,pomocnik,246,4,26.04.2024,Warta,246,4,26.04.2024,Warta
+Artur Sobiech,Lech Poznań,napastnik,241,11,27.05.2023,Jagiellonia,32,2,02.12.2023,Korona
+Peter Barath,Raków Częstochowa,pomocnik,239,10,-,-,239,10,-,-
+Filip Przybułek,Widzew Łódź,pomocnik,238,4,-,-,238,4,-,-
+Norbert Barczak,Górnik Zabrze,pomocnik,235,5,-,-,235,5,-,-
+Joao Peglow,Radomiak Radom,pomocnik,231,8,-,-,231,8,-,-
+Lisandro Semedo,Radomiak Radom,pomocnik,230,3,05.05.2024,Legia,230,3,05.05.2024,Legia
+Paweł Olkowski,Górnik Zabrze,pomocnik,228,13,06.11.2023,Cracovia,228,13,06.11.2023,Cracovia
+Kacper Chodyna,Zagłębie Lubin,pomocnik,227,2,12.05.2024,Widzew,165,1,20.05.2024,ŁKS
+Kai Meriluoto,Stal Mielec,napastnik,222,10,09.12.2023,Cracovia,222,10,09.12.2023,Cracovia
+Leonardo Rocha,Radomiak Radom,napastnik,221,4,08.03.2024,Piast,221,4,08.03.2024,Piast
+Vagner Dias,Radomiak Radom,pomocnik,217,3,05.05.2024,Legia,217,3,05.05.2024,Legia
+Michał Rzuchowski,Śląsk Wrocław,pomocnik,215,4,15.12.2023,Zagłębie L,215,4,15.12.2023,Zagłębie L
+Jędrzej Zając,ŁKS Łódź,pomocnik,214,5,10.12.2023,Legia,214,5,10.12.2023,Legia
+Łukasz Zwoliński,Raków Częstochowa,napastnik,212,10,17.02.2024,Piast,212,10,17.02.2024,Piast
+Piotr Samiec-Talar,Śląsk Wrocław,pomocnik,210,2,10.05.2024,Cracovia,41,0,25.05.2024,Raków
+Blaz Kramer,Legia Warszawa,napastnik,205,3,25.02.2024,Korona,205,3,25.02.2024,Korona
+Wojciech Łaski,Jagiellonia Białystok,pomocnik,204,8,29.07.2023,Puszcza,204,8,29.07.2023,Puszcza
+Adrian Dalmau,Korona Kielce,napastnik,199,3,05.05.2024,Piast,25,0,25.05.2024,Lech
+Afimico Pululu,Jagiellonia Białystok,napastnik,198,2,11.05.2024,Korona,62,0,25.05.2024,Warta
+Dani Ramirez,ŁKS Łódź,pomocnik,197,2,04.05.2024,Śląsk,197,2,04.05.2024,Śląsk
+Łukasz Moneta,Ruch Chorzów,pomocnik,197,6,30.03.2024,Raków,197,6,30.03.2024,Raków
+Sebastian Kerk,Widzew Łódź,pomocnik,195,7,-,-,75,4,29.09.2023,Piast
+Bartłomiej Barański,Ruch Chorzów,napastnik,194,2,13.05.2024,Radomiak,194,2,13.05.2024,Radomiak
+Daniel Szczepan,Ruch Chorzów,napastnik,192,2,03.05.2024,Lech,192,2,03.05.2024,Lech
+Jani Atanasov,Cracovia,pomocnik,187,3,03.05.2024,Górnik Z,187,3,03.05.2024,Górnik Z
+Krzysztof Toporkiewicz,Jagiellonia Białystok,napastnik,187,9,-,-,187,9,-,-
+Soichiro Kozuki,Górnik Zabrze,pomocnik,185,8,16.03.2024,Ruch,185,8,16.03.2024,Ruch
+Kamil Grosicki,Pogoń Szczecin,pomocnik,185,2,11.05.2024,Raków,185,2,11.05.2024,Raków
+Jorge Felix,Piast Gliwice,pomocnik,181,2,10.05.2024,ŁKS,181,2,10.05.2024,ŁKS
+Bartłomiej Pawłowski,Widzew Łódź,pomocnik,180,2,20.04.2024,Ruch,180,2,20.04.2024,Ruch
+Giannis Papanikolaou,Raków Częstochowa,pomocnik,178,2,11.05.2024,Pogoń,178,2,11.05.2024,Pogoń
+Michał Walski,Puszcza Niepołomice,pomocnik,174,2,12.05.2024,Warta,174,2,12.05.2024,Warta
+Rok Kidric,Puszcza Niepołomice,napastnik,173,4,23.07.2023,Widzew,39,1,26.08.2023,ŁKS
+Maciej Rosołek,Legia Warszawa,napastnik,172,3,28.04.2024,Stal,172,3,28.04.2024,Stal
+Kacper Smoliński,Pogoń Szczecin,pomocnik,170,6,23.09.2023,Cracovia,170,6,23.09.2023,Cracovia
+Filip Kocaba,Zagłębie Lubin,pomocnik,164,6,-,-,164,6,-,-
+Piotr Krawczyk,Górnik Zabrze,napastnik,163,5,08.04.2024,Zagłębie L,163,5,08.04.2024,Zagłębie L
+Daniel Dudziński,Zagłębie Lubin,pomocnik,162,8,-,-,162,8,-,-
+Jakub Stec,Puszcza Niepołomice,pomocnik,155,7,-,-,155,7,-,-
+Wojciech Urbański,Legia Warszawa,pomocnik,153,6,-,-,153,6,-,-
+Mateusz Wdowiak,Zagłębie Lubin,pomocnik,146,2,12.05.2024,Widzew,146,2,12.05.2024,Widzew
+Kristoffer Velde,Lech Poznań,pomocnik,143,1,19.05.2024,Widzew,143,1,19.05.2024,Widzew
+Dawid Kurminowski,Zagłębie Lubin,napastnik,143,1,20.05.2024,ŁKS,143,1,20.05.2024,ŁKS
+Jardel,Radomiak Radom,napastnik,140,2,14.04.2024,ŁKS,140,2,14.04.2024,ŁKS
+Miłosz Strzeboński,Korona Kielce,pomocnik,139,8,-,-,139,8,-,-
+Kaan Caliskaner,Jagiellonia Białystok,napastnik,137,8,16.03.2024,Radomiak,29,2,11.05.2024,Korona
+Imad Rondić,Widzew Łódź,napastnik,137,1,19.05.2024,Lech,137,1,19.05.2024,Lech
+Jarosław Kubicki,Jagiellonia Białystok,pomocnik,132,8,30.03.2024,ŁKS,132,8,30.03.2024,ŁKS
+Benjamin Kallman,Cracovia,napastnik,131,1,19.05.2024,Raków,131,1,19.05.2024,Raków
+Andrejs Ciganiks,Widzew Łódź,pomocnik,131,1,12.05.2024,Zagłębie L,131,1,12.05.2024,Zagłębie L
+Adrian Kapralik,Górnik Zabrze,pomocnik,125,1,17.05.2024,Puszcza,125,1,17.05.2024,Puszcza
+Filip Marchwiński,Lech Poznań,pomocnik,115,2,21.04.2024,ŁKS,115,2,21.04.2024,ŁKS
+Kristoffer Hansen,Jagiellonia Białystok,pomocnik,113,2,11.05.2024,Korona,113,2,11.05.2024,Korona
+Michał Rakoczy,Cracovia,pomocnik,111,1,19.05.2024,Raków,111,1,19.05.2024,Raków
+Ion Gheorghe,Stal Mielec,pomocnik,110,7,-,-,110,7,-,-
+Olaf Korczakowski,Pogoń Szczecin,pomocnik,97,6,-,-,89,5,23.09.2023,Cracovia
+Tomas Pekhart,Legia Warszawa,napastnik,96,1,13.04.2024,Raków,96,1,13.04.2024,Raków
+Ivi Lopez,Raków Częstochowa,napastnik,95,4,16.04.2023,Widzew,95,4,16.04.2023,Widzew
+Guilherme Zimovski,Radomiak Radom,pomocnik,93,4,14.04.2024,ŁKS,93,4,14.04.2024,ŁKS
+Patryk Kusztal,Zagłębie Lubin,napastnik,93,7,-,-,93,7,-,-
+Szczepan Mucha,Piast Gliwice,pomocnik,92,6,-,-,92,6,-,-
+Filipe Nascimento,Górnik Zabrze,pomocnik,90,4,27.04.2024,ŁKS,90,4,27.04.2024,ŁKS
+Michael Ameyaw,Piast Gliwice,pomocnik,88,1,18.05.2024,Jagiellonia,88,1,18.05.2024,Jagiellonia
+Stipe Jurić,ŁKS Łódź,napastnik,85,2,21.04.2024,Lech,85,2,21.04.2024,Lech
+Jakub Jezierski,Śląsk Wrocław,pomocnik,85,7,-,-,54,3,04.05.2024,ŁKS
+Kay Tejan,ŁKS Łódź,napastnik,83,0,25.05.2024,Stal,83,0,25.05.2024,Stal
+Jordan Majchrzak,Puszcza Niepołomice,napastnik,82,1,13.04.2024,Lech,0,0,13.04.2024,Lech
+Taras Romanczuk,Jagiellonia Białystok,pomocnik,79,0,25.05.2024,Warta,79,0,25.05.2024,Warta
+Mateusz Cholewiak,Puszcza Niepołomice,pomocnik,78,1,09.02.2024,Stal,78,1,09.02.2024,Stal
+Bartosz Kapustka,Legia Warszawa,pomocnik,77,2,28.04.2024,Stal,77,2,28.04.2024,Stal
+Patryk Paryzek,Pogoń Szczecin,napastnik,77,5,16.02.2024,Radomiak,77,5,16.02.2024,Radomiak
+Nene,Jagiellonia Białystok,pomocnik,76,0,25.05.2024,Warta,76,0,25.05.2024,Warta
+Ante Crnac,Raków Częstochowa,napastnik,72,0,25.05.2024,Śląsk,72,0,25.05.2024,Śląsk
+Vinicius Matheus,Jagiellonia Białystok,napastnik,71,2,-,-,71,2,-,-
+Marcin Cebula,Raków Częstochowa,pomocnik,71,3,17.02.2024,Piast,71,3,17.02.2024,Piast
+Patryk Szwedzik,Śląsk Wrocław,napastnik,71,9,20.08.2023,Lech,71,9,20.08.2023,Lech
+Filip Rejczyk,Legia Warszawa,pomocnik,70,6,-,-,70,6,-,-
+Nono,Korona Kielce,pomocnik,68,0,17.03.2024,Pogoń,68,0,17.03.2024,Pogoń
+Kamil Wilczek,Piast Gliwice,napastnik,66,1,10.05.2024,ŁKS,66,1,10.05.2024,ŁKS
+Michał Feliks,Ruch Chorzów,napastnik,65,2,03.05.2024,Lech,0,0,25.05.2024,Cracovia
+Dani Pacheco,Górnik Zabrze,pomocnik,61,1,11.05.2024,Stal,61,1,11.05.2024,Stal
+Piotr Urbański,Piast Gliwice,napastnik,61,3,-,-,61,3,-,-
+Filip Zawadzki,Widzew Łódź,pomocnik,60,3,-,-,60,3,-,-
+Jakub Paszkowski,Warta Poznań,pomocnik,58,6,-,-,58,6,-,-
+Qendrim Zyba,Legia Warszawa,pomocnik,57,6,-,-,57,6,-,-
+Adam Vlkanova,Ruch Chorzów,pomocnik,57,1,13.05.2024,Radomiak,57,1,13.05.2024,Radomiak
+Jesus Imaz,Jagiellonia Białystok,pomocnik,55,0,25.05.2024,Warta,55,0,25.05.2024,Warta
+Engjell Hoti,ŁKS Łódź,pomocnik,52,0,25.05.2024,Stal,52,0,25.05.2024,Stal
+Szymon Czyż,Górnik Zabrze,pomocnik,51,1,27.04.2024,ŁKS,51,1,27.04.2024,ŁKS
+Oliwier Sławiński,ŁKS Łódź,napastnik,51,4,-,-,51,4,-,-
+Marc Gual,Legia Warszawa,napastnik,50,0,25.05.2024,Zagłębie L,50,0,25.05.2024,Zagłębie L
+Mikael Ishak,Lech Poznań,napastnik,45,0,25.05.2024,Korona,45,0,25.05.2024,Korona
+Yadegar Rostami,ŁKS Łódź,pomocnik,45,4,-,-,45,4,-,-
+Aleksander Iwańczyk,ŁKS Łódź,pomocnik,45,1,20.05.2024,Zagłębie L,45,1,20.05.2024,Zagłębie L
+Luis Machado,Radomiak Radom,pomocnik,45,0,25.05.2024,Widzew,45,0,25.05.2024,Widzew
+Jakub Lutostański,Śląsk Wrocław,napastnik,45,3,-,-,45,3,-,-
+Mateusz Żukowski,Śląsk Wrocław,pomocnik,45,2,10.05.2024,Cracovia,45,2,10.05.2024,Cracovia
+Ignacy Dawid,Widzew Łódź,pomocnik,44,6,-,-,44,6,-,-
+Erik Exposito,Śląsk Wrocław,napastnik,41,0,25.05.2024,Raków,41,0,25.05.2024,Raków
+Jan Sedlak,Ruch Chorzów,pomocnik,40,2,-,-,40,2,-,-
+Juan Munoz,Zagłębie Lubin,napastnik,40,3,04.05.2024,Raków,40,3,04.05.2024,Raków
+Mike Huras,Ruch Chorzów,napastnik,30,2,-,-,30,2,-,-
+Artur Pląskowski,Ruch Chorzów,napastnik,28,2,-,-,28,2,-,-
+Maksymilian Dziuba,Lech Poznań,pomocnik,27,3,-,-,27,3,-,-
+Alan Rybak,Jagiellonia Białystok,napastnik,25,3,-,-,25,3,-,-
+Marcel Wędrychowski,Pogoń Szczecin,pomocnik,24,0,25.05.2024,Górnik Z,24,0,25.05.2024,Górnik Z
+Jakub Snopczyński,Radomiak Radom,pomocnik,23,3,-,-,23,3,-,-
+Ilja Szkurin,Stal Mielec,napastnik,22,0,25.05.2024,ŁKS,22,0,25.05.2024,ŁKS
+Daniel Bąk,Korona Kielce,napastnik,21,5,-,-,21,5,-,-
+Jan Łabędzki,ŁKS Łódź,pomocnik,21,3,-,-,21,3,-,-
+Jewgienij Szykawka,Korona Kielce,napastnik,20,0,25.05.2024,Lech,20,0,25.05.2024,Lech
+Kamil Zapolnik,Puszcza Niepołomice,pomocnik,20,0,25.05.2024,Piast,20,0,25.05.2024,Piast
+Fran Alvarez,Widzew Łódź,pomocnik,18,0,25.05.2024,Radomiak,18,0,25.05.2024,Radomiak
+Jordi Sanchez,Widzew Łódź,napastnik,17,0,25.05.2024,Radomiak,0,0,25.05.2024,Radomiak
+Krzysztof Kolanko,Górnik Zabrze,pomocnik,16,3,-,-,16,3,-,-
+Oskar Leśniak,Piast Gliwice,pomocnik,15,1,-,-,15,1,-,-
+Nahuel Leiva,Śląsk Wrocław,pomocnik,15,0,25.05.2024,Raków,15,0,25.05.2024,Raków
+Marek Mróz,Zagłębie Lubin,pomocnik,14,0,25.05.2024,Legia,14,0,25.05.2024,Legia
+Marko Poletanović,Zagłębie Lubin,pomocnik,12,1,12.05.2024,Widzew,12,1,12.05.2024,Widzew
+Bartłomiej Kolec,Cracovia,pomocnik,10,2,-,-,10,2,-,-
+Patryk Malamis,Raków Częstochowa,pomocnik,9,1,-,-,9,1,-,-
+Fabian Bzdyl,Cracovia,pomocnik,7,1,-,-,7,1,-,-
+Fabian Piasecki,Piast Gliwice,napastnik,7,0,15.04.2024,Zagłębie L,7,0,15.04.2024,Zagłębie L
+Filip Karbowy,Piast Gliwice,pomocnik,6,1,-,-,6,1,-,-
+Hubert Szulc,Korona Kielce,napastnik,5,1,-,-,5,1,-,-
+Norbert Pacławski,Lech Poznań,napastnik,5,2,-,-,5,2,-,-
+Igor Pieprzyca,Puszcza Niepołomice,pomocnik,2,2,-,-,2,2,-,-
+Łukasz Wolsztyński,Stal Mielec,pomocnik,2,0,25.05.2024,ŁKS,2,0,25.05.2024,ŁKS
+Jędrzej Hanuszczak,Warta Poznań,pomocnik,2,1,-,-,2,1,-,-
+Damian Wojdakowski,Jagiellonia Białystok,pomocnik,1,1,-,-,1,1,-,-
+Pirulo,ŁKS Łódź,pomocnik,1,0,25.05.2024,Stal,1,0,25.05.2024,Stal
+Kacper Masiak,Raków Częstochowa,pomocnik,1,1,-,-,1,1,-,-
+Alex Cetnar,Stal Mielec,pomocnik,1,1,-,-,1,1,-,-
+Mateusz Kempski,Widzew Łódź,napastnik,1,1,-,-,1,1,-,-
+Soma Novothny,Ruch Chorzów,napastnik,0,0,25.05.2024,Cracovia,0,0,25.05.2024,Cracovia
+Dominik Kun,Widzew Łódź,pomocnik,0,0,25.05.2024,Radomiak,0,0,25.05.2024,Radomiak

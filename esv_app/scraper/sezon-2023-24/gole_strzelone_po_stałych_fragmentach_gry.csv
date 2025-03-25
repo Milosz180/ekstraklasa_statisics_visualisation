@@ -1,0 +1,369 @@
+ZAWODNIK,KLUB,GOLE,G KARNY,G ROŻNY,G WOLNY,G WOLNY BEZP,G AUT,AS SFG,PO SFG,Z GRY,%GOLI PO SFG,PO SFG BEZ KARNYCH,% GOLI PO SFG BEZ KARNYCH
+Erik Exposito,Śląsk Wrocław,19,6,3,1,0,0,0,10,9,"52,6%",4,"21,1%"
+Ilja Szkurin,Stal Mielec,16,1,1,2,0,0,0,4,12,"25,0%",3,"18,8%"
+Kamil Grosicki,Pogoń Szczecin,13,5,0,0,0,0,2,5,8,"38,5%",0,"0,0%"
+Afimico Pululu,Jagiellonia,12,5,1,0,0,0,0,6,6,"50,0%",1,"8,3%"
+Dawid Kurminowski,Zagłębie Lubin,12,0,1,1,0,0,0,2,10,"16,7%",2,"16,7%"
+Efthymis Koulouris,Pogoń Szczecin,12,0,1,0,0,0,1,1,11,"8,3%",1,"8,3%"
+Jesus Imaz,Jagiellonia,12,0,1,1,0,0,0,2,10,"16,7%",2,"16,7%"
+Mikael Ishak,Lech Poznań,11,1,2,1,0,1,0,5,6,"45,5%",4,"36,4%"
+Bartłomiej Wdowik,Jagiellonia,10,3,2,0,5,0,2,10,0,"100,0%",7,"70,0%"
+Daniel Szczepan,Ruch Chorzów,10,5,1,0,0,0,0,6,4,"60,0%",1,"10,0%"
+Kristoffer Velde,Lech Poznań,10,1,0,0,0,0,0,1,9,"10,0%",0,"0,0%"
+Jewgienij Szykawka,Korona Kielce,10,0,0,2,0,1,0,3,7,"30,0%",3,"30,0%"
+Benjamin Kallman,Cracovia,9,0,1,0,0,0,0,1,8,"11,1%",1,"11,1%"
+Dani Ramirez,ŁKS Łódź,9,7,0,0,0,0,0,7,2,"77,8%",0,"0,0%"
+Josue,Legia Warszawa,9,5,0,0,2,0,1,7,2,"77,8%",2,"22,2%"
+Nahuel Leiva,Śląsk Wrocław,9,2,1,0,0,0,1,3,6,"33,3%",1,"11,1%"
+Nene,Jagiellonia,9,0,0,0,0,0,2,0,9,"0,0%",0,"0,0%"
+Kristoffer Hansen,Jagiellonia,9,0,0,1,0,0,0,1,8,"11,1%",1,"11,1%"
+Bartłomiej Pawłowski,Widzew Łódź,8,3,0,1,0,0,2,4,4,"50,0%",1,"12,5%"
+Filip Marchwiński,Lech Poznań,8,0,1,0,0,0,1,1,7,"12,5%",1,"12,5%"
+Jordi Sanchez,Widzew Łódź,8,0,0,1,0,0,0,1,7,"12,5%",1,"12,5%"
+Marc Gual,Legia Warszawa,8,0,0,0,0,0,0,0,8,"0,0%",0,"0,0%"
+Patryk Dziczek,Piast Gliwice,8,7,1,0,0,0,0,8,0,"100,0%",1,"12,5%"
+Pedro Henrique,Radomiak Radom,8,0,2,0,0,0,0,2,6,"25,0%",2,"25,0%"
+Tomas Pekhart,Legia Warszawa,8,0,0,0,0,0,0,0,8,"0,0%",0,"0,0%"
+Alexander Gorgon,Pogoń Szczecin,8,0,1,0,0,0,1,1,7,"12,5%",1,"12,5%"
+Ante Crnac,Raków Częstochowa,8,0,0,0,0,0,0,0,8,"0,0%",0,"0,0%"
+Adrian Kapralik,Górnik Zabrze,7,0,0,0,0,0,0,0,7,"0,0%",0,"0,0%"
+Artur Craciun,Puszcza Niepołomice,7,5,1,1,0,0,1,7,0,"100,0%",2,"28,6%"
+Bartosz Nowak,Raków Częstochowa,7,2,0,0,1,0,2,3,4,"42,9%",1,"14,3%"
+Jorge Felix,Piast Gliwice,7,0,1,0,0,0,4,1,6,"14,3%",1,"14,3%"
+Kacper Chodyna,Zagłębie Lubin,7,2,0,0,0,0,1,2,5,"28,6%",0,"0,0%"
+Kajetan Szmyt,Warta Poznań,7,4,0,0,0,0,0,4,3,"57,1%",0,"0,0%"
+Kay Tejan,ŁKS Łódź,7,1,0,0,0,0,0,1,6,"14,3%",0,"0,0%"
+Piotr Samiec-Talar,Śląsk Wrocław,7,0,1,0,0,0,0,1,6,"14,3%",1,"14,3%"
+Daisuke Yokota,Górnik Zabrze,7,3,0,0,0,0,0,3,4,"42,9%",0,"0,0%"
+Dominik Marczuk,Jagiellonia,6,0,0,0,0,0,0,0,6,"0,0%",0,"0,0%"
+Fran Alvarez,Widzew Łódź,6,0,0,0,1,0,0,1,5,"16,7%",1,"16,7%"
+Jose Naranjo,Jagiellonia,6,0,1,0,0,0,0,1,5,"16,7%",1,"16,7%"
+Łukasz Sołowiej,Puszcza Niepołomice,6,2,1,0,0,2,0,5,1,"83,3%",3,"50,0%"
+Michael Ameyaw,Piast Gliwice,6,0,1,1,0,1,1,3,3,"50,0%",3,"50,0%"
+Michał Rakoczy,Cracovia,6,0,0,0,0,0,3,0,6,"0,0%",0,"0,0%"
+Fredrik Ulvestad,Pogoń Szczecin,6,0,1,0,0,0,1,1,5,"16,7%",1,"16,7%"
+Martin Remacle,Korona Kielce,6,0,1,1,0,0,0,2,4,"33,3%",2,"33,3%"
+Adrian Dalmau,Korona Kielce,5,2,0,0,0,0,2,2,3,"40,0%",0,"0,0%"
+Artur Siemaszko,Puszcza Niepołomice,5,0,0,1,0,0,0,1,4,"20,0%",1,"20,0%"
+Giannis Papanikolaou,Raków Częstochowa,5,0,0,0,0,0,0,1,4,"20,0%",0,"0,0%"
+Kamil Zapolnik,Puszcza Niepołomice,5,1,0,0,0,0,2,1,4,"20,0%",0,"0,0%"
+Łukasz Zwoliński,Raków Częstochowa,5,3,0,0,0,0,0,3,2,"60,0%",0,"0,0%"
+Michał Feliks,Ruch Chorzów,5,0,1,0,0,0,0,1,4,"20,0%",1,"20,0%"
+Wahan Biczachczjan,Pogoń Szczecin,5,0,1,1,0,0,1,2,3,"40,0%",2,"40,0%"
+Władysław Koczerhin,Raków Częstochowa,5,0,1,0,0,0,1,1,4,"20,0%",1,"20,0%"
+Mateusz Wdowiak,Zagłębie Lubin,5,0,1,0,0,0,0,2,3,"40,0%",1,"20,0%"
+Imad Rondić,Widzew Łódź,5,1,0,1,0,0,1,2,3,"40,0%",1,"20,0%"
+Jani Atanasov,Cracovia,5,1,0,0,0,0,2,1,4,"20,0%",0,"0,0%"
+Lawrence Ennali,Górnik Zabrze,5,1,0,0,0,0,0,1,4,"20,0%",0,"0,0%"
+Adam Zrelak,Warta Poznań,4,0,0,0,0,0,0,0,4,"0,0%",0,"0,0%"
+Engjell Hoti,ŁKS Łódź,4,0,0,0,1,0,0,1,3,"25,0%",1,"25,0%"
+Leonardo Rocha,Radomiak Radom,4,0,1,0,0,0,0,1,3,"25,0%",1,"25,0%"
+Lisandro Semedo,Radomiak Radom,4,1,0,0,0,0,0,1,3,"25,0%",0,"0,0%"
+Maciej Żurawski,Warta Poznań,4,0,1,0,0,0,0,1,3,"25,0%",1,"25,0%"
+Mateusz Kupczak,Warta Poznań,4,0,2,0,0,0,0,2,2,"50,0%",2,"50,0%"
+Nono,Korona Kielce,4,2,1,0,0,0,1,3,1,"75,0%",1,"25,0%"
+Patryk Makuch,Cracovia,4,0,1,1,0,0,0,2,2,"50,0%",2,"50,0%"
+Paweł Wszołek,Legia Warszawa,4,0,0,0,0,0,0,0,4,"0,0%",0,"0,0%"
+Roman Jakuba,Puszcza Niepołomice,4,0,2,0,0,2,1,4,0,"100,0%",4,"100,0%"
+Sebastian Musiolik,Górnik Zabrze,4,0,1,1,0,0,0,2,2,"50,0%",2,"50,0%"
+Tomasz Swędrowski,Ruch Chorzów,4,0,1,0,0,0,0,1,3,"25,0%",1,"25,0%"
+Virgil Ghita,Cracovia,4,0,2,1,0,0,0,3,1,"75,0%",3,"75,0%"
+Ernest Muci,Legia Warszawa,4,0,0,0,0,0,0,0,4,"0,0%",0,"0,0%"
+Adriel Ba Loua,Lech Poznań,4,0,0,0,0,0,0,0,4,"0,0%",0,"0,0%"
+Juan Munoz,Zagłębie Lubin,4,0,0,0,0,0,0,0,4,"0,0%",0,"0,0%"
+Edi Semedo,Radomiak Radom,4,0,0,0,0,0,0,0,4,"0,0%",0,"0,0%"
+Aleks Ławniczak,Zagłębie Lubin,4,0,3,1,0,0,0,4,0,"100,0%",4,"100,0%"
+Szymon Czyż,Górnik Zabrze,4,0,1,0,0,0,0,1,3,"25,0%",1,"25,0%"
+Karol Knap,Cracovia,4,2,0,0,0,0,2,2,2,"50,0%",0,"0,0%"
+Stipe Jurić,ŁKS Łódź,4,0,0,0,0,0,0,0,4,"0,0%",0,"0,0%"
+Blaz Kramer,Legia Warszawa,4,1,0,0,0,0,0,1,3,"25,0%",0,"0,0%"
+Soma Novothny,Ruch Chorzów,4,0,0,2,0,0,0,2,2,"50,0%",2,"50,0%"
+Andrejs Ciganiks,Widzew Łódź,3,0,1,0,0,0,0,1,2,"33,3%",1,"33,3%"
+Dawid Drachal,Raków Częstochowa,3,0,0,0,0,0,0,0,3,"0,0%",0,"0,0%"
+Filip Szymczak,Lech Poznań,3,1,0,0,0,0,1,1,2,"33,3%",0,"0,0%"
+John Yeboah,Raków Częstochowa,3,0,1,1,0,0,0,2,1,"66,7%",2,"66,7%"
+Koki Hinokio,Stal Mielec,3,0,1,0,0,0,0,1,2,"33,3%",1,"33,3%"
+Krystian Getinger,Stal Mielec,3,1,0,0,0,0,3,1,2,"33,3%",0,"0,0%"
+Lukas Podolski,Górnik Zabrze,3,0,0,0,0,0,0,0,3,"0,0%",0,"0,0%"
+Maciej Domański,Stal Mielec,3,0,0,0,0,0,3,0,3,"0,0%",0,"0,0%"
+Mateusz Cholewiak,Puszcza Niepołomice,3,0,0,0,0,1,2,1,2,"33,3%",1,"33,3%"
+Paweł Jaroszyński,Cracovia,3,0,1,0,0,1,0,2,1,"66,7%",2,"66,7%"
+Petr Schwarz,Śląsk Wrocław,3,0,0,0,0,0,5,0,3,"0,0%",0,"0,0%"
+Sonny Kittel,Raków Częstochowa,3,0,0,0,0,0,1,0,3,"0,0%",0,"0,0%"
+Serhij Krykun,Piast Gliwice,3,0,0,0,0,0,0,0,3,"0,0%",0,"0,0%"
+Jehor Macenko,Śląsk Wrocław,3,0,1,0,0,0,0,1,2,"33,3%",1,"33,3%"
+Kamil Lukoszek,Górnik Zabrze,3,0,0,0,0,0,0,0,3,"0,0%",0,"0,0%"
+Mateusz Matras,Stal Mielec,3,0,3,0,0,0,1,3,0,"100,0%",3,"100,0%"
+Bogdan Racovitan,Raków Częstochowa,3,0,1,1,0,0,0,2,1,"66,7%",2,"66,7%"
+Mateusz Skrzypczak,Jagiellonia,3,0,2,1,0,0,0,3,0,"100,0%",3,"100,0%"
+Ronaldo Deaconu,Korona Kielce,3,0,0,0,0,1,0,1,2,"33,3%",1,"33,3%"
+Antoni Klimek,Widzew Łódź,3,0,0,1,0,0,0,1,2,"33,3%",1,"33,3%"
+Husein Balić,ŁKS Łódź,3,0,0,0,0,0,0,0,3,"0,0%",0,"0,0%"
+Luka Vusković,Radomiak Radom,3,0,0,0,0,2,0,2,1,"66,7%",2,"66,7%"
+Bert Esselink,Stal Mielec,2,0,0,1,0,0,0,1,1,"50,0%",1,"50,0%"
+Damian Kądzior,Piast Gliwice,2,0,0,0,1,0,1,1,1,"50,0%",1,"50,0%"
+Dawid Abramowicz,Radomiak Radom,2,0,0,0,0,0,1,0,2,"0,0%",0,"0,0%"
+Fabian Piasecki,Raków/Piast,2,0,0,0,0,1,0,1,1,"50,0%",1,"50,0%"
+Fabio Nunes,Widzew Łódź,2,0,0,0,0,0,2,0,2,"0,0%",0,"0,0%"
+Gustav Berggren,Raków Częstochowa,2,0,0,0,0,0,0,0,2,"0,0%",0,"0,0%"
+Jakub Lewicki,Jagiellonia,2,0,0,0,0,0,0,0,2,"0,0%",0,"0,0%"
+Jean Carlos Silva,Raków Częstochowa,2,0,0,0,0,0,0,0,2,"0,0%",0,"0,0%"
+Joel Pereira,Lech Poznań,2,0,0,0,0,0,1,0,2,"0,0%",0,"0,0%"
+Łukasz Gerstenstein,Stal Mielec,2,0,0,0,0,0,1,0,2,"0,0%",0,"0,0%"
+Maciej Rosołek,Legia Warszawa,2,1,1,0,0,0,0,2,0,"100,0%",1,"50,0%"
+Mateusz Bartolewski,Ruch Chorzów,2,0,2,0,0,0,0,2,0,"100,0%",2,"100,0%"
+Michał Walski,Puszcza Niepołomice,2,0,0,0,1,0,0,1,1,"50,0%",1,"50,0%"
+Miguel Luis,Warta Poznań,2,0,0,0,0,0,1,0,2,"0,0%",0,"0,0%"
+Radovan Pankov,Legia Warszawa,2,0,1,1,0,0,0,2,0,"100,0%",2,"100,0%"
+Rafał Janicki,Górnik Zabrze,2,0,2,0,0,0,0,2,0,"100,0%",2,"100,0%"
+Rafał Wolski,Radomiak Radom,2,0,0,0,0,0,3,0,2,"0,0%",0,"0,0%"
+Stefan Savić,Warta Poznań,2,0,0,0,0,0,0,0,2,"0,0%",0,"0,0%"
+Tomasz Makowski,Zagłębie Lubin,2,0,0,0,0,0,0,0,2,"0,0%",0,"0,0%"
+Tomasz Wójtowicz,Ruch Chorzów,2,0,0,0,0,0,0,0,2,"0,0%",0,"0,0%"
+Jesper Karlstrom,Lech Poznań,2,0,1,0,0,0,1,1,1,"50,0%",1,"50,0%"
+Bartosz Kopacz,Zagłębie Lubin,2,0,1,1,0,0,1,2,0,"100,0%",2,"100,0%"
+Burak Ince,Śląsk Wrocław,2,0,0,0,0,0,0,0,2,"0,0%",0,"0,0%"
+Kai Meriluoto,Stal Mielec,2,0,0,0,0,0,0,0,2,"0,0%",0,"0,0%"
+Damian Rasak,Górnik Zabrze,2,0,0,1,0,0,0,1,1,"50,0%",1,"50,0%"
+Piotr Janczukowicz,ŁKS Łódź,2,0,2,0,0,0,0,2,0,"100,0%",2,"100,0%"
+Grzegorz Tomasiewicz,Piast Gliwice,2,0,0,1,0,0,0,1,1,"50,0%",1,"50,0%"
+Mariusz Fornalczyk,Pogoń/Korona,2,0,1,0,0,0,0,1,1,"50,0%",1,"50,0%"
+Kamil Glik,Cracovia,2,0,1,0,0,1,0,2,0,"100,0%",2,"100,0%"
+Mateusz Żyro,Widzew Łódź,2,0,1,1,0,0,0,2,0,"100,0%",2,"100,0%"
+Matthew Guillaumier,Stal Mielec,2,0,2,0,0,0,0,2,0,"100,0%",2,"100,0%"
+Marton Eppel,Warta Poznań,2,1,0,0,0,0,0,1,1,"50,0%",0,"0,0%"
+Bartosz Kapustka,Legia Warszawa,2,0,0,0,0,0,0,0,2,"0,0%",0,"0,0%"
+Tomas Prikryl,Warta Poznań,2,0,1,0,0,0,0,1,1,"50,0%",1,"50,0%"
+Miłosz Trojak,Korona Kielce,2,0,0,0,0,0,0,0,2,"0,0%",0,"0,0%"
+Miłosz Kozak,Ruch Chorzów,2,0,0,0,0,0,3,0,2,"0,0%",0,"0,0%"
+Tomas Huk,Piast Gliwice,2,0,0,1,0,1,1,2,0,"100,0%",2,"100,0%"
+Otar Kakabadze,Cracovia,2,0,0,0,0,0,0,0,2,"0,0%",0,"0,0%"
+Danny Trejo,Korona Kielce,2,0,0,0,0,0,0,0,2,"0,0%",0,"0,0%"
+Kaan Caliskaner,Jagiellonia,2,0,0,0,0,0,0,0,2,"0,0%",0,"0,0%"
+Jardel,Radomiak Radom,2,0,0,0,0,0,0,0,2,"0,0%",0,"0,0%"
+Kamil Wilczek,Piast Gliwice,2,0,0,0,0,0,0,0,2,"0,0%",0,"0,0%"
+Vagner Dias,Radomiak Radom,2,0,0,0,0,0,0,0,2,"0,0%",0,"0,0%"
+Łukasz Wolsztyński,Stal Mielec,2,0,0,0,0,0,0,0,2,"0,0%",0,"0,0%"
+Aleksander Paluszek,Śląsk Wrocław,1,0,0,1,0,0,0,1,0,"100,0%",1,"100,0%"
+Ariel Mosór,Piast Gliwice,1,0,0,1,0,0,1,1,0,"100,0%",1,"100,0%"
+Artemijus Tutyskinas,ŁKS Łódź,1,0,1,0,0,0,0,1,0,"100,0%",1,"100,0%"
+Bartłomiej Kłudka,Zagłębie Lubin,1,0,1,0,0,0,0,1,0,"100,0%",1,"100,0%"
+Christos Donis,Radomiak Radom,1,0,0,0,0,1,0,1,0,"100,0%",1,"100,0%"
+Damjan Bohar,Zagłębie Lubin,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Dario Vizinger,Warta Poznań,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Deian Sorescu,Raków Częstochowa,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Ernest Terpiłowski,Widzew Łódź,1,0,0,1,0,0,0,1,0,"100,0%",1,"100,0%"
+Jakub Bartosz,Puszcza Niepołomice,1,0,1,0,0,0,0,1,0,"100,0%",1,"100,0%"
+Jarosław Kubicki,Jagiellonia,1,0,1,0,0,0,0,1,0,"100,0%",1,"100,0%"
+Kacper Michalski,Ruch Chorzów,1,0,0,0,0,1,0,1,0,"100,0%",1,"100,0%"
+Luis Silva,Widzew Łódź,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Luka Zahović,Pogoń Szczecin,1,0,0,1,0,0,0,1,0,"100,0%",1,"100,0%"
+Łukasz Bejger,Śląsk Wrocław,1,0,0,1,0,0,0,1,0,"100,0%",1,"100,0%"
+Makana Baku,Legia Warszawa,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Marcel Wędrychowski,Pogoń Szczecin,1,0,0,0,0,0,1,0,1,"0,0%",0,"0,0%"
+Martin Konczkowski,Śląsk Wrocław,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Mateusz Cichocki,Radomiak Radom,1,0,1,0,0,0,0,1,0,"100,0%",1,"100,0%"
+Mateusz Grzybek,Zagłębie Lubin,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Michał Rzuchowski,Śląsk Wrocław,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Michał Trąbka,Stal Mielec,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Miha Blazic,Lech Poznań,1,0,1,0,0,0,0,1,0,"100,0%",1,"100,0%"
+Patryk Kun,Legia Warszawa,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Patryk Stępiński,Widzew Łódź,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Patryk Szwedzik,Śląsk Wrocław,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Piotr Mroziński,Puszcza Niepołomice,1,0,0,0,0,1,0,1,0,"100,0%",1,"100,0%"
+Wojciech Łaski,Jagiellonia,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Radosław Murawski,Lech Poznań,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Robert Dadok,Górnik/Ruch,1,0,0,0,0,0,1,0,1,"0,0%",0,"0,0%"
+Rok Kidric,Puszcza Niepołomice,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Serhij Bułeca,Zagłębie Lubin,1,0,0,0,0,0,1,0,1,"0,0%",0,"0,0%"
+Taras Romanczuk,Jagiellonia,1,0,1,0,0,0,2,1,0,"100,0%",1,"100,0%"
+Michał Chrapek,Piast Gliwice,1,1,0,0,0,0,0,1,0,"100,0%",0,"0,0%"
+Alan Czerwiński,Lech Poznań,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Juergen Elitim,Legia Warszawa,1,0,0,0,0,0,1,0,1,"0,0%",0,"0,0%"
+Srdan Plavsić,Raków Częstochowa,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Danijel Loncar,Pogoń Szczecin,1,0,0,1,0,0,0,1,0,"100,0%",1,"100,0%"
+Marcin Cebula,Raków Częstochowa,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Frank Castaneda,Radomiak Radom,1,0,0,0,0,0,1,0,1,"0,0%",0,"0,0%"
+Filip Dagerstal,Lech Poznań,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Piotr Wlazło,Stal Mielec,1,0,0,1,0,0,1,1,0,"100,0%",1,"100,0%"
+Rafał Kurzawa,Pogoń Szczecin,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Mateusz Czyżycki,Korona Kielce,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Kacper Smoliński,Pogoń Szczecin,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Luis Machado,Radomiak Radom,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Tomas Podstawski,Ruch Chorzów,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Igor Strzałek,Legia/Stal,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Jan Grzesik,Radomiak Radom,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Steve Kapuadi,Legia Warszawa,1,0,0,1,0,0,0,1,0,"100,0%",1,"100,0%"
+Michał Gurgul,Lech Poznań,1,0,1,0,0,0,0,1,0,"100,0%",1,"100,0%"
+Jakub Konstantyn,Korona Kielce,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Yoav Hofmeister,Korona Kielce,1,0,0,1,0,0,0,1,0,"100,0%",1,"100,0%"
+Leonardo Koutris,Pogoń Szczecin,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Adrian Przyborek,Pogoń Szczecin,1,0,1,0,0,0,0,1,0,"100,0%",1,"100,0%"
+Michał Koj,Puszcza Niepołomice,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Damian Dąbrowski,Zagłębie Lubin,1,0,0,0,0,0,3,0,1,"0,0%",0,"0,0%"
+Antonio Milić,Lech Poznań,1,0,1,0,0,0,0,1,0,"100,0%",1,"100,0%"
+Piotr Krawczyk,Górnik Zabrze,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Nika Kwekweskiri,Lech Poznań,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Konrad Matuszewski,Warta Poznań,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Wojciech Hajda,Puszcza Niepołomice,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Bartłomiej Poczobut,Puszcza Niepołomice,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Dawid Błanik,Korona Kielce,1,0,0,0,0,0,3,0,1,"0,0%",0,"0,0%"
+Michal Siplak,Górnik Zabrze,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Kryspin Szcześniak,Górnik Zabrze,1,0,1,0,0,0,0,1,0,"100,0%",1,"100,0%"
+Dani Pacheco,Górnik Zabrze,1,0,0,0,1,0,1,1,0,"100,0%",1,"100,0%"
+Krzysztof Wołkowicz,Stal Mielec,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Paweł Olkowski,Górnik Zabrze,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Michal Sacek,Jagiellonia,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Alvis Jaunzems,Stal Mielec,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Łukasz Moneta,Ruch Chorzów,1,0,0,1,0,0,1,1,0,"100,0%",1,"100,0%"
+Dominik Kun,Widzew Łódź,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Patryk Sikora,Ruch Chorzów,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Filipe Nascimento,Górnik Zabrze,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Rafał Augustyniak,Legia Warszawa,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Juliusz Letniowski,Ruch Chorzów,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Dimitris Stavropoulos,Warta Poznań,1,0,0,1,0,0,1,1,0,"100,0%",1,"100,0%"
+Raphael Rossi,Radomiak Radom,1,0,1,0,0,0,0,1,0,"100,0%",1,"100,0%"
+Jędrzej Zając,ŁKS Łódź,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Stratos Svarnas,Raków Częstochowa,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Przemysław Szur,Ruch Chorzów,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Patryk Paryzek,Pogoń Szczecin,1,0,1,0,0,0,0,1,0,"100,0%",1,"100,0%"
+Antoni Młynarczyk,ŁKS Łódź,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Adam Vlkanova,Ruch Chorzów,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Noah Diliberto,Widzew Łódź,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Soichiro Kozuki,Górnik Zabrze,1,0,0,0,0,0,1,0,1,"0,0%",0,"0,0%"
+Juan Ibiza,Widzew Łódź,1,0,1,0,0,0,0,1,0,"100,0%",1,"100,0%"
+David Kristjan Olafsson,Cracovia,1,0,0,0,0,0,3,0,1,"0,0%",0,"0,0%"
+Josema,Ruch Chorzów,1,0,1,0,0,0,0,1,0,"100,0%",1,"100,0%"
+Eneo Bitri,Cracovia,1,0,1,0,0,0,0,1,0,"100,0%",1,"100,0%"
+Gabriel Kobylak,Radomiak Radom,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Bartosz Kwiecień,Korona Kielce,1,0,1,0,0,0,0,1,0,"100,0%",1,"100,0%"
+Jordan Majchrzak,Puszcza Niepołomice,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Guilherme Zimovski,Radomiak Radom,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Arttu Hoskonen,Cracovia,1,0,1,0,0,0,0,1,0,"100,0%",1,"100,0%"
+Jakub Czerwiński,Piast Gliwice,1,0,0,0,0,1,1,1,0,"100,0%",1,"100,0%"
+Dawid Szymonowicz,Warta Poznań,1,0,0,1,0,0,0,1,0,"100,0%",1,"100,0%"
+Leo Borges,Pogoń Szczecin,1,0,1,0,0,0,0,1,0,"100,0%",1,"100,0%"
+Marek Mróz,Zagłębie Lubin,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Mateusz Żukowski,Śląsk Wrocław,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Simeon Petrow,Śląsk Wrocław,1,0,1,0,0,0,0,1,0,"100,0%",1,"100,0%"
+Marko Poletanović,Zagłębie Lubin,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Bartłomiej Barański,Ruch Chorzów,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Aleksander Iwańczyk,ŁKS Łódź,1,0,0,1,0,0,0,1,0,"100,0%",1,"100,0%"
+Pirulo,ŁKS Łódź,1,0,0,0,0,0,0,0,1,"0,0%",0,"0,0%"
+Adrian Małachowski,ŁKS Łódź,0,0,0,0,0,0,0,0,0,-,0,-
+Adrien Louveau,ŁKS Łódź,0,0,0,0,0,0,0,0,0,-,0,-
+Aleks Petkow,Śląsk Wrocław,0,0,0,0,0,0,0,0,0,-,0,-
+Bartosz Slisz,Legia Warszawa,0,0,0,0,0,0,0,0,0,-,0,-
+Ben Lederman,Raków Częstochowa,0,0,0,0,0,0,0,0,0,-,0,-
+Benedikt Zech,Pogoń Szczecin,0,0,0,0,0,0,0,0,0,-,0,-
+Cornel Rapa,Cracovia,0,0,0,0,0,0,1,0,0,-,0,-
+Dalibor Takac,Korona Kielce,0,0,0,0,0,0,0,0,0,-,0,-
+Daniel Bielica,Górnik Zabrze,0,0,0,0,0,0,0,0,0,-,0,-
+Dennis Jastrzembski,Śląsk Wrocław,0,0,0,0,0,0,1,0,0,-,0,-
+Dino Hotić,Lech Poznań,0,0,0,0,0,0,0,0,0,-,0,-
+Elias Andersson,Lech Poznań,0,0,0,0,0,0,2,0,0,-,0,-
+Filip Borowski,Warta Poznań,0,0,0,0,0,0,0,0,0,-,0,-
+Filip Przybułek,Widzew Łódź,0,0,0,0,0,0,0,0,0,-,0,-
+Fran Tudor,Raków Częstochowa,0,0,0,0,0,0,0,0,0,-,0,-
+Gabriel Kirejczyk,Piast Gliwice,0,0,0,0,0,0,1,0,0,-,0,-
+Jacek Podgórski,Korona Kielce,0,0,0,0,0,0,0,0,0,-,0,-
+Jakub Bartkowski,Warta Poznań,0,0,0,0,0,0,0,0,0,-,0,-
+Jakub Jugas,Cracovia,0,0,0,0,0,0,0,0,0,-,0,-
+Jakub Kiełb,Warta Poznań,0,0,0,0,0,0,2,0,0,-,0,-
+Jakub Serafin,Puszcza Niepołomice,0,0,0,0,0,0,1,0,0,-,0,-
+Juljan Shehu,Widzew Łódź,0,0,0,0,0,0,0,0,0,-,0,-
+Jurgen Celhaka,Legia Warszawa,0,0,0,0,0,0,0,0,0,-,0,-
+Kamil Pajnowski,Stal Mielec,0,0,0,0,0,0,0,0,0,-,0,-
+Maciej Śliwa,ŁKS Łódź,0,0,0,0,0,0,0,0,0,-,0,-
+Marek Hanousek,Widzew Łódź,0,0,0,0,0,0,0,0,0,-,0,-
+Marius Briceag,Korona Kielce,0,0,0,0,0,0,0,0,0,-,0,-
+Mato Milos,Widzew Łódź,0,0,0,0,0,0,2,0,0,-,0,-
+Milan Rundić,Raków Częstochowa,0,0,0,0,0,0,0,0,0,-,0,-
+Muris Mesanović,Puszcza Niepołomice,0,0,0,0,0,0,0,0,0,-,0,-
+Patryk Janasik,Śląsk Wrocław,0,0,0,0,0,0,0,0,0,-,0,-
+Paweł Olszewski,Jagiellonia,0,0,0,0,0,0,0,0,0,-,0,-
+Piotr Głowacki,ŁKS Łódź,0,0,0,0,0,0,1,0,0,-,0,-
+Takuto Oshima,Cracovia,0,0,0,0,0,0,0,0,0,-,0,-
+Tomasz Kupisz,Jagiellonia,0,0,0,0,0,0,0,0,0,-,0,-
+Tomasz Pieńko,Zagłębie Lubin,0,0,0,0,0,0,1,0,0,-,0,-
+Filip Starzyński,Ruch Chorzów,0,0,0,0,0,0,1,0,0,-,0,-
+Luizao,Radomiak Radom,0,0,0,0,0,0,0,0,0,-,0,-
+Kacper Tobiasz,Legia Warszawa,0,0,0,0,0,0,0,0,0,-,0,-
+Henrich Ravas,Widzew Łódź,0,0,0,0,0,0,0,0,0,-,0,-
+Afonso Sousa,Lech Poznań,0,0,0,0,0,0,0,0,0,-,0,-
+Yuri Ribeiro,Legia Warszawa,0,0,0,0,0,0,0,0,0,-,0,-
+Marco Ehmann,Stal Mielec,0,0,0,0,0,0,0,0,0,-,0,-
+Mateusz Stępień,Stal Mielec,0,0,0,0,0,0,0,0,0,-,0,-
+Bartosz Szeliga,ŁKS Łódź,0,0,0,0,0,0,0,0,0,-,0,-
+Dominick Zator,Korona Kielce,0,0,0,0,0,0,0,0,0,-,0,-
+Olaf Korczakowski,Pogoń Szczecin,0,0,0,0,0,0,0,0,0,-,0,-
+Marcel Pięczek,Puszcza/Korona,0,0,0,0,0,0,2,0,0,-,0,-
+Sebastian Kerk,Widzew Łódź,0,0,0,0,0,0,0,0,0,-,0,-
+Linus Wahlqvist,Pogoń Szczecin,0,0,0,0,0,0,0,0,0,-,0,-
+Kacper Śmiglewski,Cracovia,0,0,0,0,0,0,0,0,0,-,0,-
+Patrick Olsen,Śląsk Wrocław,0,0,0,0,0,0,0,0,0,-,0,-
+Dominik Steczyk,Ruch Chorzów,0,0,0,0,0,0,0,0,0,-,0,-
+Piotr Malarczyk,Korona Kielce,0,0,0,0,0,0,0,0,0,-,0,-
+Valentin Cojocaru,Pogoń Szczecin,0,0,0,0,0,0,0,0,0,-,0,-
+Konrad Stępień,Puszcza Niepołomice,0,0,0,0,0,0,0,0,0,-,0,-
+Kostas Triantafyllopoulos,Górnik Zabrze,0,0,0,0,0,0,0,0,0,-,0,-
+Adrian Dieguez,Jagiellonia,0,0,0,0,0,0,1,0,0,-,0,-
+Albert Posiadała,Radomiak Radom,0,0,0,0,0,0,0,0,0,-,0,-
+Michał Kaput,Radomiak Radom,0,0,0,0,0,0,0,0,0,-,0,-
+Andreas Skovgaard,Cracovia,0,0,0,0,0,0,0,0,0,-,0,-
+Peter Pokorny,Śląsk Wrocław,0,0,0,0,0,0,0,0,0,-,0,-
+Michał Mokrzycki,ŁKS Łódź,0,0,0,0,0,0,0,0,0,-,0,-
+Jakub Myszor,Cracovia,0,0,0,0,0,0,0,0,0,-,0,-
+Rafał Leszczyński,Śląsk Wrocław,0,0,0,0,0,0,0,0,0,-,0,-
+Marcus Godinho,Korona Kielce,0,0,0,0,0,0,1,0,0,-,0,-
+Erik Janza,Górnik Zabrze,0,0,0,0,0,0,2,0,0,-,0,-
+Boris Sekulić,Górnik Zabrze,0,0,0,0,0,0,0,0,0,-,0,-
+Alexandros Katranis,Piast Gliwice,0,0,0,0,0,0,0,0,0,-,0,-
+Filip Rózga,Cracovia,0,0,0,0,0,0,0,0,0,-,0,-
+Niilo Maenpaa,Warta Poznań,0,0,0,0,0,0,0,0,0,-,0,-
+Cameron Borthwick-Jackson,Śląsk Wrocław,0,0,0,0,0,0,0,0,0,-,0,-
+Kamil Dankowski,ŁKS Łódź,0,0,0,0,0,0,0,0,0,-,0,-
+Arkadiusz Pyrka,Piast Gliwice,0,0,0,0,0,0,0,0,0,-,0,-
+Bogdan Tiru,Warta Poznań,0,0,0,0,0,0,0,0,0,-,0,-
+Artur Sobiech,Lech Poznań,0,0,0,0,0,0,0,0,0,-,0,-
+Leandro Rossi,Radomiak Radom,0,0,0,0,0,0,1,0,0,-,0,-
+Joao Gamboa,Pogoń Szczecin,0,0,0,0,0,0,1,0,0,-,0,-
+Sebastian Madejski,Cracovia,0,0,0,0,0,0,0,0,0,-,0,-
+Maciej Firlej,Puszcza Niepołomice,0,0,0,0,0,0,0,0,0,-,0,-
+Patryk Sokołowski,Cracovia,0,0,0,0,0,0,0,0,0,-,0,-
+Mohamed Mezghrani,Warta Poznań,0,0,0,0,0,0,1,0,0,-,0,-
+Dawid Tkacz,Widzew Łódź,0,0,0,0,0,0,0,0,0,-,0,-
+Mariusz Malec,Pogoń Szczecin,0,0,0,0,0,0,0,0,0,-,0,-
+Lee Jin-hyun,Puszcza Niepołomice,0,0,0,0,0,0,1,0,0,-,0,-
+Riza Durmisi,ŁKS Łódź,0,0,0,0,0,0,1,0,0,-,0,-
+Erick Otieno,Raków Częstochowa,0,0,0,0,0,0,0,0,0,-,0,-
+Mikkel Maigaard,Cracovia,0,0,0,0,0,0,0,0,0,-,0,-
+Tihomir Kostadinov,Piast Gliwice,0,0,0,0,0,0,0,0,0,-,0,-
+Rahil Mammadov,ŁKS Łódź,0,0,0,0,0,0,0,0,0,-,0,-
+Frantisek Plach,Piast Gliwice,0,0,0,0,0,0,0,0,0,-,0,-
+Szymon Szymański,Ruch Chorzów,0,0,0,0,0,0,1,0,0,-,0,-
+Miguel Munoz,Piast Gliwice,0,0,0,0,0,0,0,0,0,-,0,-
+Patryk Klimala,Śląsk Wrocław,0,0,0,0,0,0,0,0,0,-,0,-
+Lirim Kastrati,Widzew Łódź,0,0,0,0,0,0,0,0,0,-,0,-
+Miłosz Szczepański,Piast Gliwice,0,0,0,0,0,0,0,0,0,-,0,-
+Dominik Hładun,Legia Warszawa,0,0,0,0,0,0,0,0,0,-,0,-
+Tommaso Guercio,Śląsk Wrocław,0,0,0,0,0,0,0,0,0,-,0,-
+Bartosz Salamon,Lech Poznań,0,0,0,0,0,0,1,0,0,-,0,-
+Michał Nalepa II,Zagłębie Lubin,0,0,0,0,0,0,0,0,0,-,0,-
+Jakub Jezierski,Śląsk Wrocław,0,0,0,0,0,0,0,0,0,-,0,-
+Dawid Arndt,ŁKS Łódź,0,0,0,0,0,0,0,0,0,-,0,-
+Bruno Jordao,Radomiak Radom,0,0,0,0,0,0,0,0,0,-,0,-
+Krystian Okoniewski,Radomiak Radom,0,0,0,0,0,0,0,0,0,-,0,-
+Xavier Dziekoński,Korona Kielce,0,0,0,0,0,0,0,0,0,-,0,-
+Jetmir Haliti,Jagiellonia,0,0,0,0,0,0,0,0,0,-,0,-
+Hubert Tomalski,Puszcza Niepołomice,0,0,0,0,0,0,0,0,0,-,0,-
+Wojciech Urbański,Legia Warszawa,0,0,0,0,0,0,0,0,0,-,0,-
+Tomasz Mokwa,Piast Gliwice,0,0,0,0,0,0,0,0,0,-,0,-
+Rafa Santos,Stal Mielec,0,0,0,0,0,0,0,0,0,-,0,-
+Luis Mata,Zagłębie Lubin,0,0,0,0,0,0,0,0,0,-,0,-
+Filip Wilak,Ruch Chorzów,0,0,0,0,0,0,0,0,0,-,0,-
+Kamil Cybulski,Widzew Łódź,0,0,0,0,0,0,0,0,0,-,0,-
+Oskar Koprowski,ŁKS Łódź,0,0,0,0,0,0,0,0,0,-,0,-
+Aurelien Nguiamba,Jagiellonia,0,0,0,0,0,0,0,0,0,-,0,-
+Levent Gulen,ŁKS Łódź,0,0,0,0,0,0,0,0,0,-,0,-
+Artur Jędrzejczyk,Legia Warszawa,0,0,0,0,0,0,0,0,0,-,0,-
