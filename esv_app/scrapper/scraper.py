@@ -83,10 +83,7 @@ urls = [
     "https://ekstrastats.pl/sezon-2020-21",
     "https://ekstrastats.pl/sezon-2019-20",
     "https://ekstrastats.pl/sezon-2018-19",
-    "https://ekstrastats.pl/sezon-2017-18",
-    "https://ekstrastats.pl/sezon-2016-17",
-    "https://ekstrastats.pl/sezon-2015-16",
-    "https://ekstrastats.pl/sezon-2014-15"
+    "https://ekstrastats.pl/sezon-2017-18"
 ]
 
 # przetwarzanie url
