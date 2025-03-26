@@ -29,7 +29,7 @@ const App = () => {
       </main>
 
       <footer>
-        <p>STOPKA</p>
+        <p>Statystyki wykorzystane za zgodą strony <Link class="ekstrastats-link" to="www.ekstrastats.pl">www.ekstrastats.pl</Link>.</p>
       </footer>
     </div>
   );
