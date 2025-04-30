@@ -15,7 +15,12 @@ def save_table_to_csv(table, folder, table_name):
         rows.append(cells)
 
     # zapis do .csv
-    filename = f"{folder}/{table_name}.csv"
+    filename_base = f"{folder}/{table_name}"
+    filename = f"{filename_base}.csv"
+    counter = 1
+    while os.path.exists(filename):
+        filename = f"{filename_base}_{counter}.csv"
+        counter += 1
     with open(filename, mode='w', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
         writer.writerow(headers)
