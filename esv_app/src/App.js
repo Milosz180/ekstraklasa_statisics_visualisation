@@ -10,6 +10,7 @@ const App = () => {
   return (
     <div className="container">
       <header>
+      <img src="/logo.jpeg" alt="ESV Logo" style={{ height: '80px' }} />
         <h1>Ekstraklasa Statistics Visualisation</h1>
         <nav>
           <ul>
