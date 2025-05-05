@@ -1,0 +1,97 @@
+body {
+  background: linear-gradient(135deg, #f6f8fc, #edf1f9);
+  font-family: 'Inter', sans-serif;
+}
+
+.home-container {
+  padding: 4rem 1rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.hero {
+  background: white;
+  padding: 2.5rem 2rem;
+  border-radius: 18px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.hero h2 {
+  font-size: 2.4rem;
+  margin-bottom: 0.75rem;
+  color: #222;
+}
+
+.hero p {
+  color: #555;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.btn-cta {
+  background: #1d4ed8;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: background 0.3s ease;
+}
+
+.btn-cta:hover {
+  background: #2563eb;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: white;
+  padding: 2rem 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  width: 280px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.card h3 {
+  margin-top: 1rem;
+  font-size: 1.25rem;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.card-link {
+  margin-top: 1rem;
+  display: inline-block;
+  color: #1d4ed8;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.card-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}
