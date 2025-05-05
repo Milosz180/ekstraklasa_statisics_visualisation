@@ -5,6 +5,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
 import './App.css';
+import Login from './pages/Login';
 
 const App = () => {
   return (
@@ -19,6 +20,8 @@ const App = () => {
             <li><Link to="/">Strona Główna</Link></li>
             <li><Link to="/about">O nas</Link></li>
             <li><Link to="/contact">Kontakt</Link></li>
+            <li><Link to="/login">Zaloguj</Link></li>
+
           </ul>
         </nav>
       </header>
@@ -28,6 +31,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<Login />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
