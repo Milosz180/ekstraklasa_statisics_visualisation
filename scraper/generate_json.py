@@ -97,7 +97,7 @@ CSV_SOURCES = [
         }
     },
     {
-        "filename": "czas_gry__statystyki__statystyki_dotyczące_obcokrajowców.csv",
+        "filename": "czas_gry__statystyki_dot_obcokrajowców.csv",
         "columns": {
             "KLUB": "klub",
             "MIN ZAGR": "liczba_minut_obcokrajowcy",
@@ -125,7 +125,7 @@ CSV_SOURCES = [
         }
     },
         {
-        "filename": "wyniki_metody_expected_goals_zbiorczo_dla_każdej_drużyny",
+        "filename": "wyniki_metody_expected_goals_zbiorczo_dla_każdej_drużyny.csv",
         "columns": {
             "KLUB": "klub",
             "DLA xG": "dla_xG",
@@ -150,7 +150,7 @@ CSV_SOURCES = [
         }
     },
     {
-        "filename": " podział_goli_na_części_ciała_drużynowo.csv",
+        "filename": "podział_goli_na_części_ciała_drużynowo.csv",
         "columns": {
             "KLUB": "klub",
             "LN": "gole_lewa_noga",
@@ -191,7 +191,7 @@ def load_and_map_csv(source, season_folder):
     file_path = os.path.join(season_folder, source["filename"])
 
     if not os.path.exists(file_path):
-        print(f"Plik {file_path} nie istnieje.")
+        print(f"⚠️ Plik {file_path} nie istnieje.")
         return data
 
     print(f"Ładowanie danych z pliku: {file_path}")
