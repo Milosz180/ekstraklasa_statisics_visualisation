@@ -28,8 +28,11 @@ body {
 .branding {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  text-decoration: none;
+  color: inherit;
+  gap: 0.5rem;
 }
+
 
 .logo {
   height: 72px;

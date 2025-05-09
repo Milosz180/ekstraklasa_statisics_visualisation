@@ -29,10 +29,11 @@ const App = () => {
   return (
     <div className="container">
       <header className="header">
-        <div className="branding">
-          <img src="/logo_esv.png" alt="ESV Logo" className="logo" />
-          <span className="site-title">Ekstraklasa Statistics Visualisation</span>
-        </div>
+      <Link to="/" className="branding">
+        <img src="/logo_esv.png" alt="ESV Logo" className="logo" />
+        <span className="site-title">Ekstraklasa Statistics Visualisation</span>
+      </Link>
+
         <nav className="nav">
           <ul>
             <li><Link to="/">Strona Główna</Link></li>
