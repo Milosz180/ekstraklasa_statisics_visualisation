@@ -6,6 +6,7 @@ import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
 import './App.css';
 import Login from './pages/Login';
+import Register from './pages/Register';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
             <li><Link to="/about">O nas</Link></li>
             <li><Link to="/contact">Kontakt</Link></li>
             <li><Link to="/login">Zaloguj</Link></li>
+            <li><Link to="/register">Zarejestruj</Link></li>
 
           </ul>
         </nav>
@@ -32,6 +34,7 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
