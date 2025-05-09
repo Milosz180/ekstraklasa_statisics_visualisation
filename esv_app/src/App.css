@@ -28,8 +28,11 @@ body {
 .branding {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  text-decoration: none;
+  color: inherit;
+  gap: 0.5rem;
 }
+
 
 .logo {
   height: 72px;
@@ -78,4 +81,40 @@ footer {
 footer a {
   color: #cbd5e1;
   text-decoration: none;
+}
+
+body.dark {
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+body.dark .header {
+  background: #1e293b;
+  color: #e2e8f0;
+}
+
+body.dark .site-title {
+  color: #f8fafc;
+}
+
+body.dark nav a {
+  color: #94a3b8;
+}
+
+body.dark nav a:hover {
+  color: #38bdf8;
+}
+
+body.dark .container,
+body.dark .login-container,
+body.dark .register-container {
+  background-color: #1e293b;
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: inherit;
 }

@@ -32,3 +32,34 @@
     margin-top: 1rem;
   }
   
+  .stats-section {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 4rem;
+  flex-wrap: wrap;
+}
+
+.stat-box {
+  background: white;
+  padding: 2rem;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  text-align: center;
+  min-width: 150px;
+}
+
+.stat-box h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.stat-box p {
+  font-size: 1rem;
+  color: #475569;
+}
+
+body.dark .stat-box {
+  background: #1e293b;
+  color: #f1f5f9;
+}
