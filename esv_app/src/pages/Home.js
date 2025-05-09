@@ -26,6 +26,22 @@ const Home = () => {
           <Link to="#" className="card-link">Wkrótce</Link>
         </div>
       </div>
+
+      {/* NOWA SEKCJA */}
+      <section className="stats-section">
+        <div className="stat-box">
+          <h3>⚽ 16</h3>
+          <p>Drużyn</p>
+        </div>
+        <div className="stat-box">
+          <h3>📊 240</h3>
+          <p>Rozegranych meczów</p>
+        </div>
+        <div className="stat-box">
+          <h3>📅 4</h3>
+          <p>Sezony</p>
+        </div>
+      </section>
     </div>
   );
 };
