@@ -34,11 +34,11 @@ const Home = () => {
           <p>Drużyn</p>
         </div>
         <div className="stat-box">
-          <h3>📊 240</h3>
+          <h3>📊 1796</h3>
           <p>Rozegranych meczów</p>
         </div>
         <div className="stat-box">
-          <h3>📅 4</h3>
+          <h3>📅 6</h3>
           <p>Sezony</p>
         </div>
       </section>
