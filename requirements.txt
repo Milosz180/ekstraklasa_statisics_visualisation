@@ -1,3 +1,7 @@
 requests
 beautifulsoup4
 pandas
+react
+axios
+react-chartjs-2
+chart.js
