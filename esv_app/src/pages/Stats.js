@@ -1,162 +1,190 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Line, Scatter } from 'react-chartjs-2';
-import {
-  Chart as ChartJS,
-  LineElement,
-  PointElement,
-  LinearScale,
-  CategoryScale,
-  Title,
-  Tooltip,
-  Legend
-} from 'chart.js';
+import React, { useState, useEffect } from "react";
 
-ChartJS.register(
-  LineElement,
-  PointElement,
-  LinearScale,
-  CategoryScale,
-  Title,
-  Tooltip,
-  Legend
-);
+const DEFAULT_STATS = [
+  "punkty",
+  "zwyciestwa",
+  "remisy",
+  "porazki",
+  "bramki_zdobyte",
+  "bramki_stracone",
+  "bilans_bramkowy",
+];
 
 const Stats = () => {
-  const [view, setView] = useState('h2h'); // 'h2h', 'season', 'scatter'
+  const [mode, setMode] = useState("h2h");
+  const [data, setData] = useState([]);
+  const [seasons, setSeasons] = useState([]);
   const [teams, setTeams] = useState([]);
-  const [season, setSeason] = useState('sezon-2023-24');
-  const [team1, setTeam1] = useState('');
-  const [team2, setTeam2] = useState('');
-  const [stat, setStat] = useState('punkty');
-  const [h2hData, setH2hData] = useState(null);
-  const [seasonData, setSeasonData] = useState([]);
-  const [scatterData, setScatterData] = useState([]);
+  const [selectedSeason, setSelectedSeason] = useState("");
+  const [selectedTeams, setSelectedTeams] = useState(["", ""]);
+  const [selectedStats, setSelectedStats] = useState(DEFAULT_STATS);
 
+  // 1. Pobierz listę sezonów przy starcie
   useEffect(() => {
-    // Fetch all team names from current season
-    axios.get(`/api/h2h?season=${season}&team1=&team2=`)
-      .then(res => {
-        if (res.data && res.data.klub1 && res.data.klub2) {
-          setTeams([res.data.klub1, res.data.klub2]);
-        }
-      })
-      .catch(() => setTeams(['Jagiellonia Białystok', 'Śląsk Wrocław']));
+    fetch("/seasons/")
+      .then((res) => res.json())
+      .then(setSeasons)
+      .catch(console.error);
   }, []);
 
-  const fetchH2H = () => {
-    axios.get(`/api/h2h`, {
-      params: {
-        season,
-        team1,
-        team2
-      }
-    }).then(res => setH2hData(res.data));
-  };
+  // 2. Po wybraniu sezonu pobierz listę drużyn
+  useEffect(() => {
+    if (!selectedSeason) {
+      setTeams([]);
+      setSelectedTeams(["", ""]);
+      return;
+    }
+    fetch(`/teams/?season=${encodeURIComponent(selectedSeason)}`)
+      .then((res) => res.json())
+      .then(setTeams)
+      .catch(console.error);
+  }, [selectedSeason]);
 
-  const fetchSeasonStat = () => {
-    axios.get(`/api/season_chart`, {
-      params: {
-        team: team1,
-        stat
-      }
-    }).then(res => setSeasonData(res.data));
-  };
+  // 3. Po zmianie sezonu lub drużyn pobierz dane H2H
+  useEffect(() => {
+    if (
+      mode !== "h2h" ||
+      !selectedSeason ||
+      !selectedTeams[0] ||
+      !selectedTeams[1] ||
+      selectedTeams[0] === selectedTeams[1]
+    ) {
+      setData([]);
+      return;
+    }
 
-  const fetchScatter = () => {
-    axios.get(`/api/scatter_chart`, {
-      params: {
-        x: 'bramki_zdobyte',
-        y: 'bramki_stracone'
-      }
-    }).then(res => setScatterData(res.data));
-  };
+    // Budujemy query z dwoma parametrami teams
+    const params = new URLSearchParams();
+    params.append("season", selectedSeason);
+    params.append("teams", selectedTeams[0]);
+    params.append("teams", selectedTeams[1]);
 
+    fetch(`/h2h/?${params.toString()}`)
+      .then((res) => res.json())
+      .then(setData)
+      .catch(console.error);
+  }, [mode, selectedSeason, selectedTeams]);
 
-return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Statystyki drużyn</h1>
+  // Pomocnik - pobierz dane drużyny z tablicy data
+  const getTeamData = (team) => data.find((d) => d.klub === team);
 
-      <div className="flex gap-4 mb-6">
-        <button onClick={() => setView('h2h')} className="bg-blue-500 text-white px-4 py-2 rounded">Porównanie H2H</button>
-        <button onClick={() => setView('season')} className="bg-green-500 text-white px-4 py-2 rounded">Sezon po sezonie</button>
-        <button onClick={() => setView('scatter')} className="bg-purple-500 text-white px-4 py-2 rounded">Wykres punktowy</button>
+  return (
+    <div className="p-4 space-y-6">
+      {/* Tryb */}
+      <div className="flex space-x-4 mb-4">
+        <button
+          onClick={() => setMode("h2h")}
+          className={`btn ${mode === "h2h" ? "bg-blue-500 text-white" : ""}`}
+        >
+          Statystyki H2H
+        </button>
+        {/* Możesz dodać inne tryby */}
       </div>
 
-      {view === 'h2h' && (
-        <div>
-          <h2 className="text-xl font-semibold mb-2">Porównanie H2H</h2>
-          <div className="flex gap-4 mb-4">
-            <select value={team1} onChange={e => setTeam1(e.target.value)} className="border p-2">
-              {teams.map(team => <option key={team}>{team}</option>)}
+      {/* Panel wyboru sezonu i drużyn */}
+      {mode === "h2h" && (
+        <div className="space-y-4">
+          <div>
+            <label className="block mb-1 font-semibold">Wybierz sezon:</label>
+            <select
+              value={selectedSeason}
+              onChange={(e) => setSelectedSeason(e.target.value)}
+              className="border p-2 rounded"
+            >
+              <option value="">-- wybierz sezon --</option>
+              {seasons.map((season) => (
+                <option key={season} value={season}>
+                  {season}
+                </option>
+              ))}
             </select>
-            <select value={team2} onChange={e => setTeam2(e.target.value)} className="border p-2">
-              {teams.map(team => <option key={team}>{team}</option>)}
-            </select>
-            <button onClick={fetchH2H} className="bg-gray-700 text-white px-3 py-2 rounded">Porównaj</button>
           </div>
-          {h2hData && (
-            <pre className="bg-gray-100 p-4 rounded">{JSON.stringify(h2hData, null, 2)}</pre>
-          )}
-        </div>
-      )}
 
-      {view === 'season' && (
-        <div>
-          <h2 className="text-xl font-semibold mb-2">Statystyka sezon po sezonie</h2>
-          <div className="flex gap-4 mb-4">
-            <input type="text" value={team1} onChange={e => setTeam1(e.target.value)} placeholder="Nazwa drużyny" className="border p-2" />
-            <input type="text" value={stat} onChange={e => setStat(e.target.value)} placeholder="Statystyka (np. punkty)" className="border p-2" />
-            <button onClick={fetchSeasonStat} className="bg-green-600 text-white px-3 py-2 rounded">Wygeneruj wykres</button>
+          <div className="flex space-x-4">
+            {[0, 1].map((idx) => (
+              <div key={idx} className="flex-1">
+                <label className="block mb-1 font-semibold">
+                  Wybierz drużynę {idx + 1}:
+                </label>
+                <select
+                  value={selectedTeams[idx]}
+                  onChange={(e) => {
+                    const updated = [...selectedTeams];
+                    updated[idx] = e.target.value;
+                    setSelectedTeams(updated);
+                  }}
+                  className="border p-2 rounded w-full"
+                  disabled={!selectedSeason}
+                >
+                  <option value="">-- wybierz drużynę --</option>
+                  {teams.map((team) => (
+                    <option key={team} value={team}>
+                      {team}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            ))}
           </div>
-          {seasonData.length > 0 && (
-            <Line
-              data={{
-                labels: seasonData.map(d => d.season),
-                datasets: [{
-                  label: `${team1} - ${stat}`,
-                  data: seasonData.map(d => d.value),
-                  borderColor: 'rgb(75, 192, 192)',
-                  tension: 0.3
-                }]
-              }}
-            />
-          )}
-        </div>
-      )}
 
-      {view === 'scatter' && (
-        <div>
-          <h2 className="text-xl font-semibold mb-2">Wykres punktowy (X: bramki_zdobyte, Y: bramki_stracone)</h2>
-          <button onClick={fetchScatter} className="bg-purple-600 text-white px-3 py-2 mb-4 rounded">Wygeneruj wykres</button>
-          {scatterData.length > 0 && (
-            <Scatter
-              data={{
-                datasets: [{
-                  label: 'Drużyny',
-                  data: scatterData.map(d => ({
-                    x: d.x,
-                    y: d.y,
-                    label: `${d.klub} (${d.season})`
-                  })),
-                  backgroundColor: 'rgba(153, 102, 255, 0.6)'
-                }]
-              }}
-              options={{
-                plugins: {
-                  tooltip: {
-                    callbacks: {
-                      label: ctx => ctx.raw.label
+          {/* Lista statystyk */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+            {(data[0]
+              ? Object.keys(data[0]).filter(
+                  (key) =>
+                    typeof data[0][key] === "number" || key.includes("procent")
+                )
+              : []
+            ).map((stat) => (
+              <label key={stat} className="flex items-center space-x-2">
+                <input
+                  type="checkbox"
+                  checked={selectedStats.includes(stat)}
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      setSelectedStats([...selectedStats, stat]);
+                    } else {
+                      setSelectedStats(selectedStats.filter((s) => s !== stat));
                     }
-                  }
-                },
-                scales: {
-                  x: { title: { display: true, text: 'Bramki zdobyte' }},
-                  y: { title: { display: true, text: 'Bramki stracone' }}
-                }
-              }}
-            />
-          )}
+                  }}
+                />
+                <span>{stat}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Tabela H2H */}
+      {mode === "h2h" && data.length === 2 && (
+        <div className="overflow-auto mt-4">
+          <table className="w-full border-collapse border border-gray-300">
+            <thead>
+              <tr>
+                <th className="border p-2">Statystyka</th>
+                {selectedTeams.map((team, idx) => (
+                  <th key={idx} className="border p-2">
+                    {team}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {selectedStats.map((stat) => (
+                <tr key={stat}>
+                  <td className="border p-2 font-bold">{stat}</td>
+                  {selectedTeams.map((team, idx) => {
+                    const record = getTeamData(team);
+                    return (
+                      <td key={idx} className="border p-2">
+                        {record ? record[stat] ?? "—" : "—"}
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       )}
     </div>
