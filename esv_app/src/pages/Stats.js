@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Select from "react-select";
-import { Line, Bar, Pie } from "react-chartjs-2";
+import { Line, Bar, Pie, Scatter } from "react-chartjs-2";
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 import {
   Chart as ChartJS,
   LineElement,
@@ -10,11 +11,11 @@ import {
   Tooltip,
   Legend,
   BarElement,
-  ArcElement
+  ArcElement,
+  Title,
 } from "chart.js";
-import ChartDataLabels from 'chartjs-plugin-datalabels';
 
-ChartJS.register(LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Legend, BarElement, ArcElement, ChartDataLabels);
+ChartJS.register(LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Legend, Title, BarElement, ArcElement, ChartDataLabels);
 ChartJS.register(ChartDataLabels);
 
 const DEFAULT_STATS = [
@@ -41,6 +42,13 @@ const Stats = () => {
   const [trendStat, setTrendStat] = useState("punkty");
   const [trendData, setTrendData] = useState({});
   const [trendStatOptions, setTrendStatOptions] = useState([]);
+  // stany tryb: 
+  const [scatterSeason, setScatterSeason] = useState("");
+  const [scatterTeams, setScatterTeams] = useState([]);
+  const [scatterStatX, setScatterStatX] = useState("");
+  const [scatterStatY, setScatterStatY] = useState("");
+  const [scatterStatOptions, setScatterStatOptions] = useState([]);
+  const [scatterData, setScatterData] = useState({});
   // stany tryb: dowolne wykresy
   const [customChartType, setCustomChartType] = useState("bar");
   const [customSeason, setCustomSeason] = useState("");
@@ -72,11 +80,10 @@ const Stats = () => {
   }, [mode]);
 
   useEffect(() => {
-    if (seasons.length > 0 && !selectedSeason) {
-      setSelectedSeason(seasons[0]);
-    }
-    if (seasons.length > 0 && !customSeason) {
-      setCustomSeason(seasons[0]);
+    if (seasons.length > 0) {
+      if (!selectedSeason) setSelectedSeason(seasons[0]);
+      if (!scatterSeason) setScatterSeason(seasons[0]);
+      if (!customSeason) setCustomSeason(seasons[0]);
     }
   }, [seasons]);
 
@@ -266,20 +273,59 @@ const Stats = () => {
     fetchAll();
   }, [mode, trendTeams, trendStat, seasons]);
 
-  // funkcja do wartości % z sumy dla wykresu kołowego
-  const RADIAN = Math.PI / 180;
+  useEffect(() => {
+    if (mode !== "scatter" || !scatterSeason || scatterTeams.length === 0) return;
 
-  const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
-  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-  const x = cx + radius * Math.cos(-midAngle * RADIAN);
-  const y = cy + radius * Math.sin(-midAngle * RADIAN);
+    const fetchStatsScatter = async () => {
+      try {
+        const res = await fetch(`/team-stats/?season=${encodeURIComponent(scatterSeason)}&team=${encodeURIComponent(scatterTeams[0])}`);
+        if (!res.ok) return;
+        const data = await res.json();
+        const keys = Object.keys(data).filter(
+          (key) => typeof data[key] === "number" || key.includes("procent")
+        );
+        const options = keys.map((stat) => ({ value: stat, label: stat }));
+        setScatterStatOptions(options);
+        if (!options.some(o => o.value === scatterStatX)) {
+          setScatterStatX(options[0]?.value || "");
+        }
+        if (!options.some(o => o.value === scatterStatY)) {
+          setScatterStatY(options[1]?.value || options[0]?.value || "");
+        }
+      } catch {
+        setScatterStatOptions([]);
+      }
+    };
+    fetchStatsScatter();
+  }, [mode, scatterSeason, scatterTeams]);
 
-    return (
-      <text x={x} y={y} fill="white" textAnchor="middle" dominantBaseline="central">
-        {(percent * 100).toFixed(0)}%
-      </text>
-      );
-  };
+  // --- pobieranie danych dla scatter ---
+  useEffect(() => {
+    if (mode !== "scatter") return;
+      if (!scatterSeason || scatterTeams.length === 0 || !scatterStatX || !scatterStatY) {
+        setScatterData({});
+        return;
+      }
+
+      const fetchScatterData = async () => {
+        const points = [];
+        for (const team of scatterTeams) {
+          try {
+            const res = await fetch(`/team-stats/?season=${encodeURIComponent(scatterSeason)}&team=${encodeURIComponent(team)}`);
+            if (res.ok) {
+              const data = await res.json();
+              const x = data[scatterStatX];
+              const y = data[scatterStatY];
+              if (typeof x === "number" && typeof y === "number") {
+                points.push({ x, y, label: team });
+              }
+            }
+          } catch {}
+        }
+        setScatterData(points);
+      };
+      fetchScatterData();
+    }, [mode, scatterSeason, scatterTeams, scatterStatX, scatterStatY]);
 
   return (
     <div className="p-4 space-y-6">
@@ -289,6 +335,8 @@ const Stats = () => {
         <button onClick={() => setMode("h2h")} className={`btn ${mode === "h2h" ? "bg-blue-500 text-white" : ""}`}>Statystyki H2H</button>
         {/* sezon po sezonie */}
         <button onClick={() => setMode("season-trend")} className={`btn ${mode === "season-trend" ? "bg-blue-500 text-white" : ""}`}>Sezon po sezonie</button>
+        {/* wykres zależności */}
+        <button onClick={() => setMode("scatter")} disabled={mode === "scatter"}>Wykres zależności</button>
         {/* dowolne wykresy */}
         <button onClick={() => setMode("custom")} className={`btn ${mode === "custom" ? "bg-blue-500 text-white" : ""}`}>Dowolne wykresy</button>
       </div>
@@ -347,6 +395,7 @@ const Stats = () => {
       {/* Tabela H2H */}
       {mode === "h2h" && data.length > 0 && (
         <div className="overflow-auto mt-4">
+          <h2>TABELA H2H - Sezon: {selectedSeason || "wszystkie"}</h2>
           <table className="w-full border-collapse border border-gray-300">
             <thead>
               <tr>
@@ -424,6 +473,18 @@ const Stats = () => {
                     legend: {
                       position: "top",
                     },
+                    title: {
+                      display: true,
+                      text: `Wykres liniowy - ${trendStat} - Sezon po sezonie`,
+                      font: {
+                        size: 18,
+                        weight: 'bold',
+                      },
+                      padding: {
+                        top: 10,
+                        bottom: 30,
+                      },
+                    },
                     datalabels: {
                       color: 'black',
                       anchor: 'end',
@@ -456,6 +517,116 @@ const Stats = () => {
               />
             </div>
           )}
+        </div>
+      )}
+      {mode === "scatter" && (
+        <div className="space-y-4">
+          <div>
+            <label className="block mb-1 font-semibold">Wybierz sezon:</label>
+            <select
+              value={scatterSeason}
+              onChange={(e) => setScatterSeason(e.target.value)}
+              className="border p-2 rounded"
+            >
+              <option value="">-- wybierz sezon --</option>
+              {seasons.map((season) => (
+                <option key={season} value={season}>
+                  {season}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label className="block mb-1 font-semibold">Wybierz drużyny:</label>
+            <Select
+              isMulti
+              options={options}
+              value={options.filter((o) => scatterTeams.includes(o.value))}
+              onChange={(selected) => {
+                const values = selected ? selected.map((s) => s.value) : [];
+                setScatterTeams(values);
+              }}
+              placeholder="Wybierz drużyny..."
+            />
+          </div>
+
+          <div>
+            <label className="block mb-1 font-semibold">Wybierz statystykę na oś X:</label>
+            <Select
+              options={scatterStatOptions}
+              value={scatterStatOptions.find((o) => o.value === scatterStatX)}
+              onChange={(selected) => setScatterStatX(selected ? selected.value : "")}
+              placeholder="Statystyka X..."
+              isClearable={false}
+            />
+          </div>
+
+          <div>
+            <label className="block mb-1 font-semibold">Wybierz statystykę na oś Y:</label>
+            <Select
+              options={scatterStatOptions}
+              value={scatterStatOptions.find((o) => o.value === scatterStatY)}
+              onChange={(selected) => setScatterStatY(selected ? selected.value : "")}
+              placeholder="Statystyka Y..."
+              isClearable={false}
+            />
+          </div>
+
+          <div className="mt-6">
+            {scatterData.length > 0 ? (
+              <Scatter
+                data={{
+                  datasets: [
+                    {
+                      label: `Scatter: ${scatterStatX} vs ${scatterStatY}`,
+                      data: scatterData,
+                      backgroundColor: 'rgba(27, 32, 177, 0.6)',
+                      pointRadius: 7,
+                      pointHoverRadius: 9,
+                    },
+                  ],
+                }}
+                options={{
+                  plugins: {
+                    legend: { display: false },
+                    title: {
+                      display: true,
+                      text: `Wykres zależności - ${scatterStatY} od ${scatterStatX} - Sezon: ${customSeason || "wszystkie"}`,
+                      font: {
+                        size: 18,
+                        weight: 'bold',
+                      },
+                      padding: {
+                        top: 10,
+                        bottom: 30,
+                      },
+                    },
+                    tooltip: {
+                      callbacks: {
+                        label: (context) => {
+                          const point = context.raw;
+                          return `${point.label}: (${scatterStatX}: ${point.x}, ${scatterStatY}: ${point.y})`;
+                        },
+                      },
+                    },
+                    datalabels: {
+                      align: 'right',
+                      anchor: 'end',
+                      formatter: (value) => value.label,
+                      font: { weight: 'bold' },
+                    },
+                  },
+                  scales: {
+                    x: { title: { display: true, text: scatterStatX }, beginAtZero: true },
+                    y: { title: { display: true, text: scatterStatY }, beginAtZero: true },
+                  },
+                }}
+              />
+            ) : (
+              <p>Brak danych do wyświetlenia. Wybierz sezon, drużyny oraz statystyki.</p>
+            )}
+          </div>
         </div>
       )}
       {mode === "custom" && (
@@ -532,6 +703,18 @@ const Stats = () => {
                   responsive: true,
                   plugins: {
                     legend: { display: false },
+                    title: {
+                      display: true,
+                      text: `Wykres słupkowy - ${customStat} - Sezon: ${customSeason || "wszystkie"}`,
+                      font: {
+                        size: 18,
+                        weight: 'bold',
+                      },
+                      padding: {
+                        top: 10,
+                        bottom: 30,
+                      },
+                    },
                     datalabels: {
                       color: '#fff',
                       font: {
@@ -564,6 +747,18 @@ const Stats = () => {
                   responsive: true,
                   plugins: {
                     legend: { display: false },
+                    title: {
+                      display: true,
+                      text: `Wykres kolumnowy - ${customStat} - Sezon: ${customSeason || "wszystkie"}`,
+                      font: {
+                        size: 18,
+                        weight: 'bold',
+                      },
+                      padding: {
+                        top: 10,
+                        bottom: 30,
+                      },
+                    },
                     datalabels: {
                       color: '#fff',
                       font: {
@@ -594,6 +789,18 @@ const Stats = () => {
                   responsive: true,
                   plugins: {
                     legend: { position: 'top' },
+                    title: {
+                      display: true,
+                      text: `Wykres kołowy - ${customStat} - Sezon: ${customSeason || "wszystkie"}`,
+                      font: {
+                        size: 18,
+                        weight: 'bold',
+                      },
+                      padding: {
+                        top: 10,
+                        bottom: 30,
+                      },
+                    },
                     datalabels: {
                       color: '#fff',
                       formatter: (value, context) => {
