@@ -7,3 +7,4 @@ react-chartjs-2
 chart.js
 fastapi
 uvicorn
+react-select

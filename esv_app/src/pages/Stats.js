@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Select from "react-select";
 import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -29,26 +30,72 @@ const Stats = () => {
   const [seasons, setSeasons] = useState([]);
   const [teams, setTeams] = useState([]);
   const [selectedSeason, setSelectedSeason] = useState("");
-  const [selectedTeams, setSelectedTeams] = useState(["", ""]);
+  const [selectedTeams, setSelectedTeams] = useState([]);
   const [selectedStats, setSelectedStats] = useState(DEFAULT_STATS);
   // stany tryb: sezon po sezonie
   const [trendTeams, setTrendTeams] = useState([]);
   const [trendStat, setTrendStat] = useState("punkty");
   const [trendData, setTrendData] = useState({});
+  const [trendStatOptions, setTrendStatOptions] = useState([]);
+  
+  // opcja wyboru wielokrotnego na rozwijanych listach
+  const options = teams.map((team) => ({ value: team, label: team }));
+
+  // opcja statystyk na podstawie danych
+  const allStatKeys = new Set();
+  data.forEach((teamStats) => {
+    Object.entries(teamStats).forEach(([key, value]) => {
+      if (typeof value === "number" || key.includes("procent")) {
+        allStatKeys.add(key);
+      }
+    });
+  });
+  const statOptions = (data.length > 0
+    ? Array.from(allStatKeys)
+    : DEFAULT_STATS
+  ).map((stat) => ({ value: stat, label: stat }));
 
   // pobieranie listy zespołów
   useEffect(() => {
+    if (seasons.length > 0) return;
     fetch("/seasons/")
       .then((res) => res.json())
       .then(setSeasons)
       .catch(console.error);
-  }, []);
+  }, [mode]);
+
+  useEffect(() => {
+    if (seasons.length > 0 && !selectedSeason) {
+      setSelectedSeason(seasons[0]);
+    }
+  }, [seasons]);
+
+  // reset statystyk po ładowaniu danych
+  useEffect(() => {
+    if (data.length > 0) {
+      const allStatKeys = new Set();
+      data.forEach((teamStats) => {
+        Object.entries(teamStats).forEach(([key, value]) => {
+          if (typeof value === "number" || key.includes("procent")) {
+            allStatKeys.add(key);
+          }
+        });
+      });
+
+      const updatedStats = Array.from(allStatKeys);
+      setSelectedStats((prev) =>
+        prev.filter((stat) => updatedStats.includes(stat)).length > 0
+          ? prev.filter((stat) => updatedStats.includes(stat))
+          : updatedStats.slice(0, 5)
+      );
+    }
+  }, [data]);
 
   // pobieranie drużyn dla danego sezonu
   useEffect(() => {
     if (!selectedSeason) {
       setTeams([]);
-      setSelectedTeams(["", ""]);
+      setSelectedTeams([]);
       return;
     }
     fetch(`/teams/?season=${encodeURIComponent(selectedSeason)}`)
@@ -57,14 +104,13 @@ const Stats = () => {
       .catch(console.error);
   }, [selectedSeason]);
 
-  // 3. pobieranie danych H2H
+  // pobieranie danych H2H
   useEffect(() => {
     if (
       mode !== "h2h" ||
       !selectedSeason ||
-      !selectedTeams[0] ||
-      !selectedTeams[1] ||
-      selectedTeams[0] === selectedTeams[1]
+      selectedTeams.length === 0 ||
+      new Set(selectedTeams).size !== selectedTeams.length
     ) {
       setData([]);
       return;
@@ -73,8 +119,7 @@ const Stats = () => {
     // query z parametrami teams
     const params = new URLSearchParams();
     params.append("season", selectedSeason);
-    params.append("teams", selectedTeams[0]);
-    params.append("teams", selectedTeams[1]);
+    selectedTeams.forEach((team) => params.append("teams", team));
 
     fetch(`/h2h/?${params.toString()}`)
       .then((res) => res.json())
@@ -88,52 +133,71 @@ const Stats = () => {
   // pobieranie danych sezon po sezonie
   useEffect(() => {
     if (mode !== "season-trend") return;
+    if (seasons.length === 0 || teams.length === 0) return;
 
-      Promise.all(
-      seasons.map((season) =>
-        fetch(`/teams/?season=${encodeURIComponent(season)}`)
-          .then((res) => res.json())
-          .catch(() => [])
-      )
-    ).then((seasonTeamsArrays) => {
-      // usuwanie duplikatów
-      const allTeams = [...new Set(seasonTeamsArrays.flat())];
-      setTeams(allTeams);
-    });
-  }, [mode, seasons]);
+    const firstSeason = seasons[0];
+    const firstTeam = teams[0];
+
+    if (!firstTeam) {
+      setTrendStatOptions(DEFAULT_STATS.map(stat => ({ value: stat, label: stat })));
+      return;
+    }
+
+    fetch(`/team-stats/?season=${encodeURIComponent(firstSeason)}&team=${encodeURIComponent(firstTeam)}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data && typeof data === "object") {
+          const stats = Object.keys(data).filter(key => typeof data[key] === "number" || key.includes("procent"));
+          setTrendStatOptions(stats.map(stat => ({ value: stat, label: stat })));
+          if (!stats.includes(trendStat)) {
+            setTrendStat(stats[0] || DEFAULT_STATS[0]);
+          }
+        } else {
+          setTrendStatOptions(DEFAULT_STATS.map(stat => ({ value: stat, label: stat })));
+        }
+      })
+      .catch(() => {
+        setTrendStatOptions(DEFAULT_STATS.map(stat => ({ value: stat, label: stat })));
+      });
+  }, [mode, seasons, teams]);
 
   useEffect(() => {
-  if (mode !== "season-trend" || trendTeams.length === 0 || !trendStat) {
+  if (mode !== "season-trend" || trendTeams.length === 0) {
     setTrendData({});
     return;
   }
 
-  const fetchTrendData = async () => {
-    const trendResults = {};
+  // pobieranie danych dla drużyn
+  const fetchAll = async () => {
+    const newTrendData = {};
 
     for (const team of trendTeams) {
-      const teamData = [];
+      newTrendData[team] = [];
 
       for (const season of seasons) {
         try {
-          const res = await fetch(`/team-stats/?season=${encodeURIComponent(season)}&team=${encodeURIComponent(team)}`);
-          const json = await res.json();
-          
-          const value = json[trendStat];
-          teamData.push({ x: season, y: typeof value === "number" ? value : null });
-          } catch (err) {
-            teamData.push({ x: season, y: null });
+          const res = await fetch(
+            `/team-stats/?season=${encodeURIComponent(season)}&team=${encodeURIComponent(team)}`
+          );
+
+          if (res.ok) {
+            const data = await res.json();
+            const y = data?.[trendStat] ?? null;
+            newTrendData[team].push({ x: season, y });
+          } else {
+            newTrendData[team].push({ x: season, y: null }); // brak danych
           }
+        } catch (e) {
+          newTrendData[team].push({ x: season, y: null });
         }
-
-        trendResults[team] = teamData;
       }
+    }
 
-      setTrendData(trendResults);
+      setTrendData(newTrendData);
     };
 
-    fetchTrendData();
-  }, [trendTeams, trendStat, seasons, mode]);
+    fetchAll();
+  }, [mode, trendTeams, trendStat, seasons]);
 
   return (
     <div className="p-4 space-y-6">
@@ -174,64 +238,41 @@ const Stats = () => {
               ))}
             </select>
           </div>
-
-          <div className="flex space-x-4">
-            {[0, 1].map((idx) => (
-              <div key={idx} className="flex-1">
-                <label className="block mb-1 font-semibold">
-                  Wybierz drużynę {idx + 1}:
-                </label>
-                <select
-                  value={selectedTeams[idx]}
-                  onChange={(e) => {
-                    const updated = [...selectedTeams];
-                    updated[idx] = e.target.value;
-                    setSelectedTeams(updated);
-                  }}
-                  className="border p-2 rounded w-full"
-                  disabled={!selectedSeason}
-                >
-                  <option value="">-- wybierz drużynę --</option>
-                  {teams.map((team) => (
-                    <option key={team} value={team}>
-                      {team}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            ))}
+          <div>
+            <label className="block mb-1 font-semibold">Wybierz drużyny:</label>
+            <Select
+              isMulti
+              options={options}
+              value={options.filter((o) => selectedTeams.includes(o.value))}
+              onChange={(selected) => {
+                const values = selected ? selected.map((s) => s.value) : [];
+                setSelectedTeams(values);
+              }}
+              isDisabled={!selectedSeason}
+              placeholder="Wybierz drużyny..."
+            />
           </div>
 
           {/* lista statystyk */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-            {(data[0]
-              ? Object.keys(data[0]).filter(
-                  (key) =>
-                    typeof data[0][key] === "number" || key.includes("procent")
-                )
-              : []
-            ).map((stat) => (
-              <label key={stat} className="flex items-center space-x-2">
-                <input
-                  type="checkbox"
-                  checked={selectedStats.includes(stat)}
-                  onChange={(e) => {
-                    if (e.target.checked) {
-                      setSelectedStats([...selectedStats, stat]);
-                    } else {
-                      setSelectedStats(selectedStats.filter((s) => s !== stat));
-                    }
-                  }}
-                />
-                <span>{stat}</span>
-              </label>
-            ))}
+          <div>
+            <label className="block mb-1 font-semibold">Wybierz statystyki:</label>
+            <Select
+              isMulti
+              options={statOptions}
+              value={statOptions.filter((o) => selectedStats.includes(o.value))}
+              onChange={(selected) => {
+                const values = selected ? selected.map((s) => s.value) : [];
+                setSelectedStats(values);
+              }}
+              placeholder="Wybierz statystyki..."
+              isDisabled={statOptions.length === 0}
+            />
           </div>
         </div>
       )}
 
       {/* Tabela H2H */}
-      {mode === "h2h" && data.length === 2 && (
+      {mode === "h2h" && data.length > 0 && (
         <div className="overflow-auto mt-4">
           <table className="w-full border-collapse border border-gray-300">
             <thead>
@@ -269,36 +310,25 @@ const Stats = () => {
           {/* Wybór drużyn */}
           <div>
             <label className="block mb-1 font-semibold">Wybierz drużyny:</label>
-            <select
-              multiple
-              className="border p-2 rounded w-full"
-              value={trendTeams}
-              onChange={(e) =>
-                setTrendTeams(Array.from(e.target.selectedOptions, (o) => o.value))
-              }
-            >
-              {teams.map((team) => (
-                <option key={team} value={team}>
-                  {team}
-                </option>
-              ))}
-            </select>
+            <Select
+              isMulti
+              options={options}
+              value={options.filter(o => trendTeams.includes(o.value))}
+              onChange={(selected) => setTrendTeams(selected.map(s => s.value))}
+            />
           </div>
 
           {/* wybór statystyki */}
           <div>
             <label className="block mb-1 font-semibold">Statystyka:</label>
-            <select
-              className="border p-2 rounded w-full"
-              value={trendStat}
-              onChange={(e) => setTrendStat(e.target.value)}
-            >
-              {DEFAULT_STATS.map((stat) => (
-                <option key={stat} value={stat}>
-                  {stat}
-                </option>
-              ))}
-            </select>
+            <Select
+              options={trendStatOptions} 
+              value={trendStatOptions.find((o) => o.value === trendStat)}
+              onChange={(selected) => setTrendStat(selected ? selected.value : DEFAULT_STATS[0])}
+              isClearable={false}
+              isDisabled={trendStatOptions.length === 0}
+              placeholder="Wybierz statystykę..."
+            />
           </div>
 
           {/* wykres liniowy */}
