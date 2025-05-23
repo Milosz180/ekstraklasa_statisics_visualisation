@@ -513,69 +513,108 @@ const Stats = () => {
 
           {Object.keys(customData).length > 0 && (
             <div className="mt-6">
-              {customChartType === "bar" || customChartType === "column" ? (
-                <Bar
-                  data={{
-                    labels: Object.keys(customData),
-                    datasets: [
-                      {
-                        label: customStat,
-                        data: Object.values(customData),
-                        backgroundColor: Object.keys(customData).map((_, i) => `hsl(${(i * 360) / Object.keys(customData).length}, 70%, 50%)`),
-                      },
-                    ],
-                  }}
-                  options={{
-                    indexAxis: customChartType === "column" ? "y" : "x",
-                    responsive: true,
-                    plugins: {
-                      legend: { position: 'top' },
-                      datalabels: {
-                        color: '#fff',
-                        font: {
-                          weight: 'bold',
-                          size: 12,
-                        },
+            {customChartType === "bar" && (
+              <Bar
+                data={{
+                  labels: Object.keys(customData),
+                  datasets: [
+                    {
+                      label: customStat,
+                      data: Object.values(customData),
+                      backgroundColor: Object.keys(customData).map((_, i) =>
+                        `hsl(${(i * 360) / Object.keys(customData).length}, 70%, 50%)`
+                      ),
+                    },
+                  ],
+                }}
+                options={{
+                  indexAxis: "x",
+                  responsive: true,
+                  plugins: {
+                    legend: { display: false },
+                    datalabels: {
+                      color: '#fff',
+                      font: {
+                        weight: 'bold',
+                        size: 12,
                       },
                     },
-                  }}
-                />
-              ) : customChartType === "pie" ? (
-                <Pie
-                  data={{
-                    labels: Object.keys(customData),
-                    datasets: [
-                      {
-                        data: Object.values(customData),
-                        backgroundColor: Object.keys(customData).map((_, i) => `hsl(${(i * 360) / Object.keys(customData).length}, 70%, 50%)`),
-                      },
-                    ],
-                  }}
-                  options={{
-                    responsive: true,
-                    plugins: {
-                      legend: { position: 'top' },
-                      datalabels: {
-                        color: '#fff',
-                        formatter: (value, context) => {
-                          const total = context.chart.data.datasets[0].data.reduce(
-                            (acc, val) => acc + val,
-                            0
-                          );
-                          const percentage = ((value / total) * 100).toFixed(1);
-                          return `${value}\n(${percentage}%)`;
-                        },
-                        font: {
-                          weight: 'bold',
-                          size: 12,
-                        },
+                  },
+                }}
+                plugins={[ChartDataLabels]}
+              />
+            )}
+
+            {customChartType === "column" && (
+              <Bar
+                data={{
+                  labels: Object.keys(customData),
+                  datasets: [
+                    {
+                      label: customStat,
+                      data: Object.values(customData),
+                      backgroundColor: Object.keys(customData).map((_, i) =>
+                        `hsl(${(i * 360) / Object.keys(customData).length}, 70%, 50%)`
+                      ),
+                    },
+                  ],
+                }}
+                options={{
+                  indexAxis: "y",
+                  responsive: true,
+                  plugins: {
+                    legend: { display: false },
+                    datalabels: {
+                      color: '#fff',
+                      font: {
+                        weight: 'bold',
+                        size: 12,
                       },
                     },
-                  }}
-                  plugins={[ChartDataLabels]}
-                />
-              ) : null}
-            </div>
+                  },
+                }}
+                plugins={[ChartDataLabels]}
+              />
+            )}
+
+            {customChartType === "pie" && (
+              <Pie
+                data={{
+                  labels: Object.keys(customData),
+                  datasets: [
+                    {
+                      data: Object.values(customData),
+                      backgroundColor: Object.keys(customData).map((_, i) =>
+                        `hsl(${(i * 360) / Object.keys(customData).length}, 70%, 50%)`
+                      ),
+                    },
+                  ],
+                }}
+                options={{
+                  responsive: true,
+                  plugins: {
+                    legend: { position: 'top' },
+                    datalabels: {
+                      color: '#fff',
+                      formatter: (value, context) => {
+                        const total = context.chart.data.datasets[0].data.reduce(
+                          (acc, val) => acc + val,
+                          0
+                        );
+                        const percentage = ((value / total) * 100).toFixed(1);
+                        return `${value}\n(${percentage}%)`;
+                      },
+                      font: {
+                        weight: 'bold',
+                        size: 12,
+                      },
+                    },
+                  },
+                }}
+                plugins={[ChartDataLabels]}
+              />
+            )}
+          </div>
           )}
         </div>
       )}
