@@ -48,3 +48,11 @@ async def get_h2h(season: str, teams: list[str] = Query(...)):
     data = load_season_data(season)
     filtered = [team for team in data if team["klub"] in teams]
     return filtered
+
+@app.get("/team-stats/")
+async def get_team_stats(season: str, team: str):
+    data = load_season_data(season)
+    for entry in data:
+        if entry["klub"] == team:
+            return entry
+    raise HTTPException(status_code=404, detail=f"Drużyna {team} nie znaleziona w sezonie {season}")
