@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Select from "react-select";
-import { Line } from "react-chartjs-2";
+import { Line, Bar, Pie } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   LineElement,
@@ -9,9 +9,13 @@ import {
   LinearScale,
   Tooltip,
   Legend,
+  BarElement,
+  ArcElement
 } from "chart.js";
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 
-ChartJS.register(LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Legend);
+ChartJS.register(LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Legend, BarElement, ArcElement, ChartDataLabels);
+ChartJS.register(ChartDataLabels);
 
 const DEFAULT_STATS = [
   "punkty",
@@ -37,7 +41,13 @@ const Stats = () => {
   const [trendStat, setTrendStat] = useState("punkty");
   const [trendData, setTrendData] = useState({});
   const [trendStatOptions, setTrendStatOptions] = useState([]);
-  
+  // stany tryb: dowolne wykresy
+  const [customChartType, setCustomChartType] = useState("bar");
+  const [customSeason, setCustomSeason] = useState("");
+  const [customTeams, setCustomTeams] = useState([]);
+  const [customStat, setCustomStat] = useState("");
+  const [customData, setCustomData] = useState({});
+  const [customStatOptions, setCustomStatOptions] = useState([]);
   // opcja wyboru wielokrotnego na rozwijanych listach
   const options = teams.map((team) => ({ value: team, label: team }));
 
@@ -50,10 +60,7 @@ const Stats = () => {
       }
     });
   });
-  const statOptions = (data.length > 0
-    ? Array.from(allStatKeys)
-    : DEFAULT_STATS
-  ).map((stat) => ({ value: stat, label: stat }));
+  const statOptions = Array.from(allStatKeys).map((stat) => ({ value: stat, label: stat }));
 
   // pobieranie listy zespołów
   useEffect(() => {
@@ -67,6 +74,9 @@ const Stats = () => {
   useEffect(() => {
     if (seasons.length > 0 && !selectedSeason) {
       setSelectedSeason(seasons[0]);
+    }
+    if (seasons.length > 0 && !customSeason) {
+      setCustomSeason(seasons[0]);
     }
   }, [seasons]);
 
@@ -104,6 +114,14 @@ const Stats = () => {
       .catch(console.error);
   }, [selectedSeason]);
 
+  useEffect(() => {
+    if (!customSeason) return;
+    fetch(`/teams/?season=${encodeURIComponent(customSeason)}`)
+      .then((res) => res.json())
+      .then(setTeams)
+      .catch(console.error);
+  }, [customSeason]);
+
   // pobieranie danych H2H
   useEffect(() => {
     if (
@@ -126,6 +144,34 @@ const Stats = () => {
       .then(setData)
       .catch(console.error);
   }, [mode, selectedSeason, selectedTeams]);
+
+  useEffect(() => {
+    if (mode !== "custom") return;
+    if (!customSeason || customTeams.length === 0 || !customStat) {
+      setCustomData({});
+      return;
+    }
+
+    const fetchAll = async () => {
+      const newData = {};
+      for (const team of customTeams) {
+        try {
+          const res = await fetch(`/team-stats/?season=${encodeURIComponent(customSeason)}&team=${encodeURIComponent(team)}`);
+          if (res.ok) {
+            const data = await res.json();
+            newData[team] = data?.[customStat] ?? null;
+          } else {
+            newData[team] = null;
+          }
+        } catch {
+          newData[team] = null;
+        }
+      }
+      setCustomData(newData);
+    };
+
+    fetchAll();
+  }, [mode, customTeams, customSeason, customStat]);
 
   // Pomocnik h2h - pobieranie danych drużyn z tabeli
   const getTeamData = (team) => data.find((d) => d.klub === team);
@@ -160,6 +206,27 @@ const Stats = () => {
         setTrendStatOptions(DEFAULT_STATS.map(stat => ({ value: stat, label: stat })));
       });
   }, [mode, seasons, teams]);
+
+  useEffect(() => {
+    if (mode !== "custom" || !customSeason || customTeams.length === 0) return;
+
+    const fetchStats = async () => {
+      try {
+        const res = await fetch(`/team-stats/?season=${encodeURIComponent(customSeason)}&team=${encodeURIComponent(customTeams[0])}`);
+        if (!res.ok) return;
+        const data = await res.json();
+        const keys = Object.keys(data).filter(
+          (key) => typeof data[key] === "number" || key.includes("procent")
+        );
+        const options = keys.map((stat) => ({ value: stat, label: stat }));
+        setCustomStatOptions(options);
+      } catch (err) {
+        console.error("Błąd pobierania statystyk:", err);
+      }
+    };
+
+    fetchStats();
+  }, [mode, customSeason, customTeams]);
 
   useEffect(() => {
   if (mode !== "season-trend" || trendTeams.length === 0) {
@@ -199,26 +266,32 @@ const Stats = () => {
     fetchAll();
   }, [mode, trendTeams, trendStat, seasons]);
 
+  // funkcja do wartości % z sumy dla wykresu kołowego
+  const RADIAN = Math.PI / 180;
+
+  const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
+  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+  const x = cx + radius * Math.cos(-midAngle * RADIAN);
+  const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+    return (
+      <text x={x} y={y} fill="white" textAnchor="middle" dominantBaseline="central">
+        {(percent * 100).toFixed(0)}%
+      </text>
+      );
+  };
+
   return (
     <div className="p-4 space-y-6">
       {/* tryby do wyboru: H2H, sezon po sezonie i ......... */}
       <div className="flex space-x-4 mb-4">
         {/* h2h */}
-        <button
-          onClick={() => setMode("h2h")}
-          className={`btn ${mode === "h2h" ? "bg-blue-500 text-white" : ""}`}
-        >
-          Statystyki H2H
-        </button>
+        <button onClick={() => setMode("h2h")} className={`btn ${mode === "h2h" ? "bg-blue-500 text-white" : ""}`}>Statystyki H2H</button>
         {/* sezon po sezonie */}
-        <button
-          onClick={() => setMode("season-trend")}
-          className={`btn ${mode === "season-trend" ? "bg-blue-500 text-white" : ""}`}
-        >
-          Sezon po sezonie
-        </button>
+        <button onClick={() => setMode("season-trend")} className={`btn ${mode === "season-trend" ? "bg-blue-500 text-white" : ""}`}>Sezon po sezonie</button>
+        {/* dowolne wykresy */}
+        <button onClick={() => setMode("custom")} className={`btn ${mode === "custom" ? "bg-blue-500 text-white" : ""}`}>Dowolne wykresy</button>
       </div>
-
     {/* panel trybu - H2H */}
       {mode === "h2h" && (
         <div className="space-y-4">
@@ -351,6 +424,17 @@ const Stats = () => {
                     legend: {
                       position: "top",
                     },
+                    datalabels: {
+                      color: 'black',
+                      anchor: 'end',
+                      align: 'top',
+                      offset: -4,
+                      font: {
+                        size: 12,
+                        weight: 'normal',
+                      },
+                      formatter: (value) => value,
+                    },
                   },
                   scales: {
                     x: {
@@ -368,7 +452,129 @@ const Stats = () => {
                     },
                   },
                 }}
+                plugins={[ChartDataLabels]}
               />
+            </div>
+          )}
+        </div>
+      )}
+      {mode === "custom" && (
+        <div className="space-y-4">
+          <div>
+            <label className="block mb-1 font-semibold">Typ wykresu:</label>
+            <div className="flex space-x-4">
+              {[
+                { value: "bar", label: "Wykres słupkowy" },
+                { value: "column", label: "Wykres kolumnowy" },
+                { value: "pie", label: "Wykres kołowy" },
+              ].map((opt) => (
+                <label key={opt.value} className="flex items-center space-x-2">
+                  <input type="radio" name="chartType" value={opt.value} checked={customChartType === opt.value} onChange={() => setCustomChartType(opt.value)} />
+                  <span>{opt.label}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <label className="block mb-1 font-semibold">Wybierz sezon:</label>
+            <select value={customSeason} onChange={(e) => setCustomSeason(e.target.value)} className="border p-2 rounded">
+              <option value="">-- wybierz sezon --</option>
+              {seasons.map((season) => (
+                <option key={season} value={season}>{season}</option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label className="block mb-1 font-semibold">Wybierz drużyny:</label>
+            <Select
+              isMulti
+              options={options}
+              value={options.filter((o) => customTeams.includes(o.value))}
+              onChange={(selected) => {
+                const values = selected ? selected.map((s) => s.value) : [];
+                setCustomTeams(values);
+              }}
+              placeholder="Wybierz drużyny..."
+            />
+          </div>
+
+          <div>
+            <label className="block mb-1 font-semibold">Wybierz statystykę:</label>
+            <Select
+              options={customStatOptions}
+              value={customStatOptions.find((o) => o.value === customStat)}
+              onChange={(selected) => setCustomStat(selected ? selected.value : "")}
+              isClearable={false}
+              placeholder="Wybierz statystykę..."
+            />
+          </div>
+
+          {Object.keys(customData).length > 0 && (
+            <div className="mt-6">
+              {customChartType === "bar" || customChartType === "column" ? (
+                <Bar
+                  data={{
+                    labels: Object.keys(customData),
+                    datasets: [
+                      {
+                        label: customStat,
+                        data: Object.values(customData),
+                        backgroundColor: Object.keys(customData).map((_, i) => `hsl(${(i * 360) / Object.keys(customData).length}, 70%, 50%)`),
+                      },
+                    ],
+                  }}
+                  options={{
+                    indexAxis: customChartType === "column" ? "y" : "x",
+                    responsive: true,
+                    plugins: {
+                      legend: { position: 'top' },
+                      datalabels: {
+                        color: '#fff',
+                        font: {
+                          weight: 'bold',
+                          size: 12,
+                        },
+                      },
+                    },
+                  }}
+                />
+              ) : customChartType === "pie" ? (
+                <Pie
+                  data={{
+                    labels: Object.keys(customData),
+                    datasets: [
+                      {
+                        data: Object.values(customData),
+                        backgroundColor: Object.keys(customData).map((_, i) => `hsl(${(i * 360) / Object.keys(customData).length}, 70%, 50%)`),
+                      },
+                    ],
+                  }}
+                  options={{
+                    responsive: true,
+                    plugins: {
+                      legend: { position: 'top' },
+                      datalabels: {
+                        color: '#fff',
+                        formatter: (value, context) => {
+                          const total = context.chart.data.datasets[0].data.reduce(
+                            (acc, val) => acc + val,
+                            0
+                          );
+                          const percentage = ((value / total) * 100).toFixed(1);
+                          return `${value}\n(${percentage}%)`;
+                        },
+                        font: {
+                          weight: 'bold',
+                          size: 12,
+                        },
+                      },
+                    },
+                  }}
+                  plugins={[ChartDataLabels]}
+                />
+              ) : null}
             </div>
           )}
         </div>

@@ -5,6 +5,7 @@ react
 axios
 react-chartjs-2
 chart.js
+chartjs-plugin-datalabels
 fastapi
 uvicorn
 react-select
