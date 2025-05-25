@@ -1,79 +1,70 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, createContext } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
-import Stats from './pages/Stats';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import './App.css';
 
+// Kontekst logowania
+export const AuthContext = createContext();
+
 const App = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [user, setUser] = useState(localStorage.getItem('loggedUser') || null);
 
-  useEffect(() => {
-    const stored = localStorage.getItem('theme');
-    if (stored === 'dark') {
-      setDarkMode(true);
-      document.body.classList.add('dark');
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    const next = !darkMode;
-    setDarkMode(next);
-    document.body.classList.toggle('dark', next);
-    localStorage.setItem('theme', next ? 'dark' : 'light');
+  const logout = () => {
+    localStorage.removeItem('loggedUser');
+    setUser(null);
   };
 
   return (
-    <div className="container">
-      <header className="header">
-      <Link to="/" className="branding">
-        <img src="/logo_esv.png" alt="ESV Logo" className="logo" />
-        <span className="site-title">Ekstraklasa Statistics Visualisation</span>
-      </Link>
+    <AuthContext.Provider value={{ user, setUser }}>
+      <div className="container">
+        <header className="header">
+          <div className="branding">
+            <Link to="/">
+              <img src="/logo_esv.png" alt="ESV Logo" className="logo" />
+            </Link>
+            <span className="site-title">Ekstraklasa Statistics Visualisation</span>
+          </div>
+          <nav className="nav">
+            <ul>
+              <li><Link to="/">Strona Główna</Link></li>
+              <li><Link to="/about">O nas</Link></li>
+              <li><Link to="/contact">Kontakt</Link></li>
+              {!user && <li><Link to="/login">Zaloguj</Link></li>}
+              {!user && <li><Link to="/register">Zarejestruj</Link></li>}
+              {user && (
+                <>
+                  <li className="user-info">Zalogowany jako: <strong>{user}</strong></li>
+                  <li><button className="logout-btn" onClick={logout}>Wyloguj</button></li>
+                </>
+              )}
+            </ul>
+          </nav>
+        </header>
 
-        <nav className="nav">
-          <ul>
-            <li><Link to="/">Strona Główna</Link></li>
-            <li><Link to="/about">O nas</Link></li>
-            <li><Link to="/contact">Kontakt</Link></li>
-            <li><Link to="/login">Zaloguj</Link></li>
-            <li><Link to="/register">Zarejestruj</Link></li>
-            <li>
-              <button className="theme-toggle" onClick={toggleTheme}>
-                {darkMode ? '☀️' : '🌙'}
-              </button>
-            </li>
-          </ul>
-        </nav>
-      </header>
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
 
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/stats" element={<Stats />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </main>
-
-      <footer>
-        <p>
-          Statystyki wykorzystane za zgodą strony{' '}
-          <a href="https://www.ekstrastats.pl" target="_blank" rel="noreferrer">
-            www.ekstrastats.pl
-          </a>.
-        </p>
-      </footer>
-    </div>
+        <footer>
+          <p>
+            Statystyki wykorzystane za zgodą strony <a href="https://www.ekstrastats.pl" target="_blank" rel="noreferrer">www.ekstrastats.pl</a>.
+          </p>
+        </footer>
+      </div>
+    </AuthContext.Provider>
   );
 };
 
 export default App;
-

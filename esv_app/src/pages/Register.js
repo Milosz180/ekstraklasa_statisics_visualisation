@@ -22,7 +22,7 @@ const Register = () => {
       const response = await fetch('http://localhost:5050/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }), // 👈 tutaj poprawione
+        body: JSON.stringify({ email, password }),
       });
 
       const data = await response.json();
@@ -30,7 +30,7 @@ const Register = () => {
       if (!response.ok) {
         setError(data.error || 'Wystąpił błąd.');
       } else {
-        setSuccess(data.message || 'Rejestracja zakończona sukcesem!');
+        setSuccess('Rejestracja zakończona sukcesem!');
         setEmail('');
         setPassword('');
         setRepeatPassword('');
@@ -41,34 +41,16 @@ const Register = () => {
   };
 
   return (
-    <div className="form-container">
+    <div className="form-wrapper">
       <h2>Rejestracja</h2>
       <form onSubmit={handleRegister}>
-        <input
-          type="email"
-          placeholder="E-mail"
-          value={email}
-          required
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Hasło"
-          value={password}
-          required
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Powtórz hasło"
-          value={repeatPassword}
-          required
-          onChange={(e) => setRepeatPassword(e.target.value)}
-        />
+        <input type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <input type="password" placeholder="Hasło" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <input type="password" placeholder="Powtórz hasło" value={repeatPassword} onChange={(e) => setRepeatPassword(e.target.value)} required />
         <button type="submit">Zarejestruj</button>
-        {error && <p className="error">{error}</p>}
-        {success && <p className="success">{success}</p>}
       </form>
+      {error && <p className="error">{error}</p>}
+      {success && <p className="success">{success}</p>}
     </div>
   );
 };
