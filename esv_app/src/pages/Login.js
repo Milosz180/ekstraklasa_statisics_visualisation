@@ -1,52 +1,60 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { AuthContext } from '../AuthContext';
 import './Login.css';
 
 const Login = () => {
-  const [username, setUsername] = useState('');
+  const { login } = useContext(AuthContext);
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [message, setMessage] = useState('');
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setError('');
+    setMessage('');
 
-    const res = await fetch('http://localhost:5000/api/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, password })
-    });
+    try {
+      const response = await fetch('http://localhost:5050/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
 
-    const data = await res.json();
+      const data = await response.json();
 
-    if (res.ok) {
-      localStorage.setItem('token', data.token); // fake token
-      alert('Zalogowano!');
-    } else {
-      setError(data.message || 'Błąd logowania');
+      if (!response.ok) {
+        setMessage(data.error || 'Błąd logowania.');
+      } else {
+        login(email); // <- zapisz do contextu
+        setMessage('Zalogowano pomyślnie!');
+      }
+    } catch (err) {
+      setMessage('Błąd połączenia z serwerem.');
     }
   };
 
   return (
-    <div className="login-container">
-      <h2>Logowanie</h2>
-      <form onSubmit={handleLogin}>
-        <input
-          type="text"
-          placeholder="Nazwa użytkownika"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Hasło"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <button type="submit">Zaloguj</button>
-        {error && <p className="error">{error}</p>}
-      </form>
+    <div className="auth-container">
+      <div className="auth-box">
+        <h2>Logowanie</h2>
+        <form onSubmit={handleLogin}>
+          <input
+            type="email"
+            placeholder="E-mail"
+            value={email}
+            required
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Hasło"
+            value={password}
+            required
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button type="submit">Zaloguj</button>
+        </form>
+        {message && <p className="auth-msg">{message}</p>}
+      </div>
     </div>
   );
 };

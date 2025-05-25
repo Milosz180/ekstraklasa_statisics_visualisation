@@ -1,25 +1,39 @@
-.register-container {
-  max-width: 400px;
-  margin: 40px auto;
-  padding: 2rem;
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1rem;
+}
+
+.auth-box {
   background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.06);
+  width: 100%;
+  max-width: 400px;
   text-align: center;
 }
 
-.register-container input {
+.auth-box h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.auth-box input {
   display: block;
   width: 100%;
-  margin: 1rem 0;
   padding: 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
   border-radius: 8px;
   border: 1px solid #ccc;
 }
 
-.register-container button {
-  padding: 0.75rem 2rem;
-  background: #16a34a;
+.auth-box button {
+  width: 100%;
+  padding: 0.75rem;
+  background: #1d4ed8;
   color: white;
   border: none;
   border-radius: 8px;
@@ -27,12 +41,12 @@
   cursor: pointer;
 }
 
-.register-container .error {
-  color: red;
-  margin-top: 1rem;
+.auth-box button:hover {
+  background: #2563eb;
 }
 
-.register-container .success {
-  color: green;
+.auth-msg {
   margin-top: 1rem;
+  font-weight: 500;
+  color: #dc2626;
 }

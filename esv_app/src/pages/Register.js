@@ -2,69 +2,72 @@ import React, { useState } from 'react';
 import './Register.css';
 
 const Register = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirm, setConfirm] = useState('');
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState(false);
+  const [repeatPassword, setRepeatPassword] = useState('');
+  const [message, setMessage] = useState('');
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    setError('');
-    setSuccess(false);
+    setMessage('');
 
-    if (password !== confirm) {
-      setError('Hasła nie są takie same.');
+    if (password !== repeatPassword) {
+      setMessage('Hasła nie są takie same.');
       return;
     }
 
-    const res = await fetch('http://localhost:5000/api/register', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, password })
-    });
+    try {
+      const response = await fetch('http://localhost:5050/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
 
-    const data = await res.json();
+      const data = await response.json();
 
-    if (res.ok) {
-      setSuccess(true);
-      setUsername('');
-      setPassword('');
-      setConfirm('');
-    } else {
-      setError(data.message || 'Błąd rejestracji');
+      if (!response.ok) {
+        setMessage(data.error || 'Błąd rejestracji.');
+      } else {
+        setMessage('Rejestracja zakończona sukcesem!');
+        setEmail('');
+        setPassword('');
+        setRepeatPassword('');
+      }
+    } catch (err) {
+      setMessage('Błąd połączenia z serwerem.');
     }
   };
 
   return (
-    <div className="register-container">
-      <h2>Rejestracja</h2>
-      <form onSubmit={handleRegister}>
-        <input
-          type="text"
-          placeholder="Nazwa użytkownika"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Hasło"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Powtórz hasło"
-          value={confirm}
-          onChange={(e) => setConfirm(e.target.value)}
-          required
-        />
-        <button type="submit">Zarejestruj</button>
-        {error && <p className="error">{error}</p>}
-        {success && <p className="success">Rejestracja zakończona sukcesem!</p>}
-      </form>
+    <div className="auth-container">
+      <div className="auth-box">
+        <h2>Rejestracja</h2>
+        <form onSubmit={handleRegister}>
+          <input
+            type="email"
+            placeholder="E-mail"
+            value={email}
+            required
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Hasło"
+            value={password}
+            required
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Powtórz hasło"
+            value={repeatPassword}
+            required
+            onChange={(e) => setRepeatPassword(e.target.value)}
+          />
+          <button type="submit">Zarejestruj</button>
+        </form>
+        {message && <p className="auth-msg">{message}</p>}
+      </div>
     </div>
   );
 };
