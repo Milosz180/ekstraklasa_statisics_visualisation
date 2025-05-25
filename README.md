@@ -6,4 +6,4 @@ pip install -r requirements.txt
 npm install --prefix ./esv_app
 
 pip install fastapi uvicorn psycopg[binary] asyncpg sqlalchemy passlib[bcrypt] python-jose or pip install "psycopg[binary]" "passlib[bcrypt]" fastapi uvicorn asyncpg sqlalchemy python-jose
- 
+ npm install express cors
