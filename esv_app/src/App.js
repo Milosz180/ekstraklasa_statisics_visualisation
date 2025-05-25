@@ -1,16 +1,42 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
+import Stats from './pages/Stats';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import { AuthContext } from './AuthContext';
 import './App.css';
 
 const App = () => {
-  const { user, logout } = useContext(AuthContext);
+  const [darkMode, setDarkMode] = useState(false);
+  const [user, setUser] = useState(localStorage.getItem('user'));
+
+  useEffect(() => {
+    const stored = localStorage.getItem('theme');
+    if (stored === 'dark') {
+      setDarkMode(true);
+      document.body.classList.add('dark');
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const next = !darkMode;
+    setDarkMode(next);
+    document.body.classList.toggle('dark', next);
+    localStorage.setItem('theme', next ? 'dark' : 'light');
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    setUser(null);
+  };
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) setUser(storedUser);
+  }, []);
 
   return (
     <div className="container">
@@ -19,6 +45,7 @@ const App = () => {
           <img src="/logo_esv.png" alt="ESV Logo" className="logo" />
           <span className="site-title">Ekstraklasa Statistics Visualisation</span>
         </Link>
+
         <nav className="nav">
           <ul>
             <li><Link to="/">Strona Główna</Link></li>
@@ -27,7 +54,7 @@ const App = () => {
             {user ? (
               <>
                 <li className="user-info">Zalogowany jako: <strong>{user}</strong></li>
-                <li><button onClick={logout} className="logout-btn">Wyloguj</button></li>
+                <li><button className="logout-btn" onClick={handleLogout}>Wyloguj</button></li>
               </>
             ) : (
               <>
@@ -35,6 +62,11 @@ const App = () => {
                 <li><Link to="/register">Zarejestruj</Link></li>
               </>
             )}
+            <li>
+              <button className="theme-toggle" onClick={toggleTheme}>
+                {darkMode ? '☀️' : '🌙'}
+              </button>
+            </li>
           </ul>
         </nav>
       </header>
@@ -44,7 +76,8 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/stats" element={<Stats />} />
+          <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/register" element={<Register />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
@@ -53,7 +86,9 @@ const App = () => {
       <footer>
         <p>
           Statystyki wykorzystane za zgodą strony{' '}
-          <a href="https://www.ekstrastats.pl" target="_blank" rel="noreferrer">www.ekstrastats.pl</a>.
+          <a href="https://www.ekstrastats.pl" target="_blank" rel="noreferrer">
+            www.ekstrastats.pl
+          </a>.
         </p>
       </footer>
     </div>
