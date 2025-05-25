@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { AuthContext } from '../AuthContext';
 import './Login.css';
 
 const Login = () => {
+  const { login } = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
-  const [loggedInUser, setLoggedInUser] = useState('');
+  const [message, setMessage] = useState('');
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setError('');
-    setSuccess('');
+    setMessage('');
 
     try {
       const response = await fetch('http://localhost:5050/api/login', {
@@ -23,32 +22,39 @@ const Login = () => {
       const data = await response.json();
 
       if (!response.ok) {
-        setError(data.error || 'Błędne dane logowania.');
+        setMessage(data.error || 'Błąd logowania.');
       } else {
-        setSuccess('Zalogowano pomyślnie!');
-        setLoggedInUser(email);
-        localStorage.setItem('loggedUser', email);
+        login(email); // <- zapisz do contextu
+        setMessage('Zalogowano pomyślnie!');
       }
     } catch (err) {
-      setError('Błąd połączenia z serwerem.');
+      setMessage('Błąd połączenia z serwerem.');
     }
   };
 
   return (
-    <div className="form-wrapper">
-      <h2>Logowanie</h2>
-      <form onSubmit={handleLogin}>
-        <input type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        <input type="password" placeholder="Hasło" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <button type="submit">Zaloguj</button>
-      </form>
-      {error && <p className="error">{error}</p>}
-      {success && (
-        <>
-          <p className="success">{success}</p>
-          <p className="user-info">Zalogowany jako: <strong>{loggedInUser}</strong></p>
-        </>
-      )}
+    <div className="auth-container">
+      <div className="auth-box">
+        <h2>Logowanie</h2>
+        <form onSubmit={handleLogin}>
+          <input
+            type="email"
+            placeholder="E-mail"
+            value={email}
+            required
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Hasło"
+            value={password}
+            required
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button type="submit">Zaloguj</button>
+        </form>
+        {message && <p className="auth-msg">{message}</p>}
+      </div>
     </div>
   );
 };

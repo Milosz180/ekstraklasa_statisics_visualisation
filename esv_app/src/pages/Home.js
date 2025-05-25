@@ -28,7 +28,7 @@ const Home = () => {
       </div>
 
       {/* NOWA SEKCJA */}
-      <section className="stats-section">
+      <section className="stats">
         <div className="stat-box">
           <h3>⚽ 16</h3>
           <p>Drużyn</p>

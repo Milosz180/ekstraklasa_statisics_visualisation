@@ -5,16 +5,14 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const [message, setMessage] = useState('');
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    setError('');
-    setSuccess('');
+    setMessage('');
 
     if (password !== repeatPassword) {
-      setError('Hasła nie są takie same.');
+      setMessage('Hasła nie są takie same.');
       return;
     }
 
@@ -28,29 +26,48 @@ const Register = () => {
       const data = await response.json();
 
       if (!response.ok) {
-        setError(data.error || 'Wystąpił błąd.');
+        setMessage(data.error || 'Błąd rejestracji.');
       } else {
-        setSuccess('Rejestracja zakończona sukcesem!');
+        setMessage('Rejestracja zakończona sukcesem!');
         setEmail('');
         setPassword('');
         setRepeatPassword('');
       }
     } catch (err) {
-      setError('Błąd połączenia z serwerem.');
+      setMessage('Błąd połączenia z serwerem.');
     }
   };
 
   return (
-    <div className="form-wrapper">
-      <h2>Rejestracja</h2>
-      <form onSubmit={handleRegister}>
-        <input type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        <input type="password" placeholder="Hasło" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <input type="password" placeholder="Powtórz hasło" value={repeatPassword} onChange={(e) => setRepeatPassword(e.target.value)} required />
-        <button type="submit">Zarejestruj</button>
-      </form>
-      {error && <p className="error">{error}</p>}
-      {success && <p className="success">{success}</p>}
+    <div className="auth-container">
+      <div className="auth-box">
+        <h2>Rejestracja</h2>
+        <form onSubmit={handleRegister}>
+          <input
+            type="email"
+            placeholder="E-mail"
+            value={email}
+            required
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Hasło"
+            value={password}
+            required
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Powtórz hasło"
+            value={repeatPassword}
+            required
+            onChange={(e) => setRepeatPassword(e.target.value)}
+          />
+          <button type="submit">Zarejestruj</button>
+        </form>
+        {message && <p className="auth-msg">{message}</p>}
+      </div>
     </div>
   );
 };
