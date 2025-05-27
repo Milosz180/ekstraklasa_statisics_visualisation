@@ -62,6 +62,85 @@ const Stats = () => {
   const [customStatOptions, setCustomStatOptions] = useState([]);
   // opcja wyboru wielokrotnego na rozwijanych listach
   const options = teams.map((team) => ({ value: team, label: team }));
+      // tłumaczenie statystyk
+    const statTranslations = {
+      klub: "Klub",
+      pozycja: "Pozycja",
+      mecze: "Mecze",
+      punkty: "Punkty",
+      zwyciestwa: "Zwycięstwa",
+      remisy: "Remisy",
+      porazki: "Porażki",
+      bramki_zdobyte: "Bramki zdobyte",
+      bramki_stracone: "Bramki stracone",
+      bilans_bramkowy: "Bilans bramkowy",
+      srednia_pkt: "Średnia punktów",
+      srednia_bramki_zdobyte: "Średnia bramek zdobytych",
+      srednia_bramki_stracone: "Średnia bramek straconych",
+      skrot: "Skrót",
+      srednie_posiadanie_pilki: "Średnie posiadanie piłki",
+      srednia_strzaly: "Średnia strzałów",
+      srednia_strzaly_celne: "Średnia strzałów celnych",
+      srednia_strzaly_niecelne: "Średnia strzałów niecelnych",
+      srednia_strzaly_zablokowane: "Średnia strzałów zablokowanych",
+      procent_strzaly_celne: "Procent strzałów celnych",
+      procent_bramki_strzaly: "Procent goli ze strzałów",
+      srednia_rzuty_rozne: "Średnia rzutów rożnych",
+      srednia_spalone: "Średnia spalonych",
+      srednia_interwencje_bramkarza: "Średnia interwencji bramkarza",
+      srednia_fauli: "Średnia fauli",
+      srednia_zolte_kartki: "Średnia żółtych kartek",
+      srednia_czerwone_kartki: "Średnia czerwonych kartek",
+      zolte_kartki: "Żółte kartki",
+      czerwone_kartki: "Czerwone kartki",
+      czerwone_kartki_bezposrednie: "Bezpośrednie czerwone kartki",
+      slupki_i_poprzeczki: "Słupki i poprzeczki",
+      slupki_i_poprzeczki_przeciw: "Słupki i poprzeczki (przeciw)",
+      procent_goli_polakow: "Procent goli Polaków",
+      faule: "Faule",
+      faulowani: "Faulowani",
+      spalone: "Spalone",
+      spalone_przeciw: "Spalone (przeciw)",
+      liczba_minut_mlodziezowcy: "Liczba minut młodzieżowców",
+      procent_liczby_minut_mlodziezowcy: "Procent minut młodzieżowców",
+      zawodnicy: "Liczba zawodników",
+      zawodnicy_mlodziezowcy: "Liczba młodzieżowców",
+      liczba_goli_mlodziezowcy: "Gole młodzieżowców",
+      procent_liczby_goli_mlodziezowcy: "Procent goli młodzieżowców",
+      liczba_minut_obcokrajowcy: "Minuty obcokrajowców",
+      procent_liczby_minut_obcokrajowcy: "Procent minut obcokrajowców",
+      zawodnicy_obcokrajowcy: "Liczba obcokrajowców",
+      liczba_goli_obcokrajowcy: "Gole obcokrajowców",
+      procent_liczby_goli_obcokrajowcy: "Procent goli obcokrajowców",
+      srednia_goli_w_meczach_z_udzialem_druzyny: "Średnia goli w meczach z udziałem drużyny",
+      laczna_frekwencja_mecze_domowe: "Łączna frekwencja (dom)",
+      srednia_frekwencja_mecze_domowe: "Średnia frekwencja (dom)",
+      laczna_frekwencja_mecze_wyjazdowe: "Łączna frekwencja (wyjazd)",
+      srednia_frekwencja_mecze_wyjazdowe: "Średnia frekwencja (wyjazd)",
+      dla_xG: "xG zdobyte",
+      przeciw_xG: "xG stracone",
+      bilans_przewidywanych_goli_xG: "Bilans xG",
+      przewidywane_punkty_xG: "xP (przewidywane punkty)",
+      bilans_przewidywanych_punktow_xG: "Bilans xP",
+      gole_karny: "Gole z karnych",
+      gole_rozny: "Gole z rzutów rożnych",
+      gole_wolny: "Gole z rzutów wolnych",
+      gole_po_sfg: "Gole po stałych fragmentach",
+      procent_goli_po_sfg: "Procent goli po SFG",
+      gole_z_gry: "Gole z gry",
+      procent_goli_z_gry: "Procent goli z gry",
+      gole_lewa_noga: "Gole lewą nogą",
+      gole_prawa_noga: "Gole prawą nogą",
+      gole_glowka: "Gole głową",
+      gole_inna_czesc_ciala: "Gole inną częścią ciała",
+      liczba_stworzonych_okazji: "Stworzone okazje",
+      liczba_stworzonych_okazji_przeciw: "Okazje stworzone (przeciw)",
+      procent_wykorzystanych_stworzonych_okazji: "Skuteczność okazji",
+      procent_wykorzystanych_stworzonych_okazji_przeciw: "Skuteczność okazji (przeciw)",
+      srednia_wieku_wyjsciowych_jedenastek: "Średnia wieku jedenastki",
+      srednia_wzrostu_wyjsciowych_jedenastek: "Średni wzrost jedenastki",
+      sezon: "Sezon"
+    };
 
   // opcja statystyk na podstawie danych
   const allStatKeys = new Set();
@@ -72,7 +151,10 @@ const Stats = () => {
       }
     });
   });
-  const statOptions = Array.from(allStatKeys).map((stat) => ({ value: stat, label: stat }));
+  const statOptions = Array.from(allStatKeys).map((stat) => ({
+    value: stat,
+    label: statTranslations[stat] || stat
+  }));
 
   // pobieranie listy zespołów
   useEffect(() => {
@@ -96,8 +178,6 @@ const Stats = () => {
     const images = {};
     Object.entries(teamsInfo).forEach(([team, info]) => {
       const img = new Image();
-      img.height = 25;
-      img.width = 25;
       img.src = info.logo;
       images[team] = img;
     });
@@ -266,7 +346,12 @@ const Stats = () => {
     const firstTeam = teams[0];
 
     if (!firstTeam) {
-      setTrendStatOptions(DEFAULT_STATS.map(stat => ({ value: stat, label: stat })));
+       setTrendStatOptions(
+        DEFAULT_STATS.map(stat => ({
+          value: stat,
+          label: statTranslations[stat] || stat
+        }))
+      );
       return;
     }
 
@@ -275,16 +360,31 @@ const Stats = () => {
       .then(data => {
         if (data && typeof data === "object") {
           const stats = Object.keys(data).filter(key => typeof data[key] === "number" || key.includes("procent"));
-          setTrendStatOptions(stats.map(stat => ({ value: stat, label: stat })));
+          setTrendStatOptions(
+            stats.map(stat => ({
+              value: stat,
+              label: statTranslations[stat] || stat
+            }))
+          );
           if (!stats.includes(trendStat)) {
             setTrendStat(stats[0] || DEFAULT_STATS[0]);
           }
         } else {
-          setTrendStatOptions(DEFAULT_STATS.map(stat => ({ value: stat, label: stat })));
+          setTrendStatOptions(
+            DEFAULT_STATS.map(stat => ({
+              value: stat,
+              label: statTranslations[stat] || stat
+            }))
+          );
         }
       })
       .catch(() => {
-        setTrendStatOptions(DEFAULT_STATS.map(stat => ({ value: stat, label: stat })));
+        setTrendStatOptions(
+          DEFAULT_STATS.map(stat => ({
+            value: stat,
+            label: statTranslations[stat] || stat
+          }))
+        );
       });
   }, [mode, seasons, teams]);
 
@@ -299,7 +399,10 @@ const Stats = () => {
         const keys = Object.keys(data).filter(
           (key) => typeof data[key] === "number" || key.includes("procent")
         );
-        const options = keys.map((stat) => ({ value: stat, label: stat }));
+        const options = keys.map((stat) => ({
+          value: stat,
+          label: statTranslations[stat] || stat
+        }));
         setCustomStatOptions(options);
       } catch (err) {
         console.error("Błąd pobierania statystyk:", err);
@@ -358,7 +461,10 @@ const Stats = () => {
         const keys = Object.keys(data).filter(
           (key) => typeof data[key] === "number" || key.includes("procent")
         );
-        const options = keys.map((stat) => ({ value: stat, label: stat }));
+        const options = keys.map((stat) => ({
+          value: stat,
+          label: statTranslations[stat] || stat
+        }));
         setScatterStatOptions(options);
         if (!options.some(o => o.value === scatterStatX)) {
           setScatterStatX(options[0]?.value || "");
@@ -400,6 +506,36 @@ const Stats = () => {
       };
       fetchScatterData();
     }, [mode, scatterSeason, scatterTeams, scatterStatX, scatterStatY]);
+
+    // logo w liście drużyn
+    const customOption = (props) => {
+      const { data, innerRef, innerProps } = props;
+      return (
+        <div
+          ref={innerRef}
+          {...innerProps}
+          style={{ display: 'flex', alignItems: 'center', padding: 8 }}
+        >
+          <img
+            src={teamsInfo[data.value]?.logo}
+            alt={data.label}
+            style={{ width: 24, height: 24, marginRight: 10, borderRadius: 4 }}
+          />
+          {data.label}
+        </div>
+      );
+    };
+
+    const customSingleValue = ({ data }) => (
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        <img
+          src={teamsInfo[data.value]?.logo}
+          alt={data.label}
+          style={{ width: 20, height: 20, marginRight: 8, borderRadius: 4 }}
+        />
+        {data.label}
+      </div>
+    );
 
   return (
     <div className="p-4 space-y-6">
@@ -446,6 +582,7 @@ const Stats = () => {
               }}
               isDisabled={!selectedSeason}
               placeholder="Wybierz drużyny..."
+              components={{ Option: customOption, MultiValueLabel: customSingleValue }}
             />
           </div>
 
@@ -485,24 +622,31 @@ const Stats = () => {
             {/* Tabela H2H */}
           {data.length > 0 && (
             <div className="overflow-auto mt-4">
-              <h2>TABELA H2H - Sezon: {selectedSeason}</h2>
+              <h2 className="text-lg font-bold mb-2">TABELA H2H - Sezon: {selectedSeason}</h2>
               <table className="w-full border-collapse border border-gray-300">
                 <thead>
                   <tr>
-                    <th className="border p-2">Statystyka</th>
+                    <th className="border p-2 text-center">Statystyka</th>
                     {sortedTeams.map((team, idx) => (
-                      <th key={idx} className="border p-2">{team}</th>
+                      <th key={idx} className="border p-2 text-center">
+                        <div className="text-sm font-semibold">{team}</div>
+                        <img
+                          src={teamsInfo[team]?.logo}
+                          alt={team}
+                          className="w-8 h-8 mx-auto mb-1"
+                        />
+                      </th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
                   {selectedStats.map((stat) => (
                     <tr key={stat}>
-                      <td className="border p-2 font-bold">{stat}</td>
+                      <td className="border p-2 font-bold">{statTranslations[stat] || stat}</td>
                       {sortedTeams.map((team, idx) => {
                         const record = getTeamData(team);
                         return (
-                          <td key={idx} className="border p-2">
+                          <td key={idx} className="border p-2 text-center">
                             {record ? record[stat] ?? "—" : "—"}
                           </td>
                         );
@@ -527,6 +671,8 @@ const Stats = () => {
               options={options}
               value={options.filter(o => trendTeams.includes(o.value))}
               onChange={(selected) => setTrendTeams(selected.map(s => s.value))}
+              placeholder="Wybierz drużyny..."
+              components={{ Option: customOption, MultiValueLabel: customSingleValue }}
             />
           </div>
 
@@ -568,7 +714,7 @@ const Stats = () => {
                     },
                     title: {
                       display: true,
-                      text: `Wykres liniowy - ${trendStat} - Sezon po sezonie`,
+                      text: `Wykres liniowy - ${statTranslations[trendStat]} - Sezon po sezonie`,
                       font: {
                         size: 18,
                         weight: 'bold',
@@ -641,6 +787,7 @@ const Stats = () => {
                 setScatterTeams(values);
               }}
               placeholder="Wybierz drużyny..."
+              components={{ Option: customOption, MultiValueLabel: customSingleValue }}
             />
           </div>
 
@@ -686,7 +833,7 @@ const Stats = () => {
                     legend: { display: false },
                     title: {
                       display: true,
-                      text: `Wykres zależności - ${scatterStatY} od ${scatterStatX} - Sezon: ${scatterSeason || "wszystkie"}`,
+                      text: `Wykres zależności - ${statTranslations[scatterStatY]} od ${statTranslations[scatterStatX]} - Sezon: ${scatterSeason || "wszystkie"}`,
                       font: {
                         size: 18,
                         weight: 'bold',
@@ -762,6 +909,7 @@ const Stats = () => {
                 setCustomTeams(values);
               }}
               placeholder="Wybierz drużyny..."
+              components={{ Option: customOption, MultiValueLabel: customSingleValue }}
             />
           </div>
 
@@ -819,7 +967,7 @@ const Stats = () => {
                     legend: { display: false },
                     title: {
                       display: true,
-                      text: `Wykres słupkowy - ${customStat} - Sezon: ${customSeason || "wszystkie"}`,
+                      text: `Wykres słupkowy - ${statTranslations[customStat]} - Sezon: ${customSeason || "wszystkie"}`,
                       font: {
                         size: 18,
                         weight: 'bold',
@@ -863,7 +1011,7 @@ const Stats = () => {
                     legend: { display: false },
                     title: {
                       display: true,
-                      text: `Wykres kolumnowy - ${customStat} - Sezon: ${customSeason || "wszystkie"}`,
+                      text: `Wykres kolumnowy - ${statTranslations[customStat]} - Sezon: ${customSeason || "wszystkie"}`,
                       font: {
                         size: 18,
                         weight: 'bold',
@@ -905,7 +1053,7 @@ const Stats = () => {
                     legend: { position: 'top' },
                     title: {
                       display: true,
-                      text: `Wykres kołowy - ${customStat} - Sezon: ${customSeason || "wszystkie"}`,
+                      text: `Wykres kołowy - ${statTranslations[customStat]} - Sezon: ${customSeason || "wszystkie"}`,
                       font: {
                         size: 18,
                         weight: 'bold',
