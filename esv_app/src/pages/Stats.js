@@ -235,7 +235,7 @@ const Stats = () => {
       .catch(console.error);
   }, [customSeason]);
 
-  // pobieranie danych H2H
+  // pobieranie danych dany sezon - H2H, scatter, custom
   useEffect(() => {
     if (
       mode !== "h2h" ||
@@ -568,6 +568,11 @@ const Stats = () => {
       fetchScatterData();
     }, [mode, scatterSeason, scatterTeams, scatterStatX, scatterStatY]);
 
+    const getSortedTeamOptions = (teams) =>
+      [...teams].sort((a, b) =>
+        a.label.localeCompare(b.label, "pl", { sensitivity: "base" })
+      );
+
     // logo w liście drużyn
     const customOption = (props) => {
       const { data, innerRef, innerProps } = props;
@@ -635,7 +640,7 @@ const Stats = () => {
             <label className="block mb-1 font-semibold">Wybierz drużyny:</label>
             <Select
               isMulti
-              options={options}
+              options={getSortedTeamOptions(options)}
               value={options.filter((o) => selectedTeams.includes(o.value))}
               onChange={(selected) => {
                 const values = selected ? selected.map((s) => s.value) : [];
@@ -652,7 +657,7 @@ const Stats = () => {
             <label className="block mb-1 font-semibold">Wybierz statystyki:</label>
             <Select
               isMulti
-              options={statOptions}
+              options={getSortedTeamOptions(statOptions)}
               value={statOptions.filter((o) => selectedStats.includes(o.value))}
               onChange={(selected) => {
                 const values = selected ? selected.map((s) => s.value) : [];
@@ -729,7 +734,7 @@ const Stats = () => {
             <label className="block mb-1 font-semibold">Wybierz drużyny:</label>
             <Select
               isMulti
-              options={allTeamOptions}
+              options={getSortedTeamOptions(allTeamOptions)}
               value={getSelectedOptions(allTeamOptions, trendTeams)}
               onChange={(selected) => {
                 const values = selected ? selected.map((s) => s.value) : [];
@@ -744,7 +749,7 @@ const Stats = () => {
           <div>
             <label className="block mb-1 font-semibold">Statystyka:</label>
             <Select
-              options={trendStatOptions} 
+              options={getSortedTeamOptions(trendStatOptions)} 
               value={trendStatOptions.find((o) => o.value === trendStat)}
               onChange={(selected) => setTrendStat(selected ? selected.value : DEFAULT_STATS[0])}
               isClearable={false}
@@ -810,7 +815,7 @@ const Stats = () => {
                     y: {
                       title: {
                         display: true,
-                        text: trendStat,
+                        text: statTranslations[trendStat],
                       },
                       beginAtZero: true,
                     },
@@ -844,7 +849,7 @@ const Stats = () => {
             <label className="block mb-1 font-semibold">Wybierz drużyny:</label>
             <Select
               isMulti
-              options={options}
+              options={getSortedTeamOptions(options)}
               value={options.filter((o) => scatterTeams.includes(o.value))}
               onChange={(selected) => {
                 const values = selected ? selected.map((s) => s.value) : [];
@@ -858,7 +863,7 @@ const Stats = () => {
           <div>
             <label className="block mb-1 font-semibold">Wybierz statystykę na oś X:</label>
             <Select
-              options={scatterStatOptions}
+              options={getSortedTeamOptions(scatterStatOptions)}
               value={scatterStatOptions.find((o) => o.value === scatterStatX)}
               onChange={(selected) => setScatterStatX(selected ? selected.value : "")}
               placeholder="Statystyka X..."
@@ -869,7 +874,7 @@ const Stats = () => {
           <div>
             <label className="block mb-1 font-semibold">Wybierz statystykę na oś Y:</label>
             <Select
-              options={scatterStatOptions}
+              options={getSortedTeamOptions(scatterStatOptions)}
               value={scatterStatOptions.find((o) => o.value === scatterStatY)}
               onChange={(selected) => setScatterStatY(selected ? selected.value : "")}
               placeholder="Statystyka Y..."
@@ -911,7 +916,7 @@ const Stats = () => {
                       callbacks: {
                         label: (context) => {
                           const point = context.raw;
-                          return `${point.label}: (${scatterStatX}: ${point.x}, ${scatterStatY}: ${point.y})`;
+                          return `${point.label}: (${statTranslations[scatterStatX]}: ${point.x}, ${statTranslations[scatterStatY]}: ${point.y})`;
                         },
                       },
                     },
@@ -923,8 +928,8 @@ const Stats = () => {
                     },
                   },
                   scales: {
-                    x: { title: { display: true, text: scatterStatX }, beginAtZero: true },
-                    y: { title: { display: true, text: scatterStatY }, beginAtZero: true },
+                    x: { title: { display: true, text: statTranslations[scatterStatX] }, beginAtZero: true },
+                    y: { title: { display: true, text: statTranslations[scatterStatY] }, beginAtZero: true },
                   },
                 }}
               />
@@ -966,7 +971,7 @@ const Stats = () => {
             <label className="block mb-1 font-semibold">Wybierz drużyny:</label>
             <Select
               isMulti
-              options={options}
+              options={getSortedTeamOptions(options)}
               value={options.filter((o) => customTeams.includes(o.value))}
               onChange={(selected) => {
                 const values = selected ? selected.map((s) => s.value) : [];
@@ -980,7 +985,7 @@ const Stats = () => {
           <div>
             <label className="block mb-1 font-semibold">Wybierz statystykę:</label>
             <Select
-              options={customStatOptions}
+              options={getSortedTeamOptions(customStatOptions)}
               value={customStatOptions.find((o) => o.value === customStat)}
               onChange={(selected) => setCustomStat(selected ? selected.value : "")}
               isClearable={false}
@@ -1016,7 +1021,7 @@ const Stats = () => {
                   labels: Object.keys(sortedCustomData),
                   datasets: [
                     {
-                      label: customStat,
+                      label: statTranslations[customStat],
                       data: Object.values(sortedCustomData),
                       backgroundColor: Object.keys(sortedCustomData).map(
                         (team) => teamsInfo[team]?.color || '#888'
@@ -1060,7 +1065,7 @@ const Stats = () => {
                   labels: Object.keys(sortedCustomData),
                   datasets: [
                     {
-                      label: customStat,
+                      label: statTranslations[customStat],
                       data: Object.values(sortedCustomData),
                       backgroundColor: Object.keys(sortedCustomData).map(
                         (team) => teamsInfo[team]?.color || '#888'
