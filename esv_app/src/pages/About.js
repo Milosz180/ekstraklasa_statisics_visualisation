@@ -14,6 +14,13 @@ const About = () => {
         Intuicyjnie, interaktywnie i tak, jak sami chcielibyśmy to kiedyś oglądać.
       </p>
       <p>
+        Podziękowania dla strony{' '}
+        <a href="https://www.ekstrastats.pl" target="_blank" rel="noreferrer">
+            www.ekstrastats.pl
+        </a>
+        {' '}za zgodę na wykorzystanie zebranych statystyk.
+      </p>
+      <p>
         Mamy nadzieję, że nasza aplikacja będzie równie przydatna dla Was, jak była ekscytująca dla nas podczas tworzenia!
       </p>
     </div>
