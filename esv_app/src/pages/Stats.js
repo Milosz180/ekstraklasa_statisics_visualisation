@@ -266,24 +266,21 @@ const Stats = () => {
     }
 
     const fetchAll = async () => {
-      const newData = {};
-      for (const team of scatterTeams) {
+      const fetches = scatterTeams.map(async (team) => {
         try {
           const res = await fetch(`/team-stats/?season=${encodeURIComponent(scatterSeason)}&team=${encodeURIComponent(team)}`);
           if (res.ok) {
             const data = await res.json();
-            newData[team] = {
-              x: data?.[scatterStatX] ?? null,
-              y: data?.[scatterStatY] ?? null,
-            };
-          } else {
-            newData[team] = { x: null, y: null };
+            return [team, { x: data?.[scatterStatX] ?? null, y: data?.[scatterStatY] ?? null }];
           }
+          return [team, { x: null, y: null }];
         } catch {
-          newData[team] = { x: null, y: null };
+          return [team, { x: null, y: null }];
         }
-      }
-      setScatterData(newData);
+      });
+
+      const results = await Promise.all(fetches);
+      setScatterData(Object.fromEntries(results));
     };
 
     fetchAll();
@@ -297,22 +294,22 @@ const Stats = () => {
     }
 
     const fetchAll = async () => {
-      const newData = {};
-      for (const team of customTeams) {
-        try {
-          const res = await fetch(`/team-stats/?season=${encodeURIComponent(customSeason)}&team=${encodeURIComponent(team)}`);
-          if (res.ok) {
-            const data = await res.json();
-            newData[team] = data?.[customStat] ?? null;
-          } else {
-            newData[team] = null;
-          }
-        } catch {
-          newData[team] = null;
+    const fetches = customTeams.map(async (team) => {
+      try {
+        const res = await fetch(`/team-stats/?season=${encodeURIComponent(customSeason)}&team=${encodeURIComponent(team)}`);
+        if (res.ok) {
+          const data = await res.json();
+          return [team, data?.[customStat] ?? null];
         }
+        return [team, null];
+      } catch {
+        return [team, null];
       }
-      setCustomData(newData);
-    };
+    });
+
+    const results = await Promise.all(fetches);
+    setCustomData(Object.fromEntries(results));
+  };
 
     fetchAll();
   }, [mode, customTeams, customSeason, customStat]);
@@ -453,38 +450,33 @@ const Stats = () => {
   }, [mode, customSeason, customTeams]);
 
   useEffect(() => {
-  if (mode !== "season-trend" || trendTeams.length === 0) {
-    setTrendData({});
-    return;
-  }
-
-  // pobieranie danych dla drużyn
-  const fetchAll = async () => {
-    const newTrendData = {};
-
-    for (const team of trendTeams) {
-      newTrendData[team] = [];
-
-      for (const season of seasons) {
-        try {
-          const res = await fetch(
-            `/team-stats/?season=${encodeURIComponent(season)}&team=${encodeURIComponent(team)}`
-          );
-
-          if (res.ok) {
-            const data = await res.json();
-            const y = data?.[trendStat] ?? null;
-            newTrendData[team].push({ x: season, y });
-          } else {
-            newTrendData[team].push({ x: season, y: null }); // brak danych
-          }
-        } catch (e) {
-          newTrendData[team].push({ x: season, y: null });
-        }
-      }
+    if (mode !== "season-trend") return;
+    if (trendTeams.length === 0 || seasons.length === 0 || !trendStat) {
+      setTrendData({});
+      return;
     }
 
-      setTrendData(newTrendData);
+    const fetchAll = async () => {
+      const fetches = trendTeams.map(async (team) => {
+        const seasonFetches = seasons.map(async (season) => {
+          try {
+            const res = await fetch(`/team-stats/?season=${encodeURIComponent(season)}&team=${encodeURIComponent(team)}`);
+            if (res.ok) {
+              const data = await res.json();
+              return { x: season, y: data?.[trendStat] ?? null };
+            }
+            return { x: season, y: null };
+          } catch {
+            return { x: season, y: null };
+          }
+        });
+
+        const results = await Promise.all(seasonFetches);
+        return [team, results];
+      });
+
+      const allResults = await Promise.all(fetches);
+      setTrendData(Object.fromEntries(allResults));
     };
 
     fetchAll();
@@ -817,7 +809,13 @@ const Stats = () => {
                         display: true,
                         text: statTranslations[trendStat],
                       },
-                      beginAtZero: true,
+                      beginAtZero: false,
+                      reverse: trendStat === 'pozycja',
+                      min: trendStat === 'pozycja' ? 1 : undefined,
+                      max: trendStat === 'pozycja' ? 18 : undefined,
+                      ticks: {
+                        stepSize: trendStat === 'position' ? 1 : undefined,
+                      },
                     },
                   },
                 }}
