@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -8,10 +8,11 @@ import Stats from './pages/Stats';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import './App.css';
+import { AuthContext } from './AuthContext';
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
-  const [user, setUser] = useState(localStorage.getItem('user'));
+  const { user, logout } = useContext(AuthContext);
 
   useEffect(() => {
     const stored = localStorage.getItem('theme');
@@ -27,16 +28,6 @@ const App = () => {
     document.body.classList.toggle('dark', next);
     localStorage.setItem('theme', next ? 'dark' : 'light');
   };
-
-  const handleLogout = () => {
-    localStorage.removeItem('user');
-    setUser(null);
-  };
-
-  useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) setUser(storedUser);
-  }, []);
 
   return (
     <div className="container">
@@ -54,7 +45,7 @@ const App = () => {
             {user ? (
               <>
                 <li className="user-info">Zalogowany jako: <strong>{user}</strong></li>
-                <li><button className="logout-btn" onClick={handleLogout}>Wyloguj</button></li>
+                <li><button className="logout-btn" onClick={logout}>Wyloguj</button></li>
               </>
             ) : (
               <>
@@ -77,7 +68,7 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/stats" element={<Stats />} />
-          <Route path="/login" element={<Login setUser={setUser} />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

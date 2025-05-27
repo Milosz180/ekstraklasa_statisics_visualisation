@@ -6,5 +6,13 @@
   {
     "email": "kamil1@gmail.com",
     "password": "$2b$10$Cf16/HiB9zZttfXDqN.NRe2wPOe3VoekGfhj.PEi6VzCgpOwMw6Xm"
+  },
+  {
+    "email": "kamil124@gmail.com",
+    "password": "$2b$10$woUgwQ847pG/30R9HdvFjOxphSwlCkZPU0w/7KFUVAIpMb0nQ.sWW"
+  },
+  {
+    "email": "kamil2@gmail.com",
+    "password": "$2b$10$yEoCl1fCH97Zwc7qJq7.yOzDCuBhKhCeCT5Ys2I1hrPcg86BPdgPS"
   }
 ]
