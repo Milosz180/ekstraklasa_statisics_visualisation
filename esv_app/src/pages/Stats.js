@@ -41,6 +41,7 @@ const Stats = () => {
   const [selectedStats, setSelectedStats] = useState(DEFAULT_STATS);
   const [sortOption, setSortOption] = useState(null); 
   const [teamLogos, setTeamLogos] = useState({});
+  const [allTeams, setAllTeams] = useState([]);
   // stany tryb: sezon po sezonie
   const [trendTeams, setTrendTeams] = useState([]);
   const [trendStat, setTrendStat] = useState("punkty");
@@ -219,6 +220,14 @@ const Stats = () => {
   }, [selectedSeason]);
 
   useEffect(() => {
+    if (!scatterSeason) return;
+    fetch(`/teams/?season=${encodeURIComponent(scatterSeason)}`)
+      .then((res) => res.json())
+      .then(setTeams)
+      .catch(console.error);
+  }, [scatterSeason]);
+
+  useEffect(() => {
     if (!customSeason) return;
     fetch(`/teams/?season=${encodeURIComponent(customSeason)}`)
       .then((res) => res.json())
@@ -248,6 +257,37 @@ const Stats = () => {
       .then(setData)
       .catch(console.error);
   }, [mode, selectedSeason, selectedTeams]);
+
+  useEffect(() => {
+    if (mode !== "scatter") return;
+    if (!scatterSeason || scatterTeams.length === 0 || !scatterStatX || !scatterStatY) {
+      setScatterData({});
+      return;
+    }
+
+    const fetchAll = async () => {
+      const newData = {};
+      for (const team of scatterTeams) {
+        try {
+          const res = await fetch(`/team-stats/?season=${encodeURIComponent(scatterSeason)}&team=${encodeURIComponent(team)}`);
+          if (res.ok) {
+            const data = await res.json();
+            newData[team] = {
+              x: data?.[scatterStatX] ?? null,
+              y: data?.[scatterStatY] ?? null,
+            };
+          } else {
+            newData[team] = { x: null, y: null };
+          }
+        } catch {
+          newData[team] = { x: null, y: null };
+        }
+      }
+      setScatterData(newData);
+    };
+
+    fetchAll();
+  }, [mode, scatterTeams, scatterSeason, scatterStatX, scatterStatY]);
 
   useEffect(() => {
     if (mode !== "custom") return;
@@ -449,6 +489,27 @@ const Stats = () => {
 
     fetchAll();
   }, [mode, trendTeams, trendStat, seasons]);
+
+  // generowanie wszystkich zespołów
+  useEffect(() => {
+    if (mode !== "season-trend" && mode !== "scatter") return;
+
+    fetch("/all-teams/")
+      .then((res) => res.json())
+      .then(setAllTeams)
+      .catch(console.error);
+  }, [mode]);
+
+  const allTeamOptions = allTeams.map((team) => ({ label: team, value: team }));
+
+  // wybór drużyn
+  const getSelectedOptions = (allOptions, selectedValues) => {
+    const existing = allOptions.filter((o) => selectedValues.includes(o.value));
+    const missing = selectedValues
+      .filter((val) => !allOptions.find((o) => o.value === val))
+      .map((val) => ({ label: val, value: val }));
+    return [...existing, ...missing];
+  };
 
   useEffect(() => {
     if (mode !== "scatter" || !scatterSeason || scatterTeams.length === 0) return;
@@ -668,9 +729,12 @@ const Stats = () => {
             <label className="block mb-1 font-semibold">Wybierz drużyny:</label>
             <Select
               isMulti
-              options={options}
-              value={options.filter(o => trendTeams.includes(o.value))}
-              onChange={(selected) => setTrendTeams(selected.map(s => s.value))}
+              options={allTeamOptions}
+              value={getSelectedOptions(allTeamOptions, trendTeams)}
+              onChange={(selected) => {
+                const values = selected ? selected.map((s) => s.value) : [];
+                setTrendTeams(values);
+              }}
               placeholder="Wybierz drużyny..."
               components={{ Option: customOption, MultiValueLabel: customSingleValue }}
             />

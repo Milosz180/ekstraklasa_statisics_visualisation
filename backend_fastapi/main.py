@@ -56,3 +56,13 @@ async def get_team_stats(season: str, team: str):
         if entry["klub"] == team:
             return entry
     raise HTTPException(status_code=404, detail=f"Drużyna {team} nie znaleziona w sezonie {season}")
+
+@app.get("/all-teams/")
+async def get_all_teams():
+    all_teams = set()
+    for file in DATA_DIR.glob("sezon-*.json"):
+        with open(file, encoding="utf-8") as f:
+            data = json.load(f)
+            for team in data:
+                all_teams.add(team["klub"])
+    return sorted(all_teams)
