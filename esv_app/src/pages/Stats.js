@@ -37,6 +37,7 @@ const Stats = () => {
   const [selectedSeason, setSelectedSeason] = useState("");
   const [selectedTeams, setSelectedTeams] = useState([]);
   const [selectedStats, setSelectedStats] = useState(DEFAULT_STATS);
+  const [sortOption, setSortOption] = useState(null);
   // stany tryb: sezon po sezonie
   const [trendTeams, setTrendTeams] = useState([]);
   const [trendStat, setTrendStat] = useState("punkty");
@@ -182,6 +183,52 @@ const Stats = () => {
 
   // Pomocnik h2h - pobieranie danych drużyn z tabeli
   const getTeamData = (team) => data.find((d) => d.klub === team);
+
+  // sortowanie
+  const sortedTeams = React.useMemo(() => {
+  if (!sortOption) return selectedTeams;
+
+    const teamsCopy = [...selectedTeams];
+    switch (sortOption.value) {
+      case "alpha-asc":
+        return teamsCopy.sort((a, b) => a.localeCompare(b));
+      case "alpha-desc":
+        return teamsCopy.sort((a, b) => b.localeCompare(a));
+      case "value-asc":
+        return teamsCopy.sort((a, b) => {
+          const aVal = getTeamData(a)?.[selectedStats[0]] ?? 0;
+          const bVal = getTeamData(b)?.[selectedStats[0]] ?? 0;
+          return aVal - bVal;
+        });
+      case "value-desc":
+        return teamsCopy.sort((a, b) => {
+          const aVal = getTeamData(a)?.[selectedStats[0]] ?? 0;
+          const bVal = getTeamData(b)?.[selectedStats[0]] ?? 0;
+          return bVal - aVal;
+        });
+      // dodaj inne przypadki, np. pozycja w tabeli
+      default:
+        return teamsCopy;
+    }
+  }, [sortOption, selectedTeams, selectedStats, data]);
+
+  const sortedCustomData = React.useMemo(() => {
+    if (!sortOption) return customData;
+
+    const entries = Object.entries(customData);
+    switch (sortOption.value) {
+      case "alpha-asc":
+        return Object.fromEntries(entries.sort((a, b) => a[0].localeCompare(b[0])));
+      case "alpha-desc":
+        return Object.fromEntries(entries.sort((a, b) => b[0].localeCompare(a[0])));
+      case "value-asc":
+        return Object.fromEntries(entries.sort((a, b) => a[1] - b[1]));
+      case "value-desc":
+        return Object.fromEntries(entries.sort((a, b) => b[1] - a[1]));
+      default:
+        return customData;
+    }
+  }, [sortOption, customData]);
 
   // pobieranie danych sezon po sezonie
   useEffect(() => {
@@ -359,6 +406,7 @@ const Stats = () => {
               ))}
             </select>
           </div>
+
           <div>
             <label className="block mb-1 font-semibold">Wybierz drużyny:</label>
             <Select
@@ -389,40 +437,55 @@ const Stats = () => {
               isDisabled={statOptions.length === 0}
             />
           </div>
-        </div>
-      )}
 
-      {/* Tabela H2H */}
-      {mode === "h2h" && data.length > 0 && (
-        <div className="overflow-auto mt-4">
-          <h2>TABELA H2H - Sezon: {selectedSeason || "wszystkie"}</h2>
-          <table className="w-full border-collapse border border-gray-300">
-            <thead>
-              <tr>
-                <th className="border p-2">Statystyka</th>
-                {selectedTeams.map((team, idx) => (
-                  <th key={idx} className="border p-2">
-                    {team}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {selectedStats.map((stat) => (
-                <tr key={stat}>
-                  <td className="border p-2 font-bold">{stat}</td>
-                  {selectedTeams.map((team, idx) => {
-                    const record = getTeamData(team);
-                    return (
-                      <td key={idx} className="border p-2">
-                        {record ? record[stat] ?? "—" : "—"}
-                      </td>
-                    );
-                  })}
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          {/* sortowanie */}
+          <div className="flex justify-end mb-2">
+            <label className="block mb-1 font-semibold">Wybierz sortowanie:</label>
+            <Select
+              options={[
+                { value: 'alpha-asc', label: 'Alfabetycznie A-Z' },
+                { value: 'alpha-desc', label: 'Alfabetycznie Z-A' },
+                { value: 'table-pos-asc', label: 'Pozycja w tabeli rosnąco' },
+                { value: 'table-pos-desc', label: 'Pozycja w tabeli malejąco' },
+              ]}
+              value={sortOption}
+              onChange={setSortOption}
+              className="w-60"
+              placeholder="Sortowanie..."
+            />
+          </div>
+
+            {/* Tabela H2H */}
+          {data.length > 0 && (
+            <div className="overflow-auto mt-4">
+              <h2>TABELA H2H - Sezon: {selectedSeason}</h2>
+              <table className="w-full border-collapse border border-gray-300">
+                <thead>
+                  <tr>
+                    <th className="border p-2">Statystyka</th>
+                    {sortedTeams.map((team, idx) => (
+                      <th key={idx} className="border p-2">{team}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {selectedStats.map((stat) => (
+                    <tr key={stat}>
+                      <td className="border p-2 font-bold">{stat}</td>
+                      {sortedTeams.map((team, idx) => {
+                        const record = getTeamData(team);
+                        return (
+                          <td key={idx} className="border p-2">
+                            {record ? record[stat] ?? "—" : "—"}
+                          </td>
+                        );
+                      })}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
       )}
 
@@ -592,7 +655,7 @@ const Stats = () => {
                     legend: { display: false },
                     title: {
                       display: true,
-                      text: `Wykres zależności - ${scatterStatY} od ${scatterStatX} - Sezon: ${customSeason || "wszystkie"}`,
+                      text: `Wykres zależności - ${scatterStatY} od ${scatterStatX} - Sezon: ${scatterSeason || "wszystkie"}`,
                       font: {
                         size: 18,
                         weight: 'bold',
@@ -624,7 +687,7 @@ const Stats = () => {
                 }}
               />
             ) : (
-              <p>Brak danych do wyświetlenia. Wybierz sezon, drużyny oraz statystyki.</p>
+              <p></p>
             )}
           </div>
         </div>
@@ -682,18 +745,38 @@ const Stats = () => {
             />
           </div>
 
+          {/* sortowanie */}
+          <div className="flex justify-end mb-2">
+            <label className="block mb-1 font-semibold">Wybierz sortowanie:</label>
+            <Select
+              options={[
+                { value: 'alpha-asc', label: 'Alfabetycznie A-Z' },
+                { value: 'alpha-desc', label: 'Alfabetycznie Z-A' },
+                { value: 'value-asc', label: 'Wartość rosnąco' },
+                { value: 'value-desc', label: 'Wartość malejąco' },
+                { value: 'table-pos-asc', label: 'Pozycja w tabeli rosnąco' },
+                { value: 'table-pos-desc', label: 'Pozycja w tabeli malejąco' },
+              ]}
+              value={sortOption}
+              onChange={setSortOption}
+              className="w-60"
+              placeholder="Sortowanie..."
+            />
+          </div>
+
           {Object.keys(customData).length > 0 && (
             <div className="mt-6">
+              
             {customChartType === "bar" && (
               <Bar
                 data={{
-                  labels: Object.keys(customData),
+                  labels: Object.keys(sortedCustomData),
                   datasets: [
                     {
                       label: customStat,
-                      data: Object.values(customData),
-                      backgroundColor: Object.keys(customData).map((_, i) =>
-                        `hsl(${(i * 360) / Object.keys(customData).length}, 70%, 50%)`
+                      data: Object.values(sortedCustomData),
+                      backgroundColor: Object.keys(sortedCustomData).map((_, i) =>
+                        `hsl(${(i * 360) / Object.keys(sortedCustomData).length}, 70%, 50%)`
                       ),
                     },
                   ],
@@ -731,13 +814,13 @@ const Stats = () => {
             {customChartType === "column" && (
               <Bar
                 data={{
-                  labels: Object.keys(customData),
+                  labels: Object.keys(sortedCustomData),
                   datasets: [
                     {
                       label: customStat,
-                      data: Object.values(customData),
-                      backgroundColor: Object.keys(customData).map((_, i) =>
-                        `hsl(${(i * 360) / Object.keys(customData).length}, 70%, 50%)`
+                      data: Object.values(sortedCustomData),
+                      backgroundColor: Object.keys(sortedCustomData).map((_, i) =>
+                        `hsl(${(i * 360) / Object.keys(sortedCustomData).length}, 70%, 50%)`
                       ),
                     },
                   ],
@@ -775,12 +858,12 @@ const Stats = () => {
             {customChartType === "pie" && (
               <Pie
                 data={{
-                  labels: Object.keys(customData),
+                  labels: Object.keys(sortedCustomData),
                   datasets: [
                     {
-                      data: Object.values(customData),
-                      backgroundColor: Object.keys(customData).map((_, i) =>
-                        `hsl(${(i * 360) / Object.keys(customData).length}, 70%, 50%)`
+                      data: Object.values(sortedCustomData),
+                      backgroundColor: Object.keys(sortedCustomData).map((_, i) =>
+                        `hsl(${(i * 360) / Object.keys(sortedCustomData).length}, 70%, 50%)`
                       ),
                     },
                   ],
