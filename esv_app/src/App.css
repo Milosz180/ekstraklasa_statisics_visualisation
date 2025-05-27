@@ -52,6 +52,7 @@ body {
   list-style: none;
   margin: 0;
   padding: 0;
+  flex-wrap: wrap;
 }
 
 .nav a {
@@ -134,4 +135,36 @@ body.dark .register-container {
   font-weight: 500;
   color: #333;
   padding-right: 8px;
+}
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .user-info {
+    padding-left: 0.5rem;
+  }
+
+  .logout-btn {
+    margin-left: 0.5rem;
+  }
+
+  .branding {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .site-title {
+    font-size: 1.2rem;
+  }
 }

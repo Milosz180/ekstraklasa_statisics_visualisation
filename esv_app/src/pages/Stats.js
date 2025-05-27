@@ -14,6 +14,7 @@ import {
   ArcElement,
   Title,
 } from "chart.js";
+import './Stats.css';
 import teamsInfo from '../teamsInfo';
 
 ChartJS.register(LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Legend, Title, BarElement, ArcElement, ChartDataLabels);
@@ -598,16 +599,13 @@ const Stats = () => {
   return (
     <div className="p-4 space-y-6">
       {/* tryby do wyboru: H2H, sezon po sezonie i ......... */}
-      <div className="flex space-x-4 mb-4">
-        {/* h2h */}
-        <button onClick={() => setMode("h2h")} className={`btn ${mode === "h2h" ? "bg-blue-500 text-white" : ""}`}>Statystyki H2H</button>
-        {/* sezon po sezonie */}
-        <button onClick={() => setMode("season-trend")} className={`btn ${mode === "season-trend" ? "bg-blue-500 text-white" : ""}`}>Sezon po sezonie</button>
-        {/* wykres zależności */}
-        <button onClick={() => setMode("scatter")} disabled={mode === "scatter"}>Wykres zależności</button>
-        {/* dowolne wykresy */}
-        <button onClick={() => setMode("custom")} className={`btn ${mode === "custom" ? "bg-blue-500 text-white" : ""}`}>Dowolne wykresy</button>
+      <div className="stats-buttons">
+        <button className={`btn ${mode === "h2h" ? "bg-blue-500" : ""}`} onClick={() => setMode("h2h")}>Statystyki H2H</button>
+        <button className={`btn ${mode === "season-trend" ? "bg-blue-500" : ""}`} onClick={() => setMode("season-trend")}>Sezon po sezonie</button>
+        <button className={`btn ${mode === "scatter" ? "bg-blue-500" : ""}`} onClick={() => setMode("scatter")}>Wykres zależności</button>
+        <button className={`btn ${mode === "custom" ? "bg-blue-500" : ""}`} onClick={() => setMode("custom")}>Dowolne wykresy</button>
       </div>
+
     {/* panel trybu - H2H */}
       {mode === "h2h" && (
         <div className="space-y-4">
@@ -939,21 +937,26 @@ const Stats = () => {
       )}
       {mode === "custom" && (
         <div className="space-y-4">
-          <div>
-            <label className="block mb-1 font-semibold">Typ wykresu:</label>
-            <div className="flex space-x-4">
+          <div className="chart-type-selector">
+            <span>Typ wykresu:</span>
+            <div className="chart-type-buttons">
               {[
-                { value: "bar", label: "Wykres słupkowy" },
-                { value: "column", label: "Wykres kolumnowy" },
-                { value: "pie", label: "Wykres kołowy" },
+                { value: "bar", label: "Słupkowy" },
+                { value: "column", label: "Kolumnowy" },
+                { value: "pie", label: "Kołowy" },
               ].map((opt) => (
-                <label key={opt.value} className="flex items-center space-x-2">
-                  <input type="radio" name="chartType" value={opt.value} checked={customChartType === opt.value} onChange={() => setCustomChartType(opt.value)} />
-                  <span>{opt.label}</span>
-                </label>
+                <button
+                  key={opt.value}
+                  className={`chart-type-btn ${customChartType === opt.value ? "active" : ""}`}
+                  onClick={() => setCustomChartType(opt.value)}
+                  type="button"
+                >
+                  {opt.label}
+                </button>
               ))}
             </div>
           </div>
+
 
           <div>
             <label className="block mb-1 font-semibold">Wybierz sezon:</label>
@@ -1056,6 +1059,7 @@ const Stats = () => {
                 plugins={[ChartDataLabels]}
               />
             )}
+            
 
             {customChartType === "column" && (
               <Bar
