@@ -19,6 +19,7 @@ ChartJS.register(LineElement, PointElement, CategoryScale, LinearScale, Tooltip,
 ChartJS.register(ChartDataLabels);
 
 const DEFAULT_STATS = [
+  "pozycja",
   "punkty",
   "zwyciestwa",
   "remisy",
@@ -206,7 +207,18 @@ const Stats = () => {
           const bVal = getTeamData(b)?.[selectedStats[0]] ?? 0;
           return bVal - aVal;
         });
-      // dodaj inne przypadki, np. pozycja w tabeli
+      case "table-pos-asc":
+        return teamsCopy.sort((a, b) => {
+          const aPos = getTeamData(a)?.pozycja ?? Infinity;
+          const bPos = getTeamData(b)?.pozycja ?? Infinity;
+          return aPos - bPos;
+        });
+      case "table-pos-desc":
+        return teamsCopy.sort((a, b) => {
+          const aPos = getTeamData(a)?.pozycja ?? -Infinity;
+          const bPos = getTeamData(b)?.pozycja ?? -Infinity;
+          return bPos - aPos;
+        });
       default:
         return teamsCopy;
     }
