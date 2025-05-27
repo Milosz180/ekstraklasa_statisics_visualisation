@@ -14,6 +14,7 @@ import {
   ArcElement,
   Title,
 } from "chart.js";
+import teamsInfo from '../teamsInfo';
 
 ChartJS.register(LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Legend, Title, BarElement, ArcElement, ChartDataLabels);
 ChartJS.register(ChartDataLabels);
@@ -38,7 +39,8 @@ const Stats = () => {
   const [selectedSeason, setSelectedSeason] = useState("");
   const [selectedTeams, setSelectedTeams] = useState([]);
   const [selectedStats, setSelectedStats] = useState(DEFAULT_STATS);
-  const [sortOption, setSortOption] = useState(null);
+  const [sortOption, setSortOption] = useState(null); 
+  const [teamLogos, setTeamLogos] = useState({});
   // stany tryb: sezon po sezonie
   const [trendTeams, setTrendTeams] = useState([]);
   const [trendStat, setTrendStat] = useState("punkty");
@@ -88,6 +90,19 @@ const Stats = () => {
       if (!customSeason) setCustomSeason(seasons[0]);
     }
   }, [seasons]);
+
+  // ustawienie logo drużyny
+  useEffect(() => {
+    const images = {};
+    Object.entries(teamsInfo).forEach(([team, info]) => {
+      const img = new Image();
+      img.height = 25;
+      img.width = 25;
+      img.src = info.logo;
+      images[team] = img;
+    });
+    setTeamLogos(images);
+  }, []);
 
   // reset statystyk po ładowaniu danych
   useEffect(() => {
@@ -538,8 +553,11 @@ const Stats = () => {
                     label: team,
                     data: values.map((v) => v.y),
                     fill: false,
-                    borderColor: `hsl(${(idx * 360) / trendTeams.length}, 70%, 50%)`,
-                    backgroundColor: `hsl(${(idx * 360) / trendTeams.length}, 70%, 50%)`,
+                    borderColor: teamsInfo[team]?.color || 'hsl(0,0%,50%)',
+                    backgroundColor: teamsInfo[team]?.color || 'hsl(0,0%,50%)',
+                    pointStyle: values.map(() => teamLogos[team] || 'circle'),
+                    pointRadius: 10,
+                    pointHoverRadius: 14,
                   })),
                 }}
                 options={{
@@ -656,9 +674,10 @@ const Stats = () => {
                     {
                       label: `Scatter: ${scatterStatX} vs ${scatterStatY}`,
                       data: scatterData,
-                      backgroundColor: 'rgba(27, 32, 177, 0.6)',
-                      pointRadius: 7,
-                      pointHoverRadius: 9,
+                      backgroundColor: scatterData.map(point => teamsInfo[point.label]?.color || 'rgba(27, 32, 177, 0.6)'),
+                      pointRadius: 14,
+                      pointHoverRadius: 18,
+                      pointStyle: scatterData.map(point => teamLogos[point.label] || 'circle'),
                     },
                   ],
                 }}
@@ -787,8 +806,8 @@ const Stats = () => {
                     {
                       label: customStat,
                       data: Object.values(sortedCustomData),
-                      backgroundColor: Object.keys(sortedCustomData).map((_, i) =>
-                        `hsl(${(i * 360) / Object.keys(sortedCustomData).length}, 70%, 50%)`
+                      backgroundColor: Object.keys(sortedCustomData).map(
+                        (team) => teamsInfo[team]?.color || '#888'
                       ),
                     },
                   ],
@@ -831,8 +850,8 @@ const Stats = () => {
                     {
                       label: customStat,
                       data: Object.values(sortedCustomData),
-                      backgroundColor: Object.keys(sortedCustomData).map((_, i) =>
-                        `hsl(${(i * 360) / Object.keys(sortedCustomData).length}, 70%, 50%)`
+                      backgroundColor: Object.keys(sortedCustomData).map(
+                        (team) => teamsInfo[team]?.color || '#888'
                       ),
                     },
                   ],
@@ -874,8 +893,8 @@ const Stats = () => {
                   datasets: [
                     {
                       data: Object.values(sortedCustomData),
-                      backgroundColor: Object.keys(sortedCustomData).map((_, i) =>
-                        `hsl(${(i * 360) / Object.keys(sortedCustomData).length}, 70%, 50%)`
+                      backgroundColor: Object.keys(sortedCustomData).map(
+                        (team) => teamsInfo[team]?.color || '#888'
                       ),
                     },
                   ],
