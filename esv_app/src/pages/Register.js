@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../AuthContext';
 import './Register.css';
 
 const Register = () => {
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
@@ -28,10 +33,8 @@ const Register = () => {
       if (!response.ok) {
         setMessage(data.error || 'Błąd rejestracji.');
       } else {
-        setMessage('Rejestracja zakończona sukcesem!');
-        setEmail('');
-        setPassword('');
-        setRepeatPassword('');
+        login(email);       // automatyczne logowanie
+        navigate('/');      // przekierowanie na stronę główną
       }
     } catch (err) {
       setMessage('Błąd połączenia z serwerem.');
