@@ -13,3 +13,4 @@ pytest
 httpx
 pytest-asyncio
 react-router-dom
+python-jose

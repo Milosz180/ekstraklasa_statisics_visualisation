@@ -5,5 +5,9 @@
 pip install -r requirements.txt
 npm install --prefix ./esv_app
 
+# testowanie
+W folderze ./esv_app/src odpalamy komendę test do uruchomienia testów frontendowych
+W folderze ./backend_fastapi odpalamy komendę pytest do uruchomienia testów backendowych 
+
 pip install fastapi uvicorn psycopg[binary] asyncpg sqlalchemy passlib[bcrypt] python-jose or pip install "psycopg[binary]" "passlib[bcrypt]" fastapi uvicorn asyncpg sqlalchemy python-jose
  npm install express cors
