@@ -1,9 +1,11 @@
 import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthContext';
 import './Login.css';
 
 const Login = () => {
   const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
@@ -22,10 +24,10 @@ const Login = () => {
       const data = await response.json();
 
       if (!response.ok) {
-        setMessage(data.error || 'Błąd logowania.');
+        setMessage(data.error || 'Błędne dane logowania.');
       } else {
-        login(email); // <- zapisz do contextu
-        setMessage('Zalogowano pomyślnie!');
+        login(email);           // zapis do contextu
+        navigate('/');          // przekierowanie na stronę główną
       }
     } catch (err) {
       setMessage('Błąd połączenia z serwerem.');
