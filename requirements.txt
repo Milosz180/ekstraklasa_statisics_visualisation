@@ -9,3 +9,7 @@ chartjs-plugin-datalabels
 fastapi
 uvicorn
 react-select
+pytest
+httpx
+pytest-asyncio
+react-router-dom
