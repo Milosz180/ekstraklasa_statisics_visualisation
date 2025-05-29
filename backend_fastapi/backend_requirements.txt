@@ -1,6 +1,8 @@
-requests
-beautifulsoup4
-pandas
 fastapi
 uvicorn
+pandas
+requests
+beautifulsoup4
+python-jose
+httpx
 pytest
