@@ -26,8 +26,8 @@ const Login = () => {
       if (!response.ok) {
         setMessage(data.error || 'Błędne dane logowania.');
       } else {
-        login(email);           // zapis do contextu
-        navigate('/');          // przekierowanie na stronę główną
+        login(email);           
+        navigate('/');          
       }
     } catch (err) {
       setMessage('Błąd połączenia z serwerem.');
