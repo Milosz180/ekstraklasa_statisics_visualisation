@@ -1,8 +1,6 @@
-fastapi
-uvicorn
-pandas
 requests
 beautifulsoup4
-python-jose
-httpx
+pandas
+fastapi
+uvicorn
 pytest
