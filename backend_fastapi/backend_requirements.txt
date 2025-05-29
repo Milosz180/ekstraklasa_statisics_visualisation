@@ -6,3 +6,4 @@ beautifulsoup4
 python-jose
 httpx
 pytest
+passlib[bcrypt]
