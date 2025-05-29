@@ -1,8 +1,0 @@
-fastapi
-uvicorn
-pandas
-requests
-beautifulsoup4
-python-jose
-httpx
-pytest
